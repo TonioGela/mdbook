@@ -1,7 +1,6 @@
 # Summary
 
 [Hello!](./hello.md)
-[Cannnot be nested]()
 
 - [Rust](./rust/chapter_1.md)
 
