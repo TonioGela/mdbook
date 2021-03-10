@@ -1,0 +1,24 @@
+[book]
+title = "Notes"
+authors = ["Antonio Gelameris"]
+language = "en"
+multilingual = false
+src = "src"
+
+[preprocessor.links]
+renderers = ["html"]
+some_extra_feature = true
+
+[output.html]
+site-url = "https://notes.toniogela.dev"
+git-repository-url = "https://github.com/TonioGela/mdbook"
+additional-css = ["custom.css"]
+default-theme = "ayu"
+preferred-dark-theme = "ayu"
+no-section-label = true
+# input-404 = "not-found.md"
+
+# [output.linkcheck]
+# follow-web-links = true
+# user-agent = "mdbook-linkcheck-0.4.0"
+# warning-policy = "error"
