@@ -1,14 +1,17 @@
 # Summary
 
-[Hello!](./hello.md)
+[Hello!](hello.md)
 
-- [Rust](./rust/chapter_1.md)
+---
 
-# Title of Part
-- [Title of the Chapter]()
-    - [Subchapter]()
+[To Be Organized](mess.md)
 
-# Title of Another Part
-- [More Chapters]()
+---
 
-[PostSection]()
+- [Reading Lists]()
+    - [Scala]()
+    - [Rust](rust/rust.md)
+        - [Learning](rust/learning_stuff.md)
+        - [Libraries](rust/libraries.md)
+        - [Cli Tools](rust/cli.md)
+        - [Various](rust/various.md)

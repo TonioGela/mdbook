@@ -1,8 +1,8 @@
-# Hello Hooman!
+# Hello Hooman 👋 !
 
 I'm pretty much sure you got here by mistake, this is a personal site full of notes that I use mainly as a brain dump. 
 
-As such, it may change a lot, so you shoud assume its content is completely volatile (including the github repo you can find in the upper right corner of the page since I have a thing for rebases).
+As such, **it may change a lot**, so you shoud assume its content is completely volatile (including the github repo you can find in the upper right corner of the page since I have a thing for rebases).
 
 <p align="center"><img inline src="shrug.png" title="¯\_(ツ)_/¯"/></p>
 
