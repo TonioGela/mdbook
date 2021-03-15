@@ -19,7 +19,7 @@ The first part of this list is a refined and personalized version of [this one](
 ### Interactive
 
 - [ ] [Small Projects to learn Rust](https://github.com/TonioGela/to-do-rust)
-- [ ] [Rustlings!](https://github.com/rust-lang/rustlings)
+- [x] [Rustlings!](https://github.com/rust-lang/rustlings)
 - [ ] [Exercism](https://exercism.io/)
 - [ ] [Learning Rust](https://learning-rust.github.io/)
 - [ ] [Tour of Rust](https://tourofrust.com/)

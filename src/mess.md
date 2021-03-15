@@ -2,4 +2,4 @@
 
 Missing Stuff:
 - Dashboard Stuff
-- Notion Stuff
+- Notion Stuff (watch for LFCS stuff)
