@@ -4,9 +4,9 @@ The first part of this list is a refined and personalized version of [this one](
 
 ### Books
 
-- [ ] [The Rust Book](https://doc.rust-lang.org/book/)
+- [x] [The Rust Book](https://doc.rust-lang.org/book/)
 - [ ] [Programming Rust](https://learning.oreilly.com/library/view/programming-rust-2nd/9781492052586/)
-- [ ] [Zero to Prod](https://gumroad.com/l/zero2prod?wanted=true) <-- You'll like this one
+- [ ] [Zero to Prod](https://gumroad.com/l/zero2prod?wanted=true)
 - [ ] [Easy Rust](https://dhghomon.github.io/easy_rust/)
 - [ ] [Gentle Introduction To Rust](https://stevedonovan.github.io/rust-gentle-intro/readme.html#a-gentle-introduction-to-rust)
 - [ ] [Rust by Examples](https://doc.rust-lang.org/rust-by-example/)
@@ -15,6 +15,7 @@ The first part of this list is a refined and personalized version of [this one](
 - [ ] [Learning Rust With Entirely Too Many Linked Lists](https://rust-unofficial.github.io/too-many-lists/)
 - [ ] [24 Days of Rust](https://zsiciarz.github.io/24daysofrust/index.html)
 - [ ] [Half-Hour to learn Rust](https://fasterthanli.me/articles/a-half-hour-to-learn-rust)
+- [ ] [Async Book](https://rust-lang.github.io/async-book/01_getting_started/01_chapter.html)
 
 ### Interactive
 
