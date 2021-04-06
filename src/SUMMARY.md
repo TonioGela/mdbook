@@ -18,3 +18,4 @@
         - [Cli Tools](rust/cli.md)
         - [Various](rust/various.md)
     - [Frontend](frontend.md)
+    - [Ricette](ricette.md)
