@@ -7,10 +7,8 @@
 
 ### Other
 
-[How to minify a binary](https://github.com/johnthagen/min-sized-rust)
-
-[Traverse](https://www.fpcomplete.com/blog/collect-rust-traverse-haskell-scala/)
-
-https://kerkour.com/blog/rust-for-web-development-2-years-later/
-
-https://bodil.lol/parser-combinators/
+- [How to minify a binary](https://github.com/johnthagen/min-sized-rust)
+- [Error Handling Survey](https://blog.yoshuawuyts.com/error-handling-survey/)
+- [Traverse](https://www.fpcomplete.com/blog/collect-rust-traverse-haskell-scala/)
+- [Parser Combinators](https://bodil.lol/parser-combinators/)
+- [Rust for Web Dev](https://kerkour.com/blog/rust-for-web-development-2-years-later/)
