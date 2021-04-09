@@ -1,6 +1,7 @@
 # Reading List
 
 ### Generic
+- [Scala and Vim](https://www.chris-kipp.io/blog/scala-and-vim-part-1)
 - [Kubuszok](https://kubuszok.com/)
 - [Scala Compiler Flags](https://tpolecat.github.io/2017/04/25/scalac-flags.html)
 - [Scala Best Practices](https://nrinaudo.github.io/scala-best-practices/)
