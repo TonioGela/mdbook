@@ -9,6 +9,7 @@
 
 ### Links
 
+- [VM on Apple M1](https://getutm.app/)
 - [Svg Repo](https://www.svgrepo.com/)
 - [Hemingway - Valutate text](http://www.hemingwayapp.com/)
 - [Rust Resources](https://towardsdatascience.com/you-want-to-learn-rust-but-you-dont-know-where-to-start-fc826402d5ba)
