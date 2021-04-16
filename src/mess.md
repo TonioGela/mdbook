@@ -1,5 +1,12 @@
 # This is a mess, you should really organize it
 
+# BASH
+`bash -x <SCRIPT>` to show the list of commands that are being executed and whether a subshell is executed
+`read -a <SOME ARRAY NAME>` saves input in an array
+`shift` removes the 1st argument of the arguments array (more portable than ${NN})
+
+
+
 - [VSCode Theme Creator](https://themes.vscode.one/your-themes/)
 - [ZSH Autocomplete](https://mrigank11.github.io/2018/03/zsh-auto-completion/)
 - [ZSH Autocomplete 2](https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org)
