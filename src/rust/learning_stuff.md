@@ -24,6 +24,7 @@ The first part of this list is a refined and personalized version of [this one](
 - [x] [Rustlings!](https://github.com/rust-lang/rustlings)
 - [ ] [Learning Rust](https://learning-rust.github.io/)
 - [ ] [Tour of Rust](https://tourofrust.com/)
+- [ ] [First Steps with Rust](https://docs.microsoft.com/en-us/learn/paths/rust-first-steps/)
 
 ### Videos
 
