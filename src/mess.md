@@ -15,6 +15,7 @@
 - [Matrix Setup](https://github.com/spantaleev/matrix-docker-ansible-deploy)
 
 - [6kb WebServer](https://devopsdirective.com/posts/2021/04/tiny-container-image/)
+- [Build-once run-anywhere C library](https://justine.lol/cosmopolitan/index.html)
 
 ### Links
 
