@@ -14,6 +14,8 @@
 - [Matrix Bridges](https://matrix.org/bridges/)
 - [Matrix Setup](https://github.com/spantaleev/matrix-docker-ansible-deploy)
 
+- [6kb WebServer](https://devopsdirective.com/posts/2021/04/tiny-container-image/)
+
 ### Links
 
 - [VM on Apple M1](https://getutm.app/)
