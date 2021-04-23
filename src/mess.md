@@ -1,19 +1,18 @@
 # This is a mess, you should really organize it
 
-# BASH
+### BASH
 `bash -x <SCRIPT>` to show the list of commands that are being executed and whether a subshell is executed
 `read -a <SOME ARRAY NAME>` saves input in an array
 `shift` removes the 1st argument of the arguments array (more portable than ${NN})
 
+### Other
 
-
+- [Vim](https://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/)
 - [VSCode Theme Creator](https://themes.vscode.one/your-themes/)
 - [ZSH Autocomplete](https://mrigank11.github.io/2018/03/zsh-auto-completion/)
 - [ZSH Autocomplete 2](https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org)
-
 - [Matrix Bridges](https://matrix.org/bridges/)
 - [Matrix Setup](https://github.com/spantaleev/matrix-docker-ansible-deploy)
-
 - [6kb WebServer](https://devopsdirective.com/posts/2021/04/tiny-container-image/)
 - [Build-once run-anywhere C library](https://justine.lol/cosmopolitan/index.html)
 
