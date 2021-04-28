@@ -7,6 +7,7 @@
 
 ### Other
 
+- [Publish Guide on Maven Central](https://central.sonatype.org/publish/publish-guide/#create-a-ticket-with-sonatype)
 - [Vim](https://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/)
 - [VSCode Theme Creator](https://themes.vscode.one/your-themes/)
 - [ZSH Autocomplete](https://mrigank11.github.io/2018/03/zsh-auto-completion/)
