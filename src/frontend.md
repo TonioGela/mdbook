@@ -19,3 +19,4 @@
 - [Css - 30 Seconds of Code](https://css.30secondsofcode.org/)
 - [Less 2 SCSS](http://less2scss.awk5.com/)
 - [Real Favicon Generator](https://realfavicongenerator.net/)
+- [Html Boilerplate](https://www.matuzo.at/blog/html-boilerplate/)

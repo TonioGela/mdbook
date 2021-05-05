@@ -7,6 +7,8 @@
 
 ### Other
 
+- [Blogging](https://dev.to/atapas/my-favorite-blogging-tools-to-make-you-a-productive-blogger-50c)
+- [Swimlanes](https://swimlanes.io/)
 - [Publish Guide on Maven Central](https://central.sonatype.org/publish/publish-guide/#create-a-ticket-with-sonatype)
 - [Vim](https://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/)
 - [VSCode Theme Creator](https://themes.vscode.one/your-themes/)
