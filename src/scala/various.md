@@ -32,6 +32,7 @@
 - [Gabriel Volpe - Cats Effect: The IO Monad for Scala](https://youtu.be/8_TWM2t97r4)
 
 ### Akka
+- [Optimizing Akka Streams](https://engineering.contentsquare.com/2021/akka-stream-profiling/)
 - [Akka Platform](https://developer.lightbend.com/docs/akka-platform-guide/index.html)
 - [Cluster Sharding Concepts](https://doc.akka.io/docs/akka/current/typed/cluster-sharding-concepts.html)
 
