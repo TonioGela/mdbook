@@ -16,4 +16,4 @@ additional-css = ["custom.css"]
 default-theme = "Ayu"
 preferred-dark-theme = "Ayu"
 no-section-label = true
-input-404 = "not-found.md"
+input-404 = "404.md"
