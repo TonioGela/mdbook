@@ -1,4 +1,4 @@
 # Scala
 
-- [Learning](scala/learning_stuff.md)
-- [Various](scala/various.md)
+- [Learning](./learning_stuff.md)
+- [Various](./various.md)

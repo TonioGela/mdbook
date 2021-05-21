@@ -13,7 +13,7 @@
 - [ ] [Things you need to know about JVM (that matter in Scala)](https://leanpub.com/jvm-scala-book)
 - [ ] [Functiona Programming for Mortals with Cats](https://leanpub.com/fpmortals-cats)
 - [ ] [Type Astronaut’s Guide to Shapeless](https://underscore.io/books/shapeless-guide/)
-- [x] [Practical FP in Scala: A hands-on approach](https://leanpub.com/pfp-scala)
+- [ ] [Practical FP in Scala: A hands-on approach](https://leanpub.com/pfp-scala)
 
 ## Blogs
 - [ ] [Fabio Labella](https://systemfw.org/)
