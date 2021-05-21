@@ -33,3 +33,6 @@ The first part of this list is a refined and personalized version of [this one](
 - [ ] [Easy Rust](https://www.youtube.com/playlist?list=PLfllocyHVgsRwLkTAhG0E-2QxCf-ozBkk)
 - [ ] [Hello Rust](https://hello-rust.show/)
 - [ ] [Rust In Motion](https://livevideo.manning.com/module/42_1_1/rust-in-motion/introduction-to-the-course-and-rust-syntax/introduction) (look [here](https://twitter.com/Carols10cents/status/1177609934902562816?s=20) for a 50% discount)
+
+### Blogs
+- [GeekAByte - Learn Rust](https://www.geekabyte.io/2020/01/learning-rust-day-1.html)

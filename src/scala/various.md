@@ -20,6 +20,12 @@
 - [Docusaurus](https://scalameta.org/mdoc/docs/docusaurus.html)
 - [Jlink](https://dev.to/parambirs/easily-distributable-scala-clis-using-jlink-18fe)
 - [JPackage](https://www.scala-sbt.org/sbt-native-packager/formats/jdkpackager.html)
+- [Build Server Protocol in Intellij Scala Plugin](https://blog.jetbrains.com/scala/2019/08/08/integrating-developer-experiences-the-build-server-protocol-in-the-intellij-scala-plugin/)
+- [So, what's wrong with SBT?](http://www.lihaoyi.com/post/SowhatswrongwithSBT.html)
+- [Lens & Optics](https://medium.com/zyseme-technology/functional-references-lens-and-other-optics-in-scala-e5f7e2fdafe)
+- [Benchmarking Functional Error Handling](https://www.iteratorshq.com/blog/benchmarking-functional-error-handling-in-scala/)
+- [Mechanical Sympathy](https://dzone.com/articles/mechanical-sympathy)
+- [How to write a toy jvm](https://zserge.com/posts/jvm/)
 
 ### Cats Effects
 - [Concurrency in CE](https://github.com/slouc/concurrency-in-scala-with-ce#asynchronous-methods-ffi)
@@ -42,3 +48,5 @@
 - [Haskell for Mac](http://learn.hfm.io/first_steps.html)
 - [Haskell FP Course](https://github.com/data61/fp-course)
 - [okmij - Haskell](http://okmij.org/ftp/)
+
+
