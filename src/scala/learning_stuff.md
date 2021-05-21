@@ -28,6 +28,7 @@
 ## Video & Talks
 - [Fabio Labella Talks](https://systemfw.org/talks.html)
 - [Jakub Kozłowski Channel](https://www.youtube.com/channel/UCBSRCuGz9laxVv0rAnn2O9Q)
+- [Fs2 Crash Course](https://www.youtube.com/watch?v=YWhrrfP3718)
 - [Pragmatic object-oriented tagless final](https://vimeo.com/363249962)
 - [Recursion Schemes](https://youtu.be/tP77Ryy9Qxs)
 - [Recursion Schemes Again](https://youtu.be/hh9SYl-IfIc)
