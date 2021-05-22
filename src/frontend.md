@@ -1,4 +1,9 @@
-# Frontend
+# Frontend or Presentations
+
+
+- [Synfig](https://www.synfig.org/)
+- [Marp](https://marp.app/)
+- [Reveal-Md](https://github.com/webpro/reveal-md)
 
 - [The Front-End Checklist](https://frontendchecklist.io/)
 - [Colors](https://colors.lol/)
