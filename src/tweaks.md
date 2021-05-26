@@ -4,6 +4,7 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 
 ### Vim, VSCode, Terminal, Zsh, NixOs
 
+- [NeoVim is Overpowering](https://crispgm.com/page/neovim-is-overpowering.html)
 - [Explain Shell](https://explainshell.com/)
 - [Terminals Are Sexy](https://terminalsare.sexy/)
 - [Terminal.Sexy](https://terminal.sexy/)
