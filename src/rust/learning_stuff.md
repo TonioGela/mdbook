@@ -38,3 +38,4 @@ The first part of this list is a refined and personalized version of [this one](
 
 ### Blogs
 - [GeekAByte - Learn Rust](https://www.geekabyte.io/2020/01/learning-rust-day-1.html)
+- [Julia To Rust](https://miguelraz.github.io/blog/juliatorust/)

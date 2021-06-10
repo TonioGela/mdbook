@@ -22,6 +22,7 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 
 ### Tools
 
+- [GraphViz](https://graphviz.org/)
 - [Rclone](https://rclone.org/docs/)
 - [Darling - MacOsX Software on Linux](http://darlinghq.org/)
 

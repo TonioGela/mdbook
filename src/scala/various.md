@@ -1,8 +1,10 @@
 # Reading List
 
 ### Generic
+- [Fabio's g8](https://github.com/SystemFw/base.g8)
 - [Frontend with Slinky](https://slinky.dev/)
 - [Scala and Vim](https://www.chris-kipp.io/blog/scala-and-vim-part-1)
+- [Map toMap](https://github.com/scala/bug/issues/12400)
 - [Kubuszok](https://kubuszok.com/)
 - [Scala Compiler Flags](https://tpolecat.github.io/2017/04/25/scalac-flags.html)
 - [Scala Best Practices](https://nrinaudo.github.io/scala-best-practices/)
