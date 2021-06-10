@@ -2,6 +2,7 @@
 
 ### Generic
 - [Fabio's g8](https://github.com/SystemFw/base.g8)
+- [Java FX](https://fxdocs.github.io/docs/html5/index.html)
 - [Frontend with Slinky](https://slinky.dev/)
 - [Scala and Vim](https://www.chris-kipp.io/blog/scala-and-vim-part-1)
 - [Map toMap](https://github.com/scala/bug/issues/12400)
