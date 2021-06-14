@@ -4,6 +4,7 @@ Read [here](https://zaiste.net/posts/shell-commands-rust/) for a bootstrap or [R
 
 - [Zola](https://www.getzola.org/) for blog generation
 - [Just](https://github.com/casey/just)
+- [Zellij](https://zellij.dev/news/beta/)
 - [XXV](https://github.com/chrisvest/xxv)
 - [Exa](https://github.com/ogham/exa) replacement for ls
 - [sd](https://github.com/chmln/sd) sed alternative

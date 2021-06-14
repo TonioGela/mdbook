@@ -1,6 +1,9 @@
 # Reading List
 
 ### Generic
+- [Java Fx](https://fxdocs.github.io/docs/html5/index.html)
+- [Tagless Final No Typeclasses](https://www.foxhound.systems/blog/final-tagless/)
+- [Difflicious](https://jatcwang.github.io/difflicious/docs/introduction)
 - [Fabio's g8](https://github.com/SystemFw/base.g8)
 - [Java FX](https://fxdocs.github.io/docs/html5/index.html)
 - [Frontend with Slinky](https://slinky.dev/)
@@ -29,9 +32,10 @@
 - [Benchmarking Functional Error Handling](https://www.iteratorshq.com/blog/benchmarking-functional-error-handling-in-scala/)
 - [Mechanical Sympathy](https://dzone.com/articles/mechanical-sympathy)
 - [How to write a toy jvm](https://zserge.com/posts/jvm/)
+- [Code Graph](https://medium.com/virtuslab/semantic-code-graph-the-idea-behind-graph-buddy-269ec378a85c)
 
 ### Cats Effects
-- [Concurrency in CE](https://github.com/slouc/concurrency-in-scala-with-ce#asynchronous-methods-ffi)
+- [Concurrency with CE](https://github.com/slouc/concurrency-in-scala-with-ce)
 - [Thread Pools](https://gist.github.com/djspiewak/46b543800958cf61af6efa8e072bfd5c)
 - [The Making of an IO - Daniel Spiewak](https://youtu.be/g_jP47HFpWA)
 - [Fibers](https://gist.github.com/djspiewak/d9930891d419c26fac1d58b5274f45ba)
