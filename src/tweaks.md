@@ -19,6 +19,7 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 - [CharMap](http://mathew-kurian.github.io/CharacterMap/)
 - [How to learn Emacs](http://david.rothlis.net/emacs/howtolearn.html)
 - [Vim After 15 Years](https://statico.github.io/vim3.html)
+- [Modulinos in Bash](https://blog.dnmfarrell.com/post/modulinos-in-bash/)
 
 ### Tools
 
