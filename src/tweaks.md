@@ -2,7 +2,7 @@
 
 Here we have various tweaks, most of them to customize UIs, command line utilities, how-to guides and articles about them.
 
-### Vim, VSCode, Terminal, Zsh, NixOs
+## Vim, VSCode, Terminal, Zsh, NixOs
 
 - [SKHD configuration](https://gist.github.com/zmre/b5e23a6ac1be92ce4f90390940d7f03a)
 - [NeoVim is Overpowering](https://crispgm.com/page/neovim-is-overpowering.html)
@@ -22,13 +22,13 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 - [Vim After 15 Years](https://statico.github.io/vim3.html)
 - [Modulinos in Bash](https://blog.dnmfarrell.com/post/modulinos-in-bash/)
 
-### Tools
+## Tools
 
 - [GraphViz](https://graphviz.org/)
 - [Rclone](https://rclone.org/docs/)
 - [Darling - MacOsX Software on Linux](http://darlinghq.org/)
 
-### Linux, Kernels, Low-Level
+## Linux, Kernels, Low-Level
 
 - [Why AB freezes](https://stackoverflow.com/questions/1216267/ab-program-freezes-after-lots-of-requests-why)
 - [Linux Studying Resources](https://dev.to/abregman/collection-of-linux-resources-3nhk)
@@ -38,7 +38,7 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 - [The Fascinating World of Linux System Calls](https://sysdig.com/blog/fascinating-world-linux-system-calls/)
 - [Nand2Tetris](https://www.nand2tetris.org/)
 
-### MacOsX
+## MacOsX
 
 - [VM on Apple M1](https://getutm.app/)
 - [Homebrew: Java App](https://www.veracode.com/blog/secure-development/distribute-your-java-app-brew)
@@ -48,11 +48,11 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 - [Implementing Mac WeatherBar](http://footle.org/WeatherBar/)
 - [Creating a OS X menubar only app](https://nsrover.wordpress.com/2014/10/10/creating-a-os-x-menubar-only-app/)
 
-### Docker
+## Docker
 
 - [Docker Image Reduction](https://dev.to/mrbrazel/docker-image-size-reduction-220a)
 
-### Organizing Tools and Techniques
+## Organizing Tools and Techniques
 
 - [Blogging Tools](https://dev.to/atapas/my-favorite-blogging-tools-to-make-you-a-productive-blogger-50c)
 - [Swimlanes](https://swimlanes.io/)
@@ -65,7 +65,7 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 - [Learn Things at 1000x](http://pranay.gp/how-to-learn-things-at-1000x-the-speed)
 - [How I got to 200 productive hours a month](https://qotoqot.com/blog/improving-focus/)
 
-### Generic Software Development
+## Generic Software Development
 
 - [Learn X in Y minutes](https://learnxinyminutes.com/)
 - [Flutter](https://flutter.dev/)
@@ -77,12 +77,12 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 - [Byzantine Fault Tolerance](https://en.wikipedia.org/wiki/Byzantine_fault_tolerance)
 - [Design Patterns](https://sourcemaking.com/design_patterns)
 
-### Security
+## Security
 
 - [Cyber Security](https://victoria.dev/blog/your-cybersecurity-starter-pack/)
 - [Elliptic Curve Cryptography for Beginners](http://blog.wesleyac.com/posts/elliptic-curves)
 
-### Gaming and Various
+## Gaming and Various
 
 - [Codin Game](https://www.codingame.com/home)
 - [Meteo](http://www.centrometeolombardo.com/radar/)
@@ -99,3 +99,51 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 - [Programmer automates his job](http://uk.businessinsider.com/programmer-automates-his-job-2015-11)
 - [Percorsi Bici Milano](https://www.milanotoday.it/attualita/percorsi-bici_milano.html)
 - [Best Physics Movies](https://www.wondersofphysics.com/2020/04/best-physics-movies.html)
+
+## Keybindings for terminal
+Open the iTerm preferences `⌘+`, and navigate to the Profiles tab (the Keys tab can be used, but adding keybinding to your profile allows you to save your profile and sync it to multiple computers) and keys sub-tab and enter the following:
+
+### Delete all characters left of the cursor
+`⌘+←Delete` Send Hex Codes:
+  * `0x18 0x7f` – Less compatible, doesn't work in node and won't work in zsh by default, see below to fix zsh (bash/irb/pry should be fine), performs desired functionality when it does work.
+  * `0x15` – More compatible, but typical functionality is to delete the entire line rather than just the characters to the left of the cursor.
+
+### Delete all characters right of the cursor
+`⌘+fn+←Delete` or `⌘+Delete→` Send Hex Codes:
+  * `0x0b`
+
+### Delete one word to left of cursor
+`⌥+←Delete` Send Hex Codes:
+  * `0x01b 0x08`
+
+### Delete one word to right of cursor
+`⌥+fn←Delete` or `⌥+Delete→` Send Hex Codes: 
+  * `0x01b 0x64`
+
+### Move cursor to the front of line
+`⌘+←` Send Hex Codes:
+  * `0x01`
+
+### Move cursor to the end of line
+`⌘+→` Send Hex Codes:
+  * `0x05`
+
+### Move cursor one word left
+`⌥+←` Send Hex Codes:
+  * `0x1b 0x62`
+
+### Move cursor one word right
+`⌥+→` Send Hex Codes:
+  * `0x1b 0x66`
+
+### Undo
+`⌘+z` Send Hex Codes:
+  * `0x1f`
+
+### Redo
+Typically not bound in bash, zsh or readline, so we can set it to a unused hexcode which we can then fix in zsh.
+
+`⇧+⌘+Z` or `⌘+y` Send Hex Codes:
+  * `0x18 0x1f`
+
+_Stolen from: http://stackoverflow.com/questions/6205157/iterm2-how-to-get-jump-to-beginning-end-of-line-in-bash-shell#answer-29403520_
