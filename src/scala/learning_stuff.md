@@ -17,6 +17,7 @@
 - [ ] [Haskell in Depth](https://www.manning.com/books/haskell-in-depth?a_aid=bravit&a_bid=3f69e5d2)
 - [ ] [Bartosz's Answers](http://danshiebler.com/2018-11-10-category-solutions/)
 - [ ] [Haskell Phrasebook](https://typeclasses.com/phrasebook)
+- [ ] [Learn you a Haskell Notebook](https://github.com/jamesdbrock/learn-you-a-haskell-notebook)
 
 ## Blogs
 - [ ] [Fabio Labella](https://systemfw.org/)
