@@ -7,6 +7,7 @@
 
 ### Other
 
+- [Speeding up Graph with Rust and WASM](https://cprimozic.net/blog/speeding-up-webcola-with-webassembly/#avoiding-expensive-f32is_finite-call)
 - [How to minify a binary](https://github.com/johnthagen/min-sized-rust)
 - [Error Handling Survey](https://blog.yoshuawuyts.com/error-handling-survey/)
 - [Traverse](https://www.fpcomplete.com/blog/collect-rust-traverse-haskell-scala/)

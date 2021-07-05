@@ -21,6 +21,7 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 - [How to learn Emacs](http://david.rothlis.net/emacs/howtolearn.html)
 - [Vim After 15 Years](https://statico.github.io/vim3.html)
 - [Modulinos in Bash](https://blog.dnmfarrell.com/post/modulinos-in-bash/)
+- [Bash Pitfalls](https://mywiki.wooledge.org/BashPitfalls)
 
 ## Tools
 
@@ -76,6 +77,7 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 - [Transformation Priority Premise](https://en.m.wikipedia.org/wiki/Transformation_Priority_Premise)
 - [Byzantine Fault Tolerance](https://en.wikipedia.org/wiki/Byzantine_fault_tolerance)
 - [Design Patterns](https://sourcemaking.com/design_patterns)
+- [Extreme HTTP Performance](https://talawah.io/blog/extreme-http-performance-tuning-one-point-two-million/)
 
 ## Security
 
