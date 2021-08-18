@@ -1,7 +1,6 @@
 # Reading List
 
 ### Generic
-- [Java Fx](https://fxdocs.github.io/docs/html5/index.html)
 - [Tagless Final No Typeclasses](https://www.foxhound.systems/blog/final-tagless/)
 - [Difflicious](https://jatcwang.github.io/difflicious/docs/introduction)
 - [Fabio's g8](https://github.com/SystemFw/base.g8)
@@ -35,6 +34,8 @@
 - [Code Graph](https://medium.com/virtuslab/semantic-code-graph-the-idea-behind-graph-buddy-269ec378a85c)
 
 ### Cats Effects
+- [Rate Limiter](https://medium.com/disney-streaming/a-rate-limiter-in-15-lines-of-code-with-cats-effect-af09d838857a)
+- [Journey to the Centre of the JVM](https://youtu.be/EFkpmFt61Jo)
 - [Concurrency with CE](https://github.com/slouc/concurrency-in-scala-with-ce)
 - [Thread Pools](https://gist.github.com/djspiewak/46b543800958cf61af6efa8e072bfd5c)
 - [The Making of an IO - Daniel Spiewak](https://youtu.be/g_jP47HFpWA)
@@ -55,5 +56,3 @@
 - [Haskell for Mac](http://learn.hfm.io/first_steps.html)
 - [Haskell FP Course](https://github.com/data61/fp-course)
 - [okmij - Haskell](http://okmij.org/ftp/)
-
-
