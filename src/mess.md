@@ -18,3 +18,4 @@
 - [LookAtMe](https://github.com/d0c-s4vage/lookatme/issues)
 - [Nvim-Metals minimal](https://github.com/scalameta/nvim-metals/discussions/39)
 - [Nvim Metals How-to](https://github.com/scalameta/nvim-metals/blob/main/doc/metals.txt)
+- [Zsh Profiling](https://htr3n.github.io/2018/07/faster-zsh/)
