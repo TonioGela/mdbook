@@ -1,5 +1,12 @@
 # This is a mess, you should really organize it
 
+### Last opened firefox tabs
+- https://github.com/slouc/concurrency-in-scala-with-ce#cats-effect-io-basics
+- https://www.authentichappiness.sas.upenn.edu/#
+- https://fishshell.com/docs/current/index.html#
+- https://www.scala-lang.org/2021/02/26/tuples-bring-generic-programming-to-scala-3.html
+- http://tutorials.jenkov.com/javafx/tableview.html
+
 - [Firecracker](https://github.com/firecracker-microvm/firecracker)
 - [Globally Distributed Postgres](https://fly.io/blog/globally-distributed-postgres/)
 - [Optimize Duolinguo](https://happilyevertravels.com/best-way-to-use-duolingo/)
