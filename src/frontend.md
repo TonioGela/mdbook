@@ -1,6 +1,5 @@
 # Frontend or Presentations
 
-
 - [Synfig](https://www.synfig.org/)
 - [Marp](https://marp.app/)
 - [Reveal-Md](https://github.com/webpro/reveal-md)
@@ -10,6 +9,7 @@
 
 ---
 
+- [Override New Window as New Tab in Firefox](https://support.mozilla.org/en-US/questions/1190923)
 - [Lobotomized Owls](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/)
 - [Vegai](https://vega.github.io/vega/)
 - [Accessibility](https://www.a11yproject.com/checklist/)
