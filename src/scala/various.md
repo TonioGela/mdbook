@@ -1,6 +1,8 @@
 # Reading List
 
 ### Generic
+- [Exceptions](https://github.com/lampepfl/dotty/blob/b65958f139a0a818d36ee04468ada93b8fb472ac/docs/docs/reference/experimental/canthrow.md)
+- [Giulio Canti - Programmazione Funzionale](https://github.com/gcanti/functional-programming)
 - [Tagless Final No Typeclasses](https://www.foxhound.systems/blog/final-tagless/)
 - [Difflicious](https://jatcwang.github.io/difflicious/docs/introduction)
 - [Fabio's g8](https://github.com/SystemFw/base.g8)

@@ -10,6 +10,7 @@
 
 ---
 
+- [Lobotomized Owls](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/)
 - [Vegai](https://vega.github.io/vega/)
 - [Accessibility](https://www.a11yproject.com/checklist/)
 - [Vintage Gifs](https://cyber.dabamos.de/88x31/index.html)
