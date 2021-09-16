@@ -7,6 +7,7 @@
 - https://www.scala-lang.org/2021/02/26/tuples-bring-generic-programming-to-scala-3.html
 - http://tutorials.jenkov.com/javafx/tableview.html
 
+- [Best Dos Games](https://lunduke.substack.com/p/the-best-vga-dos-games-period)
 - [Firecracker](https://github.com/firecracker-microvm/firecracker)
 - [Globally Distributed Postgres](https://fly.io/blog/globally-distributed-postgres/)
 - [Optimize Duolinguo](https://happilyevertravels.com/best-way-to-use-duolingo/)

@@ -53,6 +53,7 @@
 - [Cluster Sharding Concepts](https://doc.akka.io/docs/akka/current/typed/cluster-sharding-concepts.html)
 
 ### Haskell/FP
+- [Type Level Programming](https://rebeccaskinner.net/posts/2021-08-25-introduction-to-type-level-programming.html)
 - [Lambda Days Proceedings](http://www.cse.chalmers.se/~rjmh/tfp/proceedings.html)
 - [Beating WC in 80 lines of Haskell](https://chrispenner.ca/posts/wc)
 - [Haskell for Mac](http://learn.hfm.io/first_steps.html)
