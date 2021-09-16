@@ -41,6 +41,7 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 
 ## MacOsX
 
+- [LaunchAgents](https://theevilbit.github.io/beyond/)
 - [Status Bar Yabai](https://www.simple-bar.com/en/)
 - [VM on Apple M1](https://getutm.app/)
 - [Homebrew: Java App](https://www.veracode.com/blog/secure-development/distribute-your-java-app-brew)
