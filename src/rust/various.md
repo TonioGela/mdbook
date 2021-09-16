@@ -7,6 +7,8 @@
 
 ### Other
 
+- [Aws Lambda with Rust](https://dev.to/aviillouz/writing-a-lambda-with-rust-using-aws-lambda-rust-runtime-and-aws-sdk-rust-1aln)
+- [Optimizing Strings](https://dev.to/somedood/optimizing-immutable-strings-in-rust-2ahj#fn2)
 - [Async in Rust](https://ryhl.io/blog/async-what-is-blocking/)
 - [Cannot borrow as mutable in a loop when calling a closure that borrows as immutable?](https://stackoverflow.com/questions/57686549/cannot-borrow-as-mutable-in-a-loop-when-calling-a-closure-that-borrows-as-immuta)
 - [Speeding up Graph with Rust and WASM](https://cprimozic.net/blog/speeding-up-webcola-with-webassembly/#avoiding-expensive-f32is_finite-call)

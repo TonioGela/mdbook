@@ -52,6 +52,7 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 
 ## Docker
 
+- [Docker Curriculum](https://docker-curriculum.com/)
 - [Docker Image Reduction](https://dev.to/mrbrazel/docker-image-size-reduction-220a)
 
 ## Organizing Tools and Techniques
