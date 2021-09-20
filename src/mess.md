@@ -7,6 +7,11 @@
 - https://www.scala-lang.org/2021/02/26/tuples-bring-generic-programming-to-scala-3.html
 - http://tutorials.jenkov.com/javafx/tableview.html
 
+- [Slim Linux: Naked Deb](https://nakedeb.arpinux.org/index-en.html)
+- [Modifying the Linux Kernel](https://codingkaiser.blog/2021/07/17/create-your-own-system-calls%e2%80%8a-%e2%80%8aprocess-weights/)
+- [Launch Agents](https://theevilbit.github.io/beyond/)
+- [Jupyter Notebook in Plain Text](https://jupytext.readthedocs.io/en/latest/install.html)
+- [Terraform not golden hammer](https://hub.qovery.com/guides/engineering/terraform-not-the-golden-hammer/)
 - [Best Dos Games](https://lunduke.substack.com/p/the-best-vga-dos-games-period)
 - [Firecracker](https://github.com/firecracker-microvm/firecracker)
 - [Globally Distributed Postgres](https://fly.io/blog/globally-distributed-postgres/)
