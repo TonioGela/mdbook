@@ -7,6 +7,9 @@
 - https://www.scala-lang.org/2021/02/26/tuples-bring-generic-programming-to-scala-3.html
 - http://tutorials.jenkov.com/javafx/tableview.html
 
+### Misc tab
+- [Ascii Doctor](https://asciidoctor.org/)
+- [Ruby for ebook](https://nts.strzibny.name/ruby-for-ebook-publishing/)
 - [Slim Linux: Naked Deb](https://nakedeb.arpinux.org/index-en.html)
 - [Modifying the Linux Kernel](https://codingkaiser.blog/2021/07/17/create-your-own-system-calls%e2%80%8a-%e2%80%8aprocess-weights/)
 - [Launch Agents](https://theevilbit.github.io/beyond/)
