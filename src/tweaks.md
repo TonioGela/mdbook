@@ -22,6 +22,7 @@ Here we have various tweaks, most of them to customize UIs, command line utiliti
 - [Vim After 15 Years](https://statico.github.io/vim3.html)
 - [Modulinos in Bash](https://blog.dnmfarrell.com/post/modulinos-in-bash/)
 - [Bash Pitfalls](https://mywiki.wooledge.org/BashPitfalls)
+- [Hurl](https://hurl.dev/)
 
 ## Tools
 

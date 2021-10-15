@@ -8,6 +8,11 @@
 - http://tutorials.jenkov.com/javafx/tableview.html
 
 ### Misc tab
+
+- [Which games are these?](https://www.youtube.com/watch?v=p7lvNs7Xkbk)
+
+- [Python through its builtins](https://sadh.life/post/builtins/#compile-exec-and-eval-how-the-code-works)
+- [Which jdk](https://whichjdk.com/)
 - [Android Containers](https://waydro.id/)
 - [Ascii Doctor](https://asciidoctor.org/)
 - [Ruby for ebook](https://nts.strzibny.name/ruby-for-ebook-publishing/)
@@ -36,3 +41,6 @@
 - [Nvim-Metals minimal](https://github.com/scalameta/nvim-metals/discussions/39)
 - [Nvim Metals How-to](https://github.com/scalameta/nvim-metals/blob/main/doc/metals.txt)
 - [Zsh Profiling](https://htr3n.github.io/2018/07/faster-zsh/)
+- [DNS Cloudflare Study Resources](https://www.cloudflare.com/learning/)
+- [DietPi (Minimal OS for Raspberry)](https://dietpi.com/)
+- [Read it and toss it](https://rachelbythebay.com/w/2021/10/05/cmd/)

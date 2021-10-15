@@ -5,3 +5,5 @@
 - [How to prepare and pass LFCS](https://medium.com/@obohovyk/how-to-prepare-and-pass-linux-foundation-certified-system-administrator-lfcs-exam-bd4cad4f6c64)
 - [Udemy Fac-Simile Tests](https://www.udemy.com/course/lfcs-linux-foundation-system-administrator-practice-test)
 - [Some exercisez solved](https://ozguryarikkas.medium.com/lfcs-linux-foundation-system-administrator-exam-study-guide-with-exercises-part-1-d9ddc9efc39f)
+- [How to create a systemd unit](https://linuxconfig.org/how-to-create-systemd-service-unit-in-linux) 
+- [Tecmint series about LFCS](https://www.tecmint.com/sed-command-to-create-edit-and-manipulate-files-in-linux/)

@@ -12,8 +12,10 @@
     - [Various](rust/various.md)
 - [Tweaks and Articles](tweaks.md)    
 - [Frontend](frontend.md)
+- [LFCS](lfcs.md)
+- [NAND Friends](nand.md)
 - [Ricette](ricette.md)
-- [LFCS](lfcs.md):
+
 
 ---
 
