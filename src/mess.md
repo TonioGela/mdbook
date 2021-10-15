@@ -12,6 +12,7 @@
 - [Which games are these?](https://www.youtube.com/watch?v=p7lvNs7Xkbk)
 
 - [Python through its builtins](https://sadh.life/post/builtins/#compile-exec-and-eval-how-the-code-works)
+- [Memory Palaces](https://metacognitive.me/memory-palace/)
 - [Which jdk](https://whichjdk.com/)
 - [Android Containers](https://waydro.id/)
 - [Ascii Doctor](https://asciidoctor.org/)
