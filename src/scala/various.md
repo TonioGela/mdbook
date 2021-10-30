@@ -1,6 +1,16 @@
 # Reading List
 
+- [Nvim-Metals minimal](https://github.com/scalameta/nvim-metals/discussions/39)
+- [Nvim Metals How-to](https://github.com/scalameta/nvim-metals/blob/main/doc/metals.txt)
+- [Publish Scala on Maven Central](https://dev.to/awwsmm/publish-your-scala-project-to-maven-in-5-minutes-with-sonatype-326l)
+- [Scala-Cli Virtus Lab](https://scala-cli.virtuslab.org/)
+- [Indiego](https://indigoengine.io/)
+- [Binary Version in Scala 3](https://github.com/lampepfl/dotty/issues/10244)
+- [Seed](https://tindzk.github.io/seed/#/?id=installation)
+- [Awesome Scala Native](https://github.com/tindzk/awesome-scala-native)
+
 ### Generic
+- [Which jdk](https://whichjdk.com/)
 - [Exceptions](https://github.com/lampepfl/dotty/blob/b65958f139a0a818d36ee04468ada93b8fb472ac/docs/docs/reference/experimental/canthrow.md)
 - [Giulio Canti - Programmazione Funzionale](https://github.com/gcanti/functional-programming)
 - [Tagless Final No Typeclasses](https://www.foxhound.systems/blog/final-tagless/)
@@ -46,6 +56,7 @@
 - [IO Monad for Cats](https://typelevel.org/blog/2017/05/02/io-monad-for-cats.html)
 - [Rob Norris - Functional Programming with Effects](https://www.youtube.com/watch?v=30q6BkBv5MY)
 - [Gabriel Volpe - Cats Effect: The IO Monad for Scala](https://youtu.be/8_TWM2t97r4)
+- [CE Basics](https://github.com/slouc/concurrency-in-scala-with-ce#cats-effect-io-basics)
 
 ### Akka
 - [Optimizing Akka Streams](https://engineering.contentsquare.com/2021/akka-stream-profiling/)

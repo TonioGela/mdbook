@@ -19,3 +19,7 @@
 - [Parser Combinators](https://bodil.lol/parser-combinators/)
 - [Rust for Web Dev](https://kerkour.com/blog/rust-for-web-development-2-years-later/)
 - [TrueLayer Exercize](https://docs.google.com/document/d/1P5i5AdnnJ7jTpxBJ6vrNGz-yGIT3zl68a94YZKuQovg/edit#)
+- [Rust/Egui](https://github.com/emilk/egui)
+- [Cargo Generate](https://github.com/cargo-generate/cargo-generate)
+- [Rust Design Patterns](https://rust-unofficial.github.io/patterns/)
+- [Small Docker Rust](https://shaneutt.com/blog/rust-fast-small-docker-image-builds/)

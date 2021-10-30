@@ -1,1 +1,5 @@
 .content main { text-align: justify; }
+.chapter li div {
+  color: var(--sidebar-active);
+  font-weight: bold;
+}

@@ -2,21 +2,33 @@
 
 [Hello!](hello.md)
 
-- [Scala](scala/scala.md)
-    - [Learning](scala/learning_stuff.md)
-    - [Various](scala/various.md)
-- [Rust](rust/rust.md)
+---
+
+- [Scala]()
+  - [Learning](scala/learning_stuff.md)
+  - [Various](scala/various.md)
+
+- [Rust]()
     - [Learning](rust/learning_stuff.md)
     - [Libraries](rust/libraries.md)
     - [Cli Tools](rust/cli.md)
     - [Various](rust/various.md)
-- [Tweaks and Articles](tweaks.md)    
-- [Frontend](frontend.md)
-- [LFCS](lfcs.md)
-- [NAND Friends](nand.md)
-- [Ricette](ricette.md)
 
+- [Command Line Church]()
+    - [Tools](command_line/tools.md)
+    - [Vim](command_line/vim.md)
+
+- [Linux]()
+    - [LFCS](linux/lfcs.md)
+    - [Various](linux/various.md)
+
+- [Low Level](low_level/low_level.md)
+- [Software Development](software_development/software_development.md)
+- [MacosX](macosx/macosx.md)
+- [Python](python/python.md)
+- [Frontend](frontend/frontend.md)
 
 ---
-
-[To Be Organized](mess.md)
+- [Personal And Language Learning](personal/personal.md)
+- [Ricette](ricette/ricette.md)
+- [To Be Organized](mess.md)

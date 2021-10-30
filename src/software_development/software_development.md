@@ -1,0 +1,17 @@
+# Software Development
+
+- [Learn X in Y minutes](https://learnxinyminutes.com/)
+- [Flutter](https://flutter.dev/)
+- [Flutter for Desktop](https://itnext.io/getting-started-with-flutter-desktop-91e8293bafcf)
+- [Publish Guide on Maven Central](https://central.sonatype.org/publish/publish-guide/#create-a-ticket-with-sonatype)
+- [Bit Torrent Client](https://allenkim67.github.io/programming/2016/05/04/how-to-make-your-own-bittorrent-client.html)
+- [Algorithms by Jeff Erickson](http://jeffe.cs.illinois.edu/teaching/algorithms/?)
+- [Transformation Priority Premise](https://en.m.wikipedia.org/wiki/Transformation_Priority_Premise)
+- [Byzantine Fault Tolerance](https://en.wikipedia.org/wiki/Byzantine_fault_tolerance)
+- [Design Patterns](https://sourcemaking.com/design_patterns)
+- [Extreme HTTP Performance](https://talawah.io/blog/extreme-http-performance-tuning-one-point-two-million/)
+- [Terraform not golden hammer](https://hub.qovery.com/guides/engineering/terraform-not-the-golden-hammer/)
+- [Globally Distributed Postgres](https://fly.io/blog/globally-distributed-postgres/)
+- [Programmers Names](https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/)
+- [DNS Cloudflare Study Resources](https://www.cloudflare.com/learning/)
+- [Java Fx Tutorial](http://tutorials.jenkov.com/javafx/tableview.html)

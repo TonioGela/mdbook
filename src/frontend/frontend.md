@@ -9,6 +9,11 @@
 
 ---
 
+- [Deno](https://deno.land/#installation)
+- [Imba](https://imba.io/)
+- [Analytics](https://www.chiaravianello.com/google-analytics-traffico-anomalo-ashburn)
+- [Svg Favicon](https://css-tricks.com/lodge/svg/09-svg-data-uris/)
+- [Svg Favicon 2](https://austingil.com/svg-favicons/)
 - [Override New Window as New Tab in Firefox](https://support.mozilla.org/en-US/questions/1190923)
 - [Lobotomized Owls](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/)
 - [Vegai](https://vega.github.io/vega/)
