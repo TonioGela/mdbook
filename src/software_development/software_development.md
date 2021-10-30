@@ -15,3 +15,5 @@
 - [Programmers Names](https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/)
 - [DNS Cloudflare Study Resources](https://www.cloudflare.com/learning/)
 - [Java Fx Tutorial](http://tutorials.jenkov.com/javafx/tableview.html)
+- [K8s Instance Calculator](https://learnk8s.io/kubernetes-instance-calculator)
+- [Real World UML](https://real-world-plantuml.com/?type=sequence)

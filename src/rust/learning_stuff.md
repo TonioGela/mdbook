@@ -18,6 +18,7 @@ The first part of this list is a refined and personalized version of [this one](
 - [ ] [Async Book](https://rust-lang.github.io/async-book/01_getting_started/01_chapter.html)
 - [ ] [Futures in 200 Lines of Rust](https://cfsamson.github.io/books-futures-explained/introduction.html)
 - [ ] [Sokoban Game Development](https://sokoban.iolivia.me/)
+- [ ] [Rust for Rustaceans](https://nostarch.com/rust-rustaceans)
 
 ### Interactive
 

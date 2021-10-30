@@ -8,6 +8,8 @@
 - [Binary Version in Scala 3](https://github.com/lampepfl/dotty/issues/10244)
 - [Seed](https://tindzk.github.io/seed/#/?id=installation)
 - [Awesome Scala Native](https://github.com/tindzk/awesome-scala-native)
+- [TF Baeldung](https://www.baeldung.com/scala/tagless-final-pattern)
+- [Apache Pulsar in Scala](https://blog.rockthejvm.com/event-streaming-with-pulsar-and-scala/)
 
 ### Generic
 - [Which jdk](https://whichjdk.com/)

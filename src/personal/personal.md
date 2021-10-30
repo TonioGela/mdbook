@@ -1,11 +1,14 @@
 # Personal And Language Learning
 
+- [Leader di Settore](https://leaderdisettore.wordpress.com/)
 - [Optimize Duolinguo](https://happilyevertravels.com/best-way-to-use-duolingo/)
 - [Italki](https://www.italki.com/)
 - [Memory Palaces](https://metacognitive.me/memory-palace/)
 - [Best Dos Games](https://lunduke.substack.com/p/the-best-vga-dos-games-period)
 - [Which games are these?](https://www.youtube.com/watch?v=p7lvNs7Xkbk)
 - [Authentic Happiness](https://www.authentichappiness.sas.upenn.edu)
+- [How to be perfectly unhappy](https://theoatmeal.com/comics/unhappy)
+- [Zio Complottista](https://www.ilpost.it/2021/09/29/complotti-polidoro/)
 
 ## Organizing Tools and Techniques
 

@@ -10,3 +10,5 @@ Check [Are We Gui Yet?]()
 ### Serialization
 
 Read [here](https://blog.logrocket.com/rust-serialization-whats-ready-for-production-today/) for production ready stuff
+
+- [Askama](https://github.com/djc/askama)

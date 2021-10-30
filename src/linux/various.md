@@ -5,6 +5,7 @@
 - [DietPi (Minimal OS for Raspberry)](https://dietpi.com/)
 - [Read it and toss it](https://rachelbythebay.com/w/2021/10/05/cmd/)
 - [Android Containers](https://waydro.id/)
+- [Batocera Linux](https://batocera.org/)
 
 ## Docker
 

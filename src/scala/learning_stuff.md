@@ -41,3 +41,6 @@
 - [Practical Binary with Scodec — Michael Pilquist](https://youtu.be/jM21a-t4JnQ)
 - [Garrett Smith - Why The Cool Kids Don't Use Erlang](https://www.youtube.com/watch?v=3MvKLOecT1I)
 - [fs2 by Ryan Peters](https://youtu.be/BZ8O6T7Y1UE)
+
+
+[Haskellings](https://github.com/MondayMorningHaskell/haskellings)

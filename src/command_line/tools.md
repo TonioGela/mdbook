@@ -2,6 +2,9 @@
 
 ## Split it in to categories!
 
+- [Mouseless.dev](https://themouseless.dev)
+- [Nix Flakes](https://www.tweag.io/blog/2020-05-25-flakes/)
+- [Carbon.sh](https://carbon.now.sh/)
 - [Fish Shell](https://fishshell.com/docs/current/index.html#)
 - [SKHD configuration](https://gist.github.com/zmre/b5e23a6ac1be92ce4f90390940d7f03a)
 - [NeoVim is Overpowering](https://crispgm.com/page/neovim-is-overpowering.html)
