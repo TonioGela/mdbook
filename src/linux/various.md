@@ -6,6 +6,7 @@
 - [Read it and toss it](https://rachelbythebay.com/w/2021/10/05/cmd/)
 - [Android Containers](https://waydro.id/)
 - [Batocera Linux](https://batocera.org/)
+- [Pi Zero w/o a screen](https://www.losant.com/blog/getting-started-with-the-raspberry-pi-zero-w-without-a-monitor)
 
 ## Docker
 
