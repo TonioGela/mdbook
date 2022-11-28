@@ -17,3 +17,5 @@ https://www.robertwinkler.com/projects/mips_book/mips_book.html#_chapter_0_hello
 https://asmtutor.com/#lesson1
 
 - [Ben Eater channel](https://www.youtube.com/channel/UCS0N5baNlQWJCUrhCEo8WlA)
+
+https://tmewett.com/c-tips/
