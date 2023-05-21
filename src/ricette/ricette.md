@@ -52,6 +52,7 @@ Instructions:
 
 <details>
 <summary>Torta Cocco e Cioccolato</summary>
+
 Ingredienti:
 - 100 gr di zucchero
 - 125 gr di burro
