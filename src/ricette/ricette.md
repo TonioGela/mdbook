@@ -13,8 +13,8 @@
 - [Torta Mele e Rabarbaro](https://www.gustoblog.it/post/192123/torta-rabarbaro-mele-ricetta-golosa)
 - [Crescioni](https://chiaramaci.com/crescioni/)
 
-
-# Cinnamon Rolls
+<details>
+<summary>Cinnamon Rolls</summary>
 
 Ingredients for the dough:
 - 177ml whole (or 2%) milk at 40ºC
@@ -46,3 +46,6 @@ Instructions:
 - Roll up tightly the dough along the long side and cut 2 cm sections with a sharp knife. Place the rolls on a greased (or parchment-papered) pan and let them rise of 45/60 minutes.
 
 - Preheat the oven to 180ºC and cook them for 20/25 minutes. Let them cool for 5/10 minutes before frosting. For the frosting mix powdered sugar and milk. Spread over cinnamon rolls and serve immediately.
+  
+  
+</details>
