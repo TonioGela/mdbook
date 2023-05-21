@@ -49,3 +49,18 @@ Instructions:
   
   
 </details>
+
+<details>
+<summary>Torta Cocco e Cioccolato</summary>
+Ingredienti:
+- 100 gr di zucchero
+- 125 gr di burro
+- 200 gr di cioccolato fondente
+- 80 gr di farina di cocco
+- 4 uova
+- 2 cucchiai di farina
+  
+Preparazione:
+Fondere burro e cioccolato in un tegame di media grandezza a bagnomaria, togliere dal fuoco ed unire lo zucchero. Aggiungere un uovo alla volta mescolando bene, quindi i cucchiai di farina e il cocco.
+Imburrare e infarinare bene una teglia di 24-26 cm di diametro, versare tutto nella teglia e mettere nel forno già caldo a 180 gradi per 20-25 minuti. A fine cottura capovolgere la torta per far evaporare l'umidità dalla parte inferiore e spolverare di zucchero a velo.
+</details>
