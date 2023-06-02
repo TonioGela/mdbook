@@ -22,6 +22,7 @@
 - [Linux]()
     - [LFCS](linux/lfcs.md)
     - [Various](linux/various.md)
+    - [Time Machine](linux/timemachine.md)
 
 - [Low Level](low_level/low_level.md)
 - [Software Development](software_development/software_development.md)
