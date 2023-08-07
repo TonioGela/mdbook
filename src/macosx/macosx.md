@@ -10,3 +10,4 @@
 - [High Sierra's Secure Kernel Extension Load is Broken](https://www.synack.com/2017/09/08/high-sierras-secure-kernel-extension-loading-is-broken/)
 - [Implementing Mac WeatherBar](http://footle.org/WeatherBar/)
 - [Creating a OS X menubar only app](https://nsrover.wordpress.com/2014/10/10/creating-a-os-x-menubar-only-app/)
+- [Advanced Commands](https://saurabhs.org/advanced-macos-commands)

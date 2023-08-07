@@ -12,6 +12,7 @@
 - [Tortillas Cacao e Moscardini](https://www.thebluebirdkitchen.com/tortillas-al-cacao-con-moscardini-piccanti/)
 - [Torta Mele e Rabarbaro](https://www.gustoblog.it/post/192123/torta-rabarbaro-mele-ricetta-golosa)
 - [Crescioni](https://chiaramaci.com/crescioni/)
+- [Far Breton](https://www.bonappetit.com/recipe/far-breton)
 
 <details>
 <summary>Cinnamon Rolls</summary>

@@ -10,8 +10,10 @@
 - [Awesome Scala Native](https://github.com/tindzk/awesome-scala-native)
 - [TF Baeldung](https://www.baeldung.com/scala/tagless-final-pattern)
 - [Apache Pulsar in Scala](https://blog.rockthejvm.com/event-streaming-with-pulsar-and-scala/)
+- [Scala 3 Macros](https://august.nagro.us/scala-3-whitebox-macros.html)
 
 ### Generic
+- [JMH](https://jenkov.com/tutorials/java-performance/jmh.html)
 - [Which jdk](https://whichjdk.com/)
 - [Exceptions](https://github.com/lampepfl/dotty/blob/b65958f139a0a818d36ee04468ada93b8fb472ac/docs/docs/reference/experimental/canthrow.md)
 - [Giulio Canti - Programmazione Funzionale](https://github.com/gcanti/functional-programming)
@@ -48,6 +50,9 @@
 - [Code Graph](https://medium.com/virtuslab/semantic-code-graph-the-idea-behind-graph-buddy-269ec378a85c)
 
 ### Cats Effects
+- [Loom vs Cats Effect](https://www.reddit.com/r/scala/comments/sa927v/how_will_looms_fibers_change_the_cats_effect_and/)
+- [Multithreaded in k8s](https://www.reddit.com/r/scala/comments/14qjty9/how_much_reason_is_there_to_be_multithreaded_in/)
+- [IO Integrated Runtime](https://github.com/typelevel/cats-effect/discussions/3070)
 - [Rate Limiter](https://medium.com/disney-streaming/a-rate-limiter-in-15-lines-of-code-with-cats-effect-af09d838857a)
 - [Journey to the Centre of the JVM](https://youtu.be/EFkpmFt61Jo)
 - [Concurrency with CE](https://github.com/slouc/concurrency-in-scala-with-ce)
@@ -72,3 +77,4 @@
 - [Haskell for Mac](http://learn.hfm.io/first_steps.html)
 - [Haskell FP Course](https://github.com/data61/fp-course)
 - [okmij - Haskell](http://okmij.org/ftp/)
+- [TF](https://serokell.io/blog/introduction-tagless-final#edsls)

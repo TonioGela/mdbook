@@ -7,6 +7,7 @@
 - [Android Containers](https://waydro.id/)
 - [Batocera Linux](https://batocera.org/)
 - [Pi Zero w/o a screen](https://www.losant.com/blog/getting-started-with-the-raspberry-pi-zero-w-without-a-monitor)
+- [Terminal Password Manager](https://www.youtube.com/watch?v=FhwsfH2TpFA&list=PLLKxUydDyo_5uxdGnnBYixfG4yaeAl5Rk&index=116)
 
 ## Docker
 
