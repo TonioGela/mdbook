@@ -37,7 +37,7 @@
 - [ ] [It](https://www.netflix.com/title/80177770) (2017)
 - [ ] [The Strangers](https://play.google.com/store/movies/details/The_Strangers?id=xkTUlga7j2Y) (2008)
 - [ ] [Let the Right One In](https://supervideo.tv/5zg09kz6yuxp) (2008)
-- [ ] [Friday the 13th](https://play.google.com/store/movies/details/Venerd%C3%AC_13?id=BFjwymqiPys) (1980)
+- [x] Friday the 13th (1980)
 - [x] A Quiet Place (2018)
 - [ ] [Childs Play](https://supervideo.tv/yya8d976kpff) (1988)
 - [x] The Witch
