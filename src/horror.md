@@ -39,7 +39,7 @@
 - [ ] [Let the Right One In](https://supervideo.tv/5zg09kz6yuxp) (2008)
 - [x] Friday the 13th (1980)
 - [x] A Quiet Place (2018)
-- [ ] [Childs Play](https://supervideo.tv/yya8d976kpff) (1988)
+- [x] Childs Play (1988)
 - [x] The Witch
 - [x] Midsommar
 - [ ] [Hereditary](https://play.google.com/store/movies/details/Hereditary?id=XCBhIE4B1h8)
