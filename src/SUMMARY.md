@@ -17,7 +17,6 @@
 
 - [Command Line Church]()
     - [Tools](command_line/tools.md)
-    - [Vim](command_line/vim.md)
 
 - [Linux]()
     - [LFCS](linux/lfcs.md)
