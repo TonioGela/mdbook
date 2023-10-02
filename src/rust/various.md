@@ -7,6 +7,7 @@
 
 ### Other
 
+- [Ugly Syntax](https://matklad.github.io/2023/01/26/rusts-ugly-syntax.html)
 - [Flamegraph rs](https://github.com/flamegraph-rs/flamegraph)
 - [Aws Lambda with Rust](https://dev.to/aviillouz/writing-a-lambda-with-rust-using-aws-lambda-rust-runtime-and-aws-sdk-rust-1aln)
 - [Optimizing Strings](https://dev.to/somedood/optimizing-immutable-strings-in-rust-2ahj#fn2)

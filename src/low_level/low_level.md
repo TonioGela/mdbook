@@ -1,5 +1,11 @@
 # Low level stuff + Assembly
 
+https://dev.to/frosnerd/writing-my-own-boot-loader-3mld
+
+https://dev.to/visheshpatel/how-c-program-stored-in-ram-memory-3773
+
+https://dev.to/quantumsheep/basics-of-multithreading-in-c-4pam
+
 https://nandgame.com/
 
 https://www.nand2tetris.org/
