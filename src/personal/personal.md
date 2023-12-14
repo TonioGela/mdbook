@@ -9,6 +9,7 @@
 - [Authentic Happiness](https://www.authentichappiness.sas.upenn.edu)
 - [How to be perfectly unhappy](https://theoatmeal.com/comics/unhappy)
 - [Zio Complottista](https://www.ilpost.it/2021/09/29/complotti-polidoro/)
+- [Modi di dire in inglese](https://www.frasimania.it/modi-di-dire-inglesi/)
 
 ## Organizing Tools and Techniques
 
@@ -25,6 +26,7 @@
 
 ## Gaming and Various
 
+- [Firefox Customizations](https://www.userchrome.org/)
 - [Codin Game](https://www.codingame.com/home)
 - [Meteo](http://www.centrometeolombardo.com/radar/)
 - [Develop Minecraft Mod](https://blog.usejournal.com/a-beginners-guide-to-modding-minecraft-9a42536495f6)
