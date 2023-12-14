@@ -34,3 +34,11 @@
 - [IO Monad for Cats](https://typelevel.org/blog/2017/05/02/io-monad-for-cats.html)
 - [Rob Norris - Functional Programming with Effects](https://www.youtube.com/watch?v=30q6BkBv5MY)
 - [Gabriel Volpe - Cats Effect: The IO Monad for Scala](https://youtu.be/8_TWM2t97r4)
+
+### Random Scala Links
+
+- [5 Books to read](https://medium.com/@ivengo53/5-books-for-expert-scala-programmers-2b8b84a35aa6)
+- [Quoted Macros](https://docs.scala-lang.org/scala3/guides/macros/quotes.html)
+- [Validation](https://v-bondarenko.hashnode.dev/validating-in-scala)
+- [Simple Validator](https://v-bondarenko.hashnode.dev/writing-simple-validator-with-scala-3)
+- [Mirrors and Macros](https://blog.philipp-martini.de/blog/magic-mirror-scala3/)
