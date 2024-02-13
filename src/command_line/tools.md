@@ -1,5 +1,17 @@
 # Command line tools, vim and various
 
+## Speed up zsh
+
+- https://registerspill.thorstenball.com/p/how-fast-is-your-shell
+- https://htr3n.github.io/2018/07/faster-zsh/#macos-optimisations
+- https://gist.github.com/ctechols/ca1035271ad134841284
+- https://blog.jonlu.ca/posts/speeding-up-zsh
+- https://github.com/htr3n/zsh-config/blob/master/zlogin
+- https://askubuntu.com/questions/438150/why-are-scripts-in-etc-profile-d-being-ignored-system-wide-bash-aliases/438170#438170
+- https://askubuntu.com/questions/879364/differentiate-interactive-login-and-non-interactive-non-login-shell/879400#879400
+- https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html
+- https://linux.die.net/man/1/zshcontrib
+
 ## Split it in to categories!
 
 - [Mouseless.dev](https://themouseless.dev)
