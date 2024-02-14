@@ -1,5 +1,6 @@
 # Software Development
 
+- [Ocaml](https://cs3110.github.io/textbook/cover.html)
 - [Learn X in Y minutes](https://learnxinyminutes.com/)
 - [Flutter](https://flutter.dev/)
 - [Flutter for Desktop](https://itnext.io/getting-started-with-flutter-desktop-91e8293bafcf)
