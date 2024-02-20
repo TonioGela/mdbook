@@ -9,6 +9,7 @@
   - [Various](scala/various.md)
 
 - [Rust]()
+    - [Whole New List](rust/whole_list.md)
     - [Learning](rust/learning_stuff.md)
     - [Other Learning List](rust/learning_rust.md)
     - [Libraries](rust/libraries.md)
