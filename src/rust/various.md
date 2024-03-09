@@ -2,6 +2,7 @@
 
 ### Blogs
 
+- [Dark Coding - Interesting Blog](https://darkcoding.net/)
 - [Luca Palmieri](https://www.lpalmieri.com/)
 - [FpComplete Rust](https://www.fpcomplete.com/tags/rust/)
 

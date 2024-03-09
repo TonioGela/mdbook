@@ -1,5 +1,6 @@
 # Frontend or Presentations
 
+- [Css for Printing](https://voussoir.net/writing/css_for_printing)
 - [Modern Font Stacks](https://modernfontstacks.com/)
 - [Synfig](https://www.synfig.org/)
 - [Marp](https://marp.app/)
