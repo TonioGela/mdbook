@@ -1,13 +1,26 @@
-name: Deploy mdBook
-on: [push]
+name: Deploy mdbook
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
   build:
+    name: Deploy mdbook
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: write  # To push a branch 
+      pull-requests: write  # To create a PR from that branch
     steps:
       - uses: actions/checkout@v4
-      - uses: XAMPPRocky/deploy-mdbook@v1.1
+      - uses: actions-rs/toolchain@v1
         with:
-            token: ${{ secrets.GITHUB_TOKEN }}
+          toolchain: stable
+      - run: (test -x $HOME/.cargo/bin/mdbook || cargo install --vers "^0.4" mdbook)
+      - run: mdbook build
+      - uses: JamesIves/github-pages-deploy-action@4.1.7
+        with:
+          branch: gh-pages
+          folder: book
