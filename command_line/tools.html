@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Tools - Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../hello.html">Hello!</a></li><li class="spacer"></li><li class="chapter-item expanded "><div>Scala</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scala/learning_stuff.html">Learning</a></li><li class="chapter-item expanded "><a href="../scala/various.html">Various</a></li></ol></li><li class="chapter-item expanded "><div>Rust</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../rust/whole_list.html">Whole New List</a></li><li class="chapter-item expanded "><a href="../rust/learning_stuff.html">Learning</a></li><li class="chapter-item expanded "><a href="../rust/learning_rust.html">Other Learning List</a></li><li class="chapter-item expanded "><a href="../rust/libraries.html">Libraries</a></li><li class="chapter-item expanded "><a href="../rust/cli.html">Cli Tools</a></li><li class="chapter-item expanded "><a href="../rust/various.html">Various</a></li></ol></li><li class="chapter-item expanded "><div>Command Line Church</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../command_line/tools.html" class="active">Tools</a></li></ol></li><li class="chapter-item expanded "><div>Linux</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linux/lfcs.html">LFCS</a></li><li class="chapter-item expanded "><a href="../linux/various.html">Various</a></li><li class="chapter-item expanded "><a href="../linux/timemachine.html">Time Machine</a></li></ol></li><li class="chapter-item expanded "><a href="../low_level/low_level.html">Low Level</a></li><li class="chapter-item expanded "><a href="../software_development/software_development.html">Software Development</a></li><li class="chapter-item expanded "><a href="../macosx/macosx.html">MacosX</a></li><li class="chapter-item expanded "><a href="../python/python.html">Python</a></li><li class="chapter-item expanded "><a href="../frontend/frontend.html">Frontend</a></li><li class="chapter-item expanded "><a href="../gameboy/gameboy.html">Gameboy</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../personal/personal.html">Personal And Language Learning</a></li><li class="chapter-item expanded "><a href="../ricette/ricette.html">Ricette</a></li><li class="chapter-item expanded "><a href="../mess.html">To Be Organized</a></li><li class="chapter-item expanded "><a href="../horror.html">Horror Movies</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/TonioGela/mdbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="command-line-tools-vim-and-various"><a class="header" href="#command-line-tools-vim-and-various">Command line tools, vim and various</a></h1>
+<h2 id="speed-up-zsh"><a class="header" href="#speed-up-zsh">Speed up zsh</a></h2>
+<ul>
+<li>https://registerspill.thorstenball.com/p/how-fast-is-your-shell</li>
+<li>https://htr3n.github.io/2018/07/faster-zsh/#macos-optimisations</li>
+<li>https://gist.github.com/ctechols/ca1035271ad134841284</li>
+<li>https://blog.jonlu.ca/posts/speeding-up-zsh</li>
+<li>https://github.com/htr3n/zsh-config/blob/master/zlogin</li>
+<li>https://askubuntu.com/questions/438150/why-are-scripts-in-etc-profile-d-being-ignored-system-wide-bash-aliases/438170#438170</li>
+<li>https://askubuntu.com/questions/879364/differentiate-interactive-login-and-non-interactive-non-login-shell/879400#879400</li>
+<li>https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html</li>
+<li>https://linux.die.net/man/1/zshcontrib</li>
+</ul>
+<h2 id="split-it-in-to-categories"><a class="header" href="#split-it-in-to-categories">Split it in to categories!</a></h2>
+<ul>
+<li><a href="https://themouseless.dev">Mouseless.dev</a></li>
+<li><a href="https://www.tweag.io/blog/2020-05-25-flakes/">Nix Flakes</a></li>
+<li><a href="https://carbon.now.sh/">Carbon.sh</a></li>
+<li><a href="https://fishshell.com/docs/current/index.html#">Fish Shell</a></li>
+<li><a href="https://gist.github.com/zmre/b5e23a6ac1be92ce4f90390940d7f03a">SKHD configuration</a></li>
+<li><a href="https://crispgm.com/page/neovim-is-overpowering.html">NeoVim is Overpowering</a></li>
+<li><a href="https://explainshell.com/">Explain Shell</a></li>
+<li><a href="https://terminalsare.sexy/">Terminals Are Sexy</a></li>
+<li><a href="https://terminal.sexy/">Terminal.Sexy</a></li>
+<li><a href="https://dev.to/deepu105/my-beautiful-linux-development-environment-2afc">Beautiful Linux Environment</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Box-drawing_character">Box Drawing Characters</a></li>
+<li><a href="https://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">Learn Vim</a></li>
+<li><a href="https://themes.vscode.one/your-themes/">VSCode Theme Creator</a></li>
+<li><a href="https://mrigank11.github.io/2018/03/zsh-auto-completion/">ZSH Autocomplete</a></li>
+<li><a href="https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org">ZSH Autocomplete 2</a></li>
+<li><a href="https://christine.website/blog/nixos-desktop-flow-2020-04-25">How does NixOs work</a></li>
+<li><a href="http://app.programmingfonts.org/">Programming Fonts Tester</a></li>
+<li><a href="http://mathew-kurian.github.io/CharacterMap/">CharMap</a></li>
+<li><a href="http://david.rothlis.net/emacs/howtolearn.html">How to learn Emacs</a></li>
+<li><a href="https://statico.github.io/vim3.html">Vim After 15 Years</a></li>
+<li><a href="https://blog.dnmfarrell.com/post/modulinos-in-bash/">Modulinos in Bash</a></li>
+<li><a href="https://mywiki.wooledge.org/BashPitfalls">Bash Pitfalls</a></li>
+<li><a href="https://hurl.dev/">Hurl</a></li>
+<li><a href="https://github.com/d0c-s4vage/lookatme/issues">LookAtMe</a></li>
+<li><a href="https://nts.strzibny.name/ruby-for-ebook-publishing/">Ruby for ebook</a></li>
+<li><a href="https://htr3n.github.io/2018/07/faster-zsh/">Zsh Profiling</a></li>
+<li><a href="https://mywiki.wooledge.org/BashFAQ/066">Bash</a></li>
+<li><a href="https://asciidoctor.org/">Ascii Doctor</a></li>
+<li><a href="https://rclone.org/docs/">Rclone</a></li>
+<li><a href="https://graphviz.org/">GraphViz</a></li>
+<li><a href="https://www.golinuxcloud.com/bash-getopts">getopts</a></li>
+</ul>
+<h2 id="keybindings-for-terminal"><a class="header" href="#keybindings-for-terminal">Keybindings for terminal</a></h2>
+<p>Open the iTerm preferences <code>⌘+</code>, and navigate to the Profiles tab (the Keys tab can be used, but adding keybinding to your profile allows you to save your profile and sync it to multiple computers) and keys sub-tab and enter the following:</p>
+<h3 id="delete-all-characters-left-of-the-cursor"><a class="header" href="#delete-all-characters-left-of-the-cursor">Delete all characters left of the cursor</a></h3>
+<p><code>⌘+←Delete</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x18 0x7f</code> – Less compatible, doesn't work in node and won't work in zsh by default, see below to fix zsh (bash/irb/pry should be fine), performs desired functionality when it does work.</li>
+<li><code>0x15</code> – More compatible, but typical functionality is to delete the entire line rather than just the characters to the left of the cursor.</li>
+</ul>
+<h3 id="delete-all-characters-right-of-the-cursor"><a class="header" href="#delete-all-characters-right-of-the-cursor">Delete all characters right of the cursor</a></h3>
+<p><code>⌘+fn+←Delete</code> or <code>⌘+Delete→</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x0b</code></li>
+</ul>
+<h3 id="delete-one-word-to-left-of-cursor"><a class="header" href="#delete-one-word-to-left-of-cursor">Delete one word to left of cursor</a></h3>
+<p><code>⌥+←Delete</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x01b 0x08</code></li>
+</ul>
+<h3 id="delete-one-word-to-right-of-cursor"><a class="header" href="#delete-one-word-to-right-of-cursor">Delete one word to right of cursor</a></h3>
+<p><code>⌥+fn←Delete</code> or <code>⌥+Delete→</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x01b 0x64</code></li>
+</ul>
+<h3 id="move-cursor-to-the-front-of-line"><a class="header" href="#move-cursor-to-the-front-of-line">Move cursor to the front of line</a></h3>
+<p><code>⌘+←</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x01</code></li>
+</ul>
+<h3 id="move-cursor-to-the-end-of-line"><a class="header" href="#move-cursor-to-the-end-of-line">Move cursor to the end of line</a></h3>
+<p><code>⌘+→</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x05</code></li>
+</ul>
+<h3 id="move-cursor-one-word-left"><a class="header" href="#move-cursor-one-word-left">Move cursor one word left</a></h3>
+<p><code>⌥+←</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x1b 0x62</code></li>
+</ul>
+<h3 id="move-cursor-one-word-right"><a class="header" href="#move-cursor-one-word-right">Move cursor one word right</a></h3>
+<p><code>⌥+→</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x1b 0x66</code></li>
+</ul>
+<h3 id="undo"><a class="header" href="#undo">Undo</a></h3>
+<p><code>⌘+z</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x1f</code></li>
+</ul>
+<h3 id="redo"><a class="header" href="#redo">Redo</a></h3>
+<p>Typically not bound in bash, zsh or readline, so we can set it to a unused hexcode which we can then fix in zsh.</p>
+<p><code>⇧+⌘+Z</code> or <code>⌘+y</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x18 0x1f</code></li>
+</ul>
+<p><em>Stolen from: http://stackoverflow.com/questions/6205157/iterm2-how-to-get-jump-to-beginning-end-of-line-in-bash-shell#answer-29403520</em></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../rust/various.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../linux/lfcs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../rust/various.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../linux/lfcs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,2298 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Notes</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello.html">Hello!</a></li><li class="spacer"></li><li class="chapter-item expanded "><div>Scala</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="scala/learning_stuff.html">Learning</a></li><li class="chapter-item expanded "><a href="scala/various.html">Various</a></li></ol></li><li class="chapter-item expanded "><div>Rust</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust/whole_list.html">Whole New List</a></li><li class="chapter-item expanded "><a href="rust/learning_stuff.html">Learning</a></li><li class="chapter-item expanded "><a href="rust/learning_rust.html">Other Learning List</a></li><li class="chapter-item expanded "><a href="rust/libraries.html">Libraries</a></li><li class="chapter-item expanded "><a href="rust/cli.html">Cli Tools</a></li><li class="chapter-item expanded "><a href="rust/various.html">Various</a></li></ol></li><li class="chapter-item expanded "><div>Command Line Church</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="command_line/tools.html">Tools</a></li></ol></li><li class="chapter-item expanded "><div>Linux</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="linux/lfcs.html">LFCS</a></li><li class="chapter-item expanded "><a href="linux/various.html">Various</a></li><li class="chapter-item expanded "><a href="linux/timemachine.html">Time Machine</a></li></ol></li><li class="chapter-item expanded "><a href="low_level/low_level.html">Low Level</a></li><li class="chapter-item expanded "><a href="software_development/software_development.html">Software Development</a></li><li class="chapter-item expanded "><a href="macosx/macosx.html">MacosX</a></li><li class="chapter-item expanded "><a href="python/python.html">Python</a></li><li class="chapter-item expanded "><a href="frontend/frontend.html">Frontend</a></li><li class="chapter-item expanded "><a href="gameboy/gameboy.html">Gameboy</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="personal/personal.html">Personal And Language Learning</a></li><li class="chapter-item expanded "><a href="ricette/ricette.html">Ricette</a></li><li class="chapter-item expanded "><a href="mess.html">To Be Organized</a></li><li class="chapter-item expanded "><a href="horror.html">Horror Movies</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/TonioGela/mdbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="hello-hooman--"><a class="header" href="#hello-hooman--">Hello Hooman 👋 !</a></h1>
+<p>I'm pretty much sure you got here by mistake, this is a personal site full of notes that I use mainly as a brain dump and the result of a huge number of sleepless night navigating the internet.</p>
+<p>As such, <strong>it may change a lot</strong>, so you shoud assume its content is completely volatile (including the github repo you can find in the upper right corner of the page since I have a thing for rebases).</p>
+<p align="center"><img inline src="images/shrug.png" title="¯\_(ツ)_/¯"/></p>
+<p>In the future I may consider some parts of it as worth publishing and I will probably dedicate a subdomain of <a href="https://toniogela.dev">toniogela.dev</a> to them.</p>
+<p>If you're in the mood to chat, or suggest me to persist specific parts of this mess, ping me on <a href="https://twitter.com/toniogela">twitter</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="learning-resources"><a class="header" href="#learning-resources">Learning Resources</a></h1>
+<h2 id="books"><a class="header" href="#books">Books</a></h2>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+<a href="https://underscore.io/books/scala-with-cats/">Scala with Cats</a></li>
+<li><input disabled="" type="checkbox" checked=""/>
+<a href="https://essentialeffects.dev/">Essential Effects</a></li>
+<li><input disabled="" type="checkbox" checked=""/>
+<a href="https://lorepub.com/product/haskellbook">Haskell Book</a></li>
+<li><input disabled="" type="checkbox" checked=""/>
+<a href="https://underscore.io/books/shapeless-guide/">Type Astronaut’s Guide to Shapeless</a></li>
+<li><input disabled="" type="checkbox" checked=""/>
+<a href="https://leanpub.com/pfp-scala">Practical FP in Scala: A hands-on approach</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://www.scalawithcats.com/">Scala with Cats 2</a> (whenever gets available)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://atypeofprogramming.com/">Atopbook</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://www.manning.com/books/functional-programming-in-scala">Red Book</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://leanpub.com/jvm-scala-book">Things you need to know about JVM (that matter in Scala)</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="http://danshiebler.com/2018-11-10-category-solutions/">Bartosz's Answers</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://effective-haskell.com/">Effective Haskell</a></li>
+</ul>
+<h2 id="blogs"><a class="header" href="#blogs">Blogs</a></h2>
+<ul>
+<li><a href="https://systemfw.org/">Fabio Labella</a></li>
+<li><a href="https://nrinaudo.github.io/recschemes/">Nicolas Rinaudo - Recursion Schemes</a></li>
+<li><a href="https://typelevel.org/blog/">Typelevel</a></li>
+<li><a href="https://www.stephendiehl.com/pages/writings.html">Stephen Diehl</a></li>
+<li><a href="http://dev.stephendiehl.com/hask/">What I Wish I Knew When Learning Haskell</a></li>
+<li><a href="https://apocalisp.wordpress.com/2010/06/08/type-level-programming-in-scala/">Type Level Programming in Scala</a></li>
+</ul>
+<h2 id="video--talks"><a class="header" href="#video--talks">Video &amp; Talks</a></h2>
+<ul>
+<li><a href="https://systemfw.org/talks.html">Fabio Labella Talks</a></li>
+<li><a href="https://www.youtube.com/channel/UCBSRCuGz9laxVv0rAnn2O9Q">Jakub Kozłowski Channel</a></li>
+<li><a href="https://youtu.be/tP77Ryy9Qxs">Recursion Schemes</a></li>
+<li><a href="https://youtu.be/hh9SYl-IfIc">Recursion Schemes Again</a></li>
+<li><a href="https://www.youtube.com/channel/UC61cqIh_Yt2LT_fhQ5j4uoQ">Mpilquist</a></li>
+<li><a href="https://www.youtube.com/c/DevInsideYou">DevInsideYou</a></li>
+<li><a href="https://youtu.be/jM21a-t4JnQ">Practical Binary with Scodec — Michael Pilquist</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="reading-list"><a class="header" href="#reading-list">Reading List</a></h1>
+<ul>
+<li><a href="https://scala-cli.virtuslab.org/">Scala-Cli Virtus Lab</a></li>
+<li><a href="https://indigoengine.io/">Indiego</a></li>
+<li><a href="https://august.nagro.us/scala-3-whitebox-macros.html">Scala 3 Macros</a></li>
+</ul>
+<h3 id="generic"><a class="header" href="#generic">Generic</a></h3>
+<ul>
+<li><a href="https://jenkov.com/tutorials/java-performance/jmh.html">JMH</a></li>
+<li><a href="https://whichjdk.com/">Which jdk</a></li>
+<li><a href="https://www.foxhound.systems/blog/final-tagless/">Tagless Final No Typeclasses</a></li>
+<li><a href="https://fxdocs.github.io/docs/html5/index.html">Java FX</a></li>
+<li><a href="https://jproyo.github.io/posts/2019-02-07-practical-tagless-final-in-scala.html">TagLess Final</a></li>
+<li><a href="http://ktoso.github.io/scala-types-of-types/">Scala Types of Types</a></li>
+<li><a href="https://francistoth.github.io/2020/02/12/variance.html">About Variance</a></li>
+<li><a href="https://dev.to/parambirs/easily-distributable-scala-clis-using-jlink-18fe">Jlink</a></li>
+<li><a href="https://www.scala-sbt.org/sbt-native-packager/formats/jdkpackager.html">JPackage</a></li>
+<li><a href="http://www.lihaoyi.com/post/SowhatswrongwithSBT.html">So, what's wrong with SBT?</a></li>
+<li><a href="https://medium.com/zyseme-technology/functional-references-lens-and-other-optics-in-scala-e5f7e2fdafe">Lens &amp; Optics</a></li>
+<li><a href="https://www.iteratorshq.com/blog/benchmarking-functional-error-handling-in-scala/">Benchmarking Functional Error Handling</a></li>
+<li><a href="https://dzone.com/articles/mechanical-sympathy">Mechanical Sympathy</a></li>
+</ul>
+<h3 id="cats-effects"><a class="header" href="#cats-effects">Cats Effects</a></h3>
+<ul>
+<li><a href="https://www.reddit.com/r/scala/comments/sa927v/how_will_looms_fibers_change_the_cats_effect_and/">Loom vs Cats Effect</a></li>
+<li><a href="https://www.reddit.com/r/scala/comments/14qjty9/how_much_reason_is_there_to_be_multithreaded_in/">Multithreaded in k8s</a></li>
+<li><a href="https://github.com/typelevel/cats-effect/discussions/3070">IO Integrated Runtime</a></li>
+<li><a href="https://medium.com/disney-streaming/a-rate-limiter-in-15-lines-of-code-with-cats-effect-af09d838857a">Rate Limiter</a></li>
+<li><a href="https://youtu.be/EFkpmFt61Jo">Journey to the Centre of the JVM</a></li>
+<li><a href="https://github.com/slouc/concurrency-in-scala-with-ce">Concurrency with CE</a></li>
+<li><a href="https://gist.github.com/djspiewak/46b543800958cf61af6efa8e072bfd5c">Thread Pools</a></li>
+<li><a href="https://youtu.be/g_jP47HFpWA">The Making of an IO - Daniel Spiewak</a></li>
+<li><a href="https://gist.github.com/djspiewak/d9930891d419c26fac1d58b5274f45ba">Fibers</a></li>
+<li><a href="https://github.com/sellout/recursion-scheme-talk/blob/master/nanopass-compiler-talk.org">NanoPass Compilers</a></li>
+<li><a href="https://typelevel.org/blog/2017/05/02/io-monad-for-cats.html">IO Monad for Cats</a></li>
+<li><a href="https://www.youtube.com/watch?v=30q6BkBv5MY">Rob Norris - Functional Programming with Effects</a></li>
+<li><a href="https://youtu.be/8_TWM2t97r4">Gabriel Volpe - Cats Effect: The IO Monad for Scala</a></li>
+</ul>
+<h3 id="random-scala-links"><a class="header" href="#random-scala-links">Random Scala Links</a></h3>
+<ul>
+<li><a href="https://medium.com/@ivengo53/5-books-for-expert-scala-programmers-2b8b84a35aa6">5 Books to read</a></li>
+<li><a href="https://docs.scala-lang.org/scala3/guides/macros/quotes.html">Quoted Macros</a></li>
+<li><a href="https://v-bondarenko.hashnode.dev/validating-in-scala">Validation</a></li>
+<li><a href="https://v-bondarenko.hashnode.dev/writing-simple-validator-with-scala-3">Simple Validator</a></li>
+<li><a href="https://blog.philipp-martini.de/blog/magic-mirror-scala3/">Mirrors and Macros</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<p><strong>Table of Contents</strong>  <em>generated with <a href="https://github.com/thlorenz/doctoc">DocToc</a></em></p>
+<ul>
+<li><a href="rust/whole_list.html#getting-started-with-rust">Getting Started with Rust</a></li>
+<li><a href="rust/whole_list.html#some-links-on-rust">Some links on Rust</a></li>
+<li><a href="rust/whole_list.html#borrowing-and-lifetime-tricks">Borrowing and Lifetime Tricks</a></li>
+<li><a href="rust/whole_list.html#macros">Macros</a></li>
+<li><a href="rust/whole_list.html#cool-rust-projects">Cool Rust Projects</a></li>
+<li><a href="rust/whole_list.html#rust-error-handling">Rust Error Handling</a></li>
+<li><a href="rust/whole_list.html#rust-concurrency">Rust Concurrency</a>
+<ul>
+<li><a href="rust/whole_list.html#shared-data-across-multiple-threads">Shared Data Across Multiple Threads</a></li>
+</ul>
+</li>
+<li><a href="rust/whole_list.html#data-processing-and-data-structures">Data Processing and Data Structures</a>
+<ul>
+<li><a href="rust/whole_list.html#json-processing">JSON Processing</a></li>
+<li><a href="rust/whole_list.html#cool-data-structures">Cool Data Structures</a></li>
+<li><a href="rust/whole_list.html#geospatial-and-graph">Geospatial and Graph</a></li>
+<li><a href="rust/whole_list.html#string-performance">String Performance</a></li>
+</ul>
+</li>
+<li><a href="rust/whole_list.html#rust-and-scalajava">Rust and Scala/Java</a>
+<ul>
+<li><a href="rust/whole_list.html#rust-and-python">Rust and Python</a></li>
+<li><a href="rust/whole_list.html#rust-otherlanguage-integration--rust-ffi">Rust-OtherLanguage Integration / Rust FFI</a></li>
+</ul>
+</li>
+<li><a href="rust/whole_list.html#cli-and-misc">CLI and Misc</a></li>
+<li><a href="rust/whole_list.html#ideeditortooling">IDE/Editor/Tooling</a></li>
+<li><a href="rust/whole_list.html#testing-and-cicd">Testing and CI/CD</a>
+<ul>
+<li><a href="rust/whole_list.html#cross-compilation">Cross-compilation</a></li>
+</ul>
+</li>
+<li><a href="rust/whole_list.html#performance-and-low-level-stuff">Performance and Low-Level Stuff</a>
+<ul>
+<li><a href="rust/whole_list.html#perf-profiling">Perf profiling:</a>
+<ul>
+<li><a href="rust/whole_list.html#memoryheap-profiling">Memory/Heap Profiling</a></li>
+</ul>
+</li>
+<li><a href="rust/whole_list.html#fast-string-parsing">Fast String Parsing</a></li>
+<li><a href="rust/whole_list.html#bitpacking-binary-structures-serialization">Bitpacking, Binary Structures, Serialization</a></li>
+<li><a href="rust/whole_list.html#enums-thin-pointers-type-wrapping">Enums, Thin Pointers, Type Wrapping</a></li>
+<li><a href="rust/whole_list.html#simd">SIMD</a></li>
+</ul>
+</li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h2 id="getting-started-with-rust"><a class="header" href="#getting-started-with-rust">Getting Started with Rust</a></h2>
+<p><a href="https://stackoverflow.blog/2020/06/05/why-the-developers-who-use-rust-love-it-so-much/">Why the developers who use Rust love it so much</a> - from StackOverflow survey, really good quotes</p>
+<p>If you want a Rust REPL, check out <a href="https://github.com/google/evcxr/tree/master/evcxr_repl">evcxr</a>.</p>
+<p>I highly recommend <a href="https://rust-analyzer.github.io">rust-analyzer</a> to support fast compile checks, references, refactorings, etc. in your editor.
+VSCode works pretty well - install rust-analyzer and the "Even Better TOML" extension and you should be set.</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/book/2018-edition/ch00-00-introduction.html">The Rust Book</a> - probably the best starting point</li>
+<li><a href="https://github.com/rust-lang/rustlings/blob/master/README.md">Rustlings</a> - small exercises to learn</li>
+<li><a href="https://www.youtube.com/watch?v=-lYeJeQ11OI&amp;list=PLfllocyHVgsRwLkTAhG0E-2QxCf-ozBkk">Easy Rust Youtube Channel</a> - great videos</li>
+<li><a href="http://rustbyexample.com/">Rust By Example</a> - also the guide on their site is pretty good.</li>
+<li><a href="https://katib.moe/the-completesh-rust-cheat-sheet?source=personalized-newsletter&amp;source-id=2023-05-25">Complete(sh) Rust Cheat Sheet</a></li>
+<li><a href="https://jrvidal.github.io/explaine.rs/">explaine.rs</a> - paste Rust code into the window and hover over keywords to get explanations. Great for learning.</li>
+<li><a href="https://www.softax.pl/blog/rust-lang-in-a-nutshell-1-introduction/">Rustlang in a Nutshell</a> - great introduction</li>
+<li><a href="https://kerkour.com/rust-mental-models">Mental models for learning Rust</a> - really really short blurb on how to approach learning Rust</li>
+<li><a href="http://squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html">Rust Borrowing and Ownership</a> - easy-to-read, short summary of basic ownership, borrowing, and lifetime references</li>
+<li><a href="https://medium.com/@rotc21/rust-adventures-a-java-programmer-understanding-rust-ownership-edbeb6b8001">A Java Programmer Understanding Rust Ownership</a></li>
+<li><a href="https://theomn.com/rust-error-handling-for-pythonistas/">Rust Error Handling for Pythonistas</a></li>
+<li><a href="https://www.zero2prod.com">Zero to Production in Rust</a></li>
+</ul>
+<p>Easy short intros:</p>
+<ul>
+<li><a href="https://www.thecodedmessage.com/posts/rust-map-entry/">A Rust Gem: The Rust Map API</a> - comparing C++, Java, and Rust Map APIs and why Option and not having nulls makes the Rust Map API superior</li>
+</ul>
+<p>Online resources and help:</p>
+<ul>
+<li><a href="https://cheats.rs">cheats.rs</a> - Awesome quick ref.</li>
+<li>The Rust <a href="https://discordapp.com/channels/442252698964721669/448238009733742612">Discord #beginners</a> channel has been pretty helpful for me</li>
+<li><a href="http://client00.chat.mibbit.com/?server=irc.mozilla.org&amp;channel=%23rust">Rust IRC channel</a></li>
+<li><a href="http://www.rustforrubyists.com/">Rust for Rubyists</a></li>
+<li><a href="http://play.rust-lang.org/">Rust Playpen</a> - closest thing to a REPL  :(</li>
+<li><a href="http://makepad.nl">makepad</a> - Web-based Rust + WebASM multimedia playground</li>
+<li><a href="https://rustbeginners.github.io/awesome-rust-mentors/">Awesome Rust Mentors</a></li>
+</ul>
+<h2 id="some-links-on-rust"><a class="header" href="#some-links-on-rust">Some links on Rust</a></h2>
+<ul>
+<li>
+<p><a href="https://danielkeep.github.io/itercheat_baked.html">Cheat sheet for Iterator methods</a></p>
+</li>
+<li>
+<p><a href="https://rust-unofficial.github.io/patterns/intro.html">Rust Design Patterns</a> - super helpful resource</p>
+</li>
+<li>
+<p><a href="https://blog.logrocket.com/what-you-cant-do-in-rust-and-what-to-do-instead/">What you Can't Do in Rust and What To Do Instead</a> - great guide for anti-patterns</p>
+</li>
+<li>
+<p><a href="https://limpet.net/mbrubeck/2019/02/07/rust-a-unique-perspective.html">Rust: A Unique Perspective</a> - comprehensive summary about Rust ownership from angle of unique access, covers RC/Arc etc.</p>
+</li>
+<li>
+<p><a href="https://gregoryszorc.com/blog/2021/04/13/rust-is-for-professionals/">Rust is for Professionals</a> - great perspective on what makes Rust unique and so appealing</p>
+</li>
+<li>
+<p><a href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/tour-of-rusts-standard-library-traits.md">Tour of Rust's Standard Library Traits</a> - really great detailed guide with an explanation about traits, generics, associated types, etc.</p>
+</li>
+<li>
+<p><a href="https://medium.com/nearprotocol/understanding-rust-lifetimes-e813bcd405fa">Understanding Rust Lifetimes</a></p>
+<ul>
+<li><a href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/common-rust-lifetime-misconceptions.md">Common Rust Lifetime Misconceptions</a> -- a great detailed dive into nuances</li>
+</ul>
+</li>
+<li>
+<p><a href="https://rust-unofficial.github.io/too-many-lists/">Learn Rust with Too Many Linked Lists</a> - hilarious.</p>
+</li>
+<li>
+<p><a href="https://andrewjpritchard.medium.com/shared-mutability-in-rust-3f92155ddbf7">Shared Mutability in Rust: Acyclic Graphs</a> - really good article on mutable child entities, and how to share things which need to be mutable (hint: don't, instead use an "arena" pattern where a single owner mutates things)</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=rAl-9HwD858#action=share">Jon Gjengset on Rust Lifetime Annotations</a> - actually check out his Youtube channel, lots of great tutorials</p>
+</li>
+<li>
+<p><a href="http://antoyo.ml/evolution-rust-programmer">The Evolution of Rust Programmers</a> - hilarious look at different coding styles</p>
+</li>
+<li>
+<p><a href="https://brson.github.io/fireflowers/">Fireflowers: Rust in the words of its Practitioners</a> - just brilliant commentary on what Rust is.</p>
+</li>
+<li>
+<p><a href="https://blog.mgattozzi.dev/oxidizing-the-technical-interview/">Oxidizing the Interview</a> - hilarious read on a Rust technical interview</p>
+</li>
+<li>
+<p><a href="https://blog.usejournal.com/rust-and-the-three-laws-of-informatics-4324062b322b">Rust and the Three Laws of Informatics</a> - great detailed guide to how Rust allows developers to uncompromisingly achieve correctness, maintainability, AND efficiency</p>
+</li>
+<li>
+<p><a href="https://www.nature.com/articles/d41586-020-03382-2">Why Scientists are turning to Rust</a> - from Nature mag</p>
+</li>
+<li>
+<p><a href="http://dtrace.org/blogs/bmc/2020/10/11/rust-after-the-honeymoon/">Rust After the Honeymoon</a> - by Bryan Cantrill, a list of top favorite Rust tricks/properties.  Did you know that <code>{:#x?}</code> will pretty-print structs in HEX??</p>
+</li>
+<li>
+<p><a href="http://cliffle.com/blog/prefer-rust/">Prefer Rust over C/C++</a> - when to and when not to prefer Rust</p>
+</li>
+<li>
+<p><a href="https://www.flocknetworks.com/moving-from-c-to-rust/">Moving from C to Rust</a></p>
+<ul>
+<li><a href="https://immunant.com/blog/2020/01/quake3/">C2Rust and Quake</a> - a tool to auto translate C to Rust!</li>
+</ul>
+</li>
+<li>
+<p><a href="http://www.sheshbabu.com/posts/rust-module-system/">Clear Explanation of Rust's Module System</a> - easy intro guide</p>
+</li>
+<li>
+<p><a href="https://gist.github.com/DanielKeep/470f4e114d28cd0c8d43">On Rusts Module System</a> - good explanation of paths, naming, modules -- see this when compiler complains about cannot find symbols</p>
+</li>
+<li>
+<p><a href="https://piyushagarwal.hashnode.dev/null-the-billion-dollar-mistake-and-how-rust-provides-a-solution?source=personalized-newsletter&amp;source-id=2023-07-27">Null The Billion Dollar Mistake and how Rust Provides a Solution</a></p>
+</li>
+</ul>
+<p><a href="http://fitzgeraldnick.com/2018/02/26/speed-without-wizardry.html">Speed without wizardry</a> - how using Rust is safer and better than using hacks in Javascript</p>
+<p>Dealing with strings are confusing in rust, because there are two types: a heap-
+allocated <code>String</code> and a pointer to a slice of String bytes: <code>&amp;str</code>.  Knowing
+what to use, and defining structures on them, immediately exposes the steep
+learning curve of ownership.</p>
+<p>See the <a href="http://doc.rust-lang.org/guide-strings.html">Guide to Strings</a> for some help.</p>
+<p>Specific topics:</p>
+<ul>
+<li>
+<p><a href="http://carols10cents.github.io/rust-conversion-reference/">Rust conversion reference</a></p>
+</li>
+<li>
+<p><a href="https://cj.rs//blog/rust-default-values-for-maintainability/">Default Values for Maintainability</a> - short and easy guide</p>
+</li>
+<li>
+<p><a href="https://thomashartmann.dev/blog/async-rust/">Async Rust</a> - A really concise and great intro to async/await</p>
+</li>
+<li>
+<p><a href="https://msarmi9.github.io/posts/async-rust/">Async Rust: Futures, Tasks, Wakers; Oh My!</a> - another great concise intro, starting with basic async concepts/syntax and diving into details about Wakers and the Future mechanism</p>
+</li>
+<li>
+<p><a href="https://morestina.net/blog/1686/rust-async-is-colored">Rust Async is Colored</a> - great deep dive into async vs sync, connecting the two worlds, and implications</p>
+</li>
+<li>
+<p><a href="https://docs.rs/dtolnay/latest/dtolnay/macro._02__reference_types.html">Shared/Exclusive Refs, not Mutable/Immutable</a> - excellent explanation from @dtolnay on thinking about <code>&amp;mut T</code> as exclusive, not immutable.  Also explaining interior mutability and <code>RefCell</code> etc. - and why they allow <code>&amp;self</code> safely while providing mutation.</p>
+</li>
+<li>
+<p><a href="https://deterministic.space/elegant-apis-in-rust.html">Elegant library APIs in Rust</a> - lots of good tips here</p>
+</li>
+<li>
+<p><a href="https://rust-cli-recommendations.sunshowers.io">Rain's Rust CLI Guide</a> - how to write and organize Rust CLI apps</p>
+</li>
+<li>
+<p><a href="https://hermanradtke.com/2015/06/22/effectively-using-iterators-in-rust.html">Effectively using Iterators in Rust</a> - on differences between <code>iter()</code>, <code>into_iter()</code>, types, etc.</p>
+</li>
+<li>
+<p><a href="https://blog.thomasheartman.com/posts/on-generics-and-associated-types">Generics and Associated Types</a> - when to use each one</p>
+</li>
+<li>
+<p><a href="https://depth-first.com/articles/2020/06/22/returning-rust-iterators/">Returning Iterators</a> - really helpful article, this is not easy</p>
+<ul>
+<li><a href="https://fasterthanli.me/articles/recursive-iterators-rust">Recursive Iterators in Rust</a> - yelch, using Box</li>
+<li><a href="https://docs.rs/internal-iterator/0.1.1/internal_iterator/">Internal-iterator</a> - a potentially better solution for easily implementing some iterators</li>
+<li><a href="https://github.com/withoutboats/propane">propane</a> - Creating iterators via generator/yield API</li>
+</ul>
+</li>
+<li>
+<p><a href="https://blog.jcoglan.com/2019/04/22/generic-returns-in-rust/">Generic Return Types in Rust</a> - deep dive into <code>Iterator.collect()</code>, traits, and Rust's type system</p>
+</li>
+<li>
+<p><a href="https://github.com/japaric/rust-san/blob/master/README.md">Rust-san</a> - sanitizers for Rust code, if the basic compiler checks are not enough  :)</p>
+</li>
+<li>
+<p><a href="https://github.com/athre0z/color-backtrace">Colorized Rust backtraces</a>. :)</p>
+</li>
+<li>
+<p><a href="http://cliffle.com/blog/rust-typestate/">Rust TypeState Pattern</a></p>
+</li>
+<li>
+<p><a href="https://hoverbear.org/blog/rust-state-machine-pattern/">Pretty State Machines in Rust</a> - great article on diff state machine patterns, use of enums and structs</p>
+</li>
+<li>
+<p><a href="https://xaeroxe.github.io/init-struct-pattern/">Init Struct Pattern</a> - on patterns for initializing structs</p>
+</li>
+<li>
+<p><a href="http://i.hsfzxjy.site/2019-06-23-rc-refcell-pattern/">Rc and RefCell tricks</a> - good explanations of the two</p>
+</li>
+<li>
+<p><a href="https://oribenshir.github.io/afternoon_rusting/blog/copy-on-write">COW, Rust vs C++</a> - great dive into details of copy-on-write. Might be a great pattern for working with things like strings, where cloning might be expensive.</p>
+</li>
+<li>
+<p><a href="https://www.hardmo.de/article/2021-03-14-zst-proof-types.md">Magical Zero-Sized Types and Proofs</a> - for type masochists</p>
+</li>
+<li>
+<p><a href="https://beachape.com/blog/2021/05/25/structural-typing-in-rust/">Structural Typing in Rust</a> - HLists, ability to use path-based and shape/signature based trait typing instead of by name</p>
+</li>
+<li>
+<p><a href="https://stephencoakley.com/2019/04/24/how-rust-solved-dependency-hell">How Rust Solved Dependency Hell</a> - neat look at what's underneath Cargo to help solve dep issues.  Rustc can handle multiple versions of a dependency.</p>
+</li>
+<li>
+<p><a href="https://rymc.io/blog/2021/cacao-rs-macos-ios-rust/">Cacao: Building macOS/iOS Apps in Rust</a></p>
+</li>
+</ul>
+<h2 id="borrowing-and-lifetime-tricks"><a class="header" href="#borrowing-and-lifetime-tricks">Borrowing and Lifetime Tricks</a></h2>
+<p>If you need to borrow multiple items mutably from a Vec/array/SmallVec/etc.:</p>
+<ul>
+<li>The <a href="https://stackoverflow.com/questions/30073684/how-to-get-mutable-references-to-two-array-elements-at-the-same-time">thread</a> on solutions</li>
+<li>You can use <a href="https://docs.rs/smallvec/1.10.0/smallvec/struct.SmallVec.html#method.split_at_mut">split_at_mut()</a> but this is clumsy</li>
+<li><a href="https://docs.rs/arref/latest/arref/">Arref</a> gives a great solution</li>
+<li>There is a nightly <a href="https://doc.rust-lang.org/core/primitive.slice.html#method.get_many_mut">get_many_mut()</a> API</li>
+</ul>
+<p>If you have a Trait with an associated type that must deal with lifetimes:
+https://stackoverflow.com/questions/33734640/how-do-i-specify-lifetime-parameters-in-an-associated-type</p>
+<h2 id="macros"><a class="header" href="#macros">Macros</a></h2>
+<p>I started writing Rust macros and it is not only lots of fun, but pretty essential for writing concise, performant code IMO.  Writing Rust has lots of boilerplate sometimes, especially owing to not having real inheritance.  I recommend starting with <code>macro_rules!</code> which are fancy templates and really easy.  Here are some links to help:</p>
+<ul>
+<li><a href="https://blog.logrocket.com/macros-in-rust-a-tutorial-with-examples/">Macros in Rust - a Tutorial</a> - really easy tutorial, esp for <code>macro_rules!</code></li>
+<li><a href="https://danielkeep.github.io/tlborm/book/mbe-README.html">Macros - a Methodical Introduction</a> - very detailed book mostly about <code>macro_rules!</code> with explanations for the minutae of parsing
+<ul>
+<li><a href="https://danielkeep.github.io/tlborm/book/mbe-macro-rules.html">macro_rules</a></li>
+</ul>
+</li>
+<li><a href="https://gist.github.com/Kestrer/8c05ebd4e0e9347eb05f265dfb7252e1">How to Write Hygienic Rust Macros</a> - important and short.  Read this to ensure your macros work everywhere - so users don't have to worry about imports, etc.</li>
+<li><a href="https://github.com/dtolnay/case-studies/blob/master/README.md">Rust Macros case studies</a></li>
+<li><a href="https://words.steveklabnik.com/an-overview-of-macros-in-rust">Overview of Macros in Rust</a> - from Steve Klabnik</li>
+</ul>
+<p>Some crates that may help write macros:</p>
+<ul>
+<li><a href="https://crates.io/crates/spez">spez</a> - match and specialize on the type of an expression.  "A trick to do specialization in non-generic contexts on stable Rust"</li>
+<li><a href="https://crates.io/crates/concat-idents">concat-ident</a> - macro to concat multiple identifiers etc. and use the result, perhaps as a struct or method name. Very useful in macros</li>
+</ul>
+<h2 id="cool-rust-projects"><a class="header" href="#cool-rust-projects">Cool Rust Projects</a></h2>
+<p>NOTE: there's a separate section for Data-related projects.</p>
+<p>CLI tools:</p>
+<ul>
+<li><a href="https://github.com/BurntSushi/xsv">XSV</a> - a fast CSV parsing and analysis tool</li>
+<li><a href="https://github.com/ajeetdsouza/zoxide">zoxide</a> - a supercharged, AI-based replacement for cd with rank-based search of your most frequently used dirs
+<ul>
+<li><a href="https://github.com/cantino/mcfly">mcfly</a> - Upgraded, smarter Ctrl-R for bash etc.  (note: fish users already have this built in, basically)</li>
+</ul>
+</li>
+<li><a href="https://github.com/BurntSushi/ripgrep">Ripgrep</a> - insanely fast grep utility, great for code searches.  Shows off power of Rust regex library</li>
+<li><a href="https://github.com/sharkdp/bat">Bat</a> - A super <code>cat</code> with syntax highlighting, git integration, other features</li>
+<li><a href="https://github.com/ClementTsang/bottom">Bottom</a> - Cross-platform fancy <code>top</code> in Rust - process/sys mon with graphs, very useful!</li>
+<li><a href="https://github.com/Extrawurst/gitui">gitui</a> - awesome, fast Git terminal UI.  It will change your life!</li>
+<li><a href="https://github.com/lotabout/skim">skim</a> - <code>sk</code> is a general purpose fuzzy-finder; it can work with ripgrep and other utils too</li>
+<li><a href="https://zellij.dev">zellij</a> - terminal mux/session detach like tmux/screen, but with a pretty UI and plugins</li>
+<li><a href="https://github.com/Nukesor/pueue">pueue</a> - instead of using tmux, queue and manage your background tasks</li>
+<li><a href="https://github.com/ducaale/xh">xh</a> - HTTPie clone / much better <code>curl</code> alternative</li>
+<li><a href="https://github.com/bootandy/dust">Dust</a> - Rust graphical-text faster and friendlier version of du</li>
+<li><a href="https://github.com/imsnif/diskonaut">Diskonaut</a> - another Text-UI folder/file space usage and browsing tool</li>
+<li><a href="https://github.com/sharkdp/fd">fd</a> - Rust CLI, friendlier and faster replacement for <code>find</code></li>
+<li><a href="https://github.com/RustScan/RustScan">rustscan</a> - Really fast port scanner, this should easily replace lsof / netstat</li>
+<li><a href="https://github.com/chmln/sd">sd</a> - Easier to use sed.  You can search and replace in like all files under subdir with <code>sd old_str new_str **</code>.</li>
+<li><a href="http://www.jonathanturner.org/2019/08/introducing-nushell.html">Nushell</a> - Rust shell that turns all output into tabular data.  Pretty cool!</li>
+<li><a href="https://github.com/dandavison/delta">delta</a> - git-delta: colorful git diff viewer</li>
+<li><a href="https://github.com/dmerejkowsky/ruplacer">ruplacer</a> - Source code search and replace tool</li>
+<li><a href="https://github.com/theotherphil/imagecli/blob/master/README.md">imagecli</a> - CLI for image batch processing</li>
+<li><a href="https://github.com/sharkdp/hyperfine/blob/master/README.md">Hyperfine</a> - Rust performance benchmarking CLI</li>
+<li><a href="https://github.com/alacritty/alacritty/blob/master/README.md">Alacritty</a> - GPU accelerated terminal emulator</li>
+<li><a href="https://crates.io/crates/jql/2.5.0">jql</a> - Rust version of popular <code>jq</code> JSON CLI processor, though not as powerful</li>
+<li><a href="https://github.com/dflemstr/rq">rq</a> - a Record Query/Transform tool, translate CSV, Avro, CBOR, Json etc etc to and from each other</li>
+<li><a href="https://github.com/mgdm/htmlq">htmlq</a> - like jq but for HTML</li>
+<li><a href="https://starship.rs">Starship</a> - "The minimal, blazing-fast, and infinitely customizable prompt for any shell!"</li>
+<li><a href="https://github.com/Dentrax/kubesql">Kubesql</a> - SQL queries for Kube metadata!</li>
+<li><a href="https://github.com/pemistahl/grex">grex</a> - CLI tool to create regexes given a set of strings to match!</li>
+<li><a href="https://github.com/hubblo-org/scaphandre">Scaphandre</a> - Metrics agent for collecting power consumption metrics!</li>
+<li><a href="https://github.com/kdash-rs/kdash">kdash</a> - Text UI Kubernetes dashboard</li>
+<li><a href="https://github.com/josh-project/josh">Josh</a> - Cool git proxy allows you to treat part of a large monorepo like its own smaller git repo!</li>
+</ul>
+<p>Wasm:</p>
+<ul>
+<li><a href="https://medium.com/wasmer/wasmer-1-0-3f86ca18c043">Wasmer</a> - general purpose WASM runtime</li>
+<li><a href="https://deislabs.io/posts/introducing-krustlet/">Krustlet</a> - WebAssembly (instead of containers) runtime on Kubernetes!!  Use Rust + wasm + WASI for a truly portable k8s-based deploy!</li>
+<li><a href="https://extism.org/blog/announcing-extism/">Extism</a> - a universal WASM-based plugin system, multi language, but written in Rust</li>
+<li><a href="https://github.com/lunatic-solutions/lunatic">lunatic</a> - Erlang-like server side WASM runtime with supervision and channel-based message passing, plus hot reloading!</li>
+<li><a href="https://docs.cosmwasm.com/docs/1.0/">CosmWasm</a> - Rust/WASM for programming smart contract on Cosmos ecosystem</li>
+</ul>
+<p>Others:</p>
+<ul>
+<li><a href="https://tabnine.com">TabNine</a> - an ML-based autocompleter, written in Rust</li>
+<li><a href="https://github.com/rhysd/kiro-editor">kiro</a> - a CLI text editor with syntax highlighting, like a friendlier vim</li>
+<li><a href="https://github.com/curlpipe/ox">ox</a> - another CLI/Text UI lightweight text editor</li>
+<li><a href="https://async.rs/blog/announcing-async-std/">async-std</a> - the standard library with async APIs</li>
+<li><a href="https://github.com/bparli/convey">Convey</a> - Layer 4 load balancer</li>
+<li><a href="https://github.com/ockam-network/ockam">Ockam</a> - End to end secure messaging lib/platform between cloud and IoT devices</li>
+<li><a href="https://github.com/parallaxsecond/parsec">Parsec</a> - abstraction layer for hardware security and cryptography</li>
+<li><a href="https://crates.io/crates/gazebo">Gazebo</a> - useful utilties for all apps, by the Facebook Rust team.  They also have blog posts such as on <a href="https://developers.facebook.com/blog/post/2021/07/06/rust-nibbles-gazebo-dupe/">Dupe</a></li>
+</ul>
+<p>Do Rust in <a href="https://github.com/ekimb/pas">Turkish</a>, <a href="https://github.com/UltiRequiem/rustico">Spanish</a> and other languages!  :)</p>
+<p>Languages etc.</p>
+<ul>
+<li><a href="https://ytakano.github.io/blisp/">BLisp</a> - a statically-typed Lisp built on top of Rust</li>
+<li><a href="https://github.com/RustPython/RustPython">RustPython</a></li>
+</ul>
+<h2 id="rust-error-handling"><a class="header" href="#rust-error-handling">Rust Error Handling</a></h2>
+<p><a href="https://blog.yoshuawuyts.com/error-handling-survey/">Error handling survey</a> - really good summary of the Rust error library landscape as of late 2019.</p>
+<ul>
+<li><a href="https://docs.rs/anyhow/1.0.26/anyhow/">Anyhow</a> - streamlined error handling with context....</li>
+<li><a href="https://docs.rs/snafu/0.4.1/snafu/index.html">Snafu</a> - adding context to errors</li>
+<li><a href="https://crates.io/crates/error-stack">Error-stack</a> - I <em>really</em> like the philosophy behind this crate.  It makes it easy to "stack" errors - you get not a backtrace, but stacked detailed errors, with the inner error showing through.</li>
+</ul>
+<h2 id="rust-concurrency"><a class="header" href="#rust-concurrency">Rust Concurrency</a></h2>
+<ul>
+<li>
+<p><a href="https://medium.com/@polyglot_factotum/rust-concurrency-five-easy-pieces-871f1c62906a">Rust Concurrency: Five Easy Pieces</a> - a great intro to threads, using message queues, determinism, and more</p>
+</li>
+<li>
+<p><a href="https://blog.logrocket.com/a-practical-guide-to-async-in-rust/">A practical guide to Async in Rust</a></p>
+</li>
+<li>
+<p><a href="https://docs.rs/dtolnay/0.0.3/dtolnay/macro._01__await_a_minute.html">Benefits of Async/Await</a></p>
+</li>
+<li>
+<p><a href="https://tokio.rs/blog/2019-08-tracing/">Tracing with Tokio and Rust</a></p>
+</li>
+<li>
+<p><a href="http://fitzgeraldnick.com/2019/08/27/async-stacks-in-rust.html">Async stacktraces</a> - this is SUPER COOL!!!</p>
+</li>
+<li>
+<p><a href="https://github.com/tokio-rs/console">tokio-console</a> - remote async debugging facility!</p>
+</li>
+<li>
+<p><a href="https://medium.com/nearprotocol/rust-parallelism-for-non-c-c-developers-ec23f48b7e56">Rust Parallelism for non C/C++ Devs</a> - great resource on the low-level primitives like <code>Mutex</code> and <code>RwLock</code></p>
+</li>
+<li>
+<p><a href="https://medium.com/@KevinHoffman/coping-with-mutable-state-in-multiple-threads-with-rust-9059c83b6c01">Coping with Mutable State in Multiple Threads</a></p>
+</li>
+<li>
+<p><a href="http://ticki.github.io/blog/fearless-concurrency-with-hazard-pointers/">Fearless Concurrency with Hazard Pointers</a> - using the <code>conc</code> crate and <code>Atomic</code> which implements hazard pointers for fine-grained and safe protection of readers and garbage</p>
+</li>
+<li>
+<p><a href="https://bastion.rs">Bastion</a> - Erlang/Akka-style, remote supervised actor framework</p>
+</li>
+<li>
+<p><a href="https://github.com/kompics/kompact">Kompact</a> - Kompics style message-passing "component system" with actor model and networking built in</p>
+</li>
+<li>
+<p><a href="https://github.com/Actyx/Actyx">Actyx</a> - really cool "decentralized event database, streaming and processing engine" based on event sourcing concepts, built by one of Akka's founders</p>
+</li>
+<li>
+<p><a href="https://ryhl.io/blog/actors-with-tokio/">Actors with Tokio</a> - not using any Actor framework, just channels</p>
+</li>
+<li>
+<p>Use <a href="https://crates.io/crates/mio">mio</a> if you want a lower-level event loop, or <a href="https://crates.io/crates/thin_main_loop">thin_main_loop</a></p>
+</li>
+</ul>
+<h3 id="shared-data-across-multiple-threads"><a class="header" href="#shared-data-across-multiple-threads">Shared Data Across Multiple Threads</a></h3>
+<p>Sometimes one needs to share a large data structure across threads and several of them must access it.</p>
+<p>The most general way to share a data structure is to use <code>Arc&lt;RwLock&lt;...&gt;&gt;</code> or <code>Arc&lt;Mutex&lt;...&gt;&gt;</code>.  The <code>Arc</code> keeps track of lifetimes and lets different threads exist for different lengths of time, and is inexpensive since it is usually only accessed once at thread spawn.  The <code>Mutex</code> or <code>RwLock</code> lets different threads mutate it safely, assuming the data structure is not thread-safe.</p>
+<p>A thread-safe data structure could be used in place of the <code>RwLock</code> or <code>Mutex</code>.</p>
+<p><a href="https://docs.rs/crossbeam/0.7.2/crossbeam/thread/index.html">Scoped threads</a> could be used if only one owner will mutate the data structure, and one wants to share immutable refs with other threads for reading.  However, the special threads in Crossbeam crate are still needed as Rustc by itself has no way of proving the lifetime of a thread or when it will be joined, thus any immutable refs created from the owner thread still cannot compile or be shared due to rustc lifetime checks.  Scoped threads are a way around that as it gives rustc a guarantee that the threads will be joined before the owner goes away.</p>
+<p><a href="https://github.com/vorner/arc-swap">Arc-swap</a> is an alternative to Arc that is designed for occasional updates - enables atomic swapping of the object underneath the Arc, and allows one to read without contention (unlike Mutex/RwLock).</p>
+<p>Also see <a href="https://github.com/maciejhirsz/beef/">beef</a> - a leaner version of Cow.</p>
+<h2 id="data-processing-and-data-structures"><a class="header" href="#data-processing-and-data-structures">Data Processing and Data Structures</a></h2>
+<ul>
+<li>
+<p><a href="http://www.arewelearningyet.com">Are we learning yet?</a> - list of ML Rust crates</p>
+<ul>
+<li><a href="https://github.com/rust-ml/linfa">Linfa</a> - Rust ML framework</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/TimelyDataflow/timely-dataflow">Timely Dataflow</a> - distributed data-parallel compute engine in Rust!!!</p>
+</li>
+<li>
+<p><a href="https://github.com/hydro-project/hydroflow">Hydroflow</a> - a brand new Rust based optimized streaming dataflow engine, relational data, based on very advanced UCBerkeley research on optimization.</p>
+</li>
+<li>
+<p><a href="https://arrow.apache.org/blog/2019/02/04/datafusion-donation/">DataFusion</a> - a Rust query engine which is part of Apache Arrow!</p>
+<ul>
+<li>NOTE: there is now a Ballista project that is basically like Spark - distributed Data Fusion.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/constellation-rs/amadeus">Amadeus</a> - distributed streams / Parquet / big data processing</p>
+</li>
+<li>
+<p><a href="https://www.fluvio.io/docs/">Fluvio</a> - distributed, persistent queuing / stream processing framework using WASM for programmability, written in Rust!</p>
+</li>
+<li>
+<p><a href="https://github.com/ArroyoSystems/arroyo">Arroyo</a> - another stream processing framework, streaming SQL and Rust pipelines!</p>
+</li>
+<li>
+<p><a href="https://github.com/weld-project/weld">Weld</a> - Stanford's high-performance runtime for data analytics</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/pulse/how-we-handle-billion-scale-graph-data-you-can-too-jacek-d%C4%85browski">Cleora</a> - Super fast Rust tool for billion-scale hypergraph vector embedding ML</p>
+</li>
+<li>
+<p><a href="https://github.com/willi-kappler/node_crunch">Node crunch</a> - simple lightweight distributed compute framework</p>
+</li>
+<li>
+<p><a href="https://github.com/ray33ee/Project-Midas">Project Midas</a> - distributed compute framework and terminal UI using Lua as scripting language</p>
+</li>
+<li>
+<p><a href="https://cube.dev/blog/introducing-cubestore/">Cube Store</a> - Rust and Arrow/DataFusion-based rollup/aggregation/cache layer for SQL datastores, too bad it's mostly for JS</p>
+</li>
+<li>
+<p><a href="https://github.com/mit-pdos/noria">Noria</a> - "data-flow for high-performance web apps" - basically a materialized view cache that updates in real time as database data updates</p>
+</li>
+<li>
+<p><a href="https://github.com/pola-rs/polars">polars</a> - super fast and high level DataFrame implementation for both Rust and Python, much faster and higher level than using Arrow itself</p>
+</li>
+<li>
+<p><a href="https://github.com/BaguaSys/bagua">Bagua</a> - distributed learning/training framework, the very fast communication core is written in Rust</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/similari">Similari</a> - similarity search/computation engine for ML in Rust</p>
+</li>
+<li>
+<p><a href="https://github.com/toshi-search/Toshi">Toshi</a> - ElasticSearch written in Rust using <a href="https://github.com/tantivy-search/tantivy">Tantivy</a> as the engine</p>
+</li>
+<li>
+<p><a href="https://github.com/meilisearch/MeiliDB/blob/master/README.md">MeiliDB</a> - fast full-text search engine</p>
+</li>
+<li>
+<p><a href="https://github.com/quickwit-oss/quickwit">Quickwit</a> - Log search DB, like Elastic but built on top of Tantivy</p>
+</li>
+<li>
+<p><a href="https://github.com/datafuselabs/datafuse">Datafuse</a> - distributed "Real-Time Data Processing &amp; Analytics DBMS", similar to Clickhouse "but faster"</p>
+</li>
+<li>
+<p><a href="https://github.com/valeriansaliou/sonic">sonic</a> - Fast, very lightweight and schemaless search/text index.  NOT a document store, but an index store.</p>
+</li>
+<li>
+<p><a href="https://pijul.org/posts/2021-02-06-rethinking-sanakirja/">Sanakirja</a> - a transactional KV DB engine/local store, claims to be fastest around</p>
+</li>
+<li>
+<p><a href="https://github.com/spacejam/sled">Sled</a> - an embedded database engine using latch-free Bw-tree on latch-free page cache techniques for speed</p>
+</li>
+<li>
+<p><a href="https://github.com/skytable/skytable">Skytable</a> - Rust "realtime NoSQL" key-value database</p>
+</li>
+<li>
+<p><a href="https://github.com/influxdata/influxdb_iox">IOx</a> - New in-memory columnar InfluxDB engine using Arrow, DataFusion, rust!  Persists using parquet.  Super awesome stuff.</p>
+</li>
+<li>
+<p><a href="https://github.com/indradb/indradb">IndraDB</a> - Graph database/library written in Rust! and inspired by Facebook's TAO.</p>
+</li>
+<li>
+<p><a href="https://github.com/terminusdb/terminusdb-store">TerminusDB-store</a> - a Rust RDF triple data store</p>
+</li>
+<li>
+<p><a href="https://bonsaidb.io">BonsaiDB</a> - NoSQL document store written in Rust with Rust schemas</p>
+</li>
+<li>
+<p><a href="https://github.com/vectordotdev/vector">Vector</a> - high performance observability data pipeline, for transforming, aggregating, routing logs, metrics, traces, etc.</p>
+<ul>
+<li>includes a <a href="https://vector.dev/docs/reference/vrl/">Vector Remap Language</a> for general transformation</li>
+</ul>
+</li>
+<li>
+<p><a href="https://docs.tremor.rs">Tremor</a> - a simple event processing / log and metric processing and forwarding system, with scripting and streaming query support.  Much more capable than Telegraf.</p>
+</li>
+<li>
+<p><a href="https://github.com/minio/minsql/blob/master/README.md">MinSQL</a> - interesting POC on lightweight SQL based log search, w automatic field parsing etc.</p>
+</li>
+<li>
+<p><a href="https://github.com/iximiuz/pq">pq</a> - Parse and Query log files as time series, extracting structured records out of common log files</p>
+</li>
+<li>
+<p><a href="https://github.com/plotters-rs/plotters">plotters</a> - Rust data visualization / graphing library</p>
+</li>
+<li>
+<p><a href="https://github.com/stateright/stateright">Stateright</a> - distributed protocol/model checker with UI, linearizability checker!</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/clepsydra">Clepsydra</a> - Graydon Hoare working on distributed database protocol - in Rust!</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/crepe">crepe</a> - Datalog, declarative logic programs as macros in Rust</p>
+</li>
+</ul>
+<h3 id="json-processing"><a class="header" href="#json-processing">JSON Processing</a></h3>
+<p>For JSON DOM (IR) processing, using the mimalloc allocator provided me a 2x speedup with serde-json.  Then, switching to <a href="https://github.com/maciejhirsz/json-rust">json-rust</a> provided another 1.8x speedup.  The speedup is completely unreal, much faster than JVM.  The main reason I guess is that json-rust has a <code>Short</code> DOM class for short strings, which requires no heap allocation.</p>
+<ul>
+<li><a href="https://github.com/simd-lite/simdjson">simdjson-rs</a> - SIMD-enabled JSON parser.  NOTE: no writing of JSON.</li>
+<li><a href="https://github.com/tidwall/pjson.rs">pjson</a> - JSON streaming parser</li>
+<li><a href="https://github.com/shenek/streamson">streamson</a> - efficient JSON processing for large documents</li>
+</ul>
+<h3 id="cool-data-structures"><a class="header" href="#cool-data-structures">Cool Data Structures</a></h3>
+<ul>
+<li>
+<p><a href="https://github.com/robclu/leapfrog">leapfrog</a> - fast, concurrent <code>HashMap</code>, lock-free if types support atomic ops.</p>
+<ul>
+<li>What's neat about its API is that instead of locking at bucket level, and blocking inserts if a reader is taking too long, it never returns references to data and relies on an atomic API</li>
+</ul>
+</li>
+<li>
+<p><a href="https://docs.rs/concread/0.2.14/concread/index.html">concread</a> - Concurrently Readable (Copy on Write, MVCC) datastructures - "allow multiple readers with transactions to proceed while single writers can operate" - guaranteeing readers same version.  There is a hashmap and ARCache.</p>
+</li>
+<li>
+<p><a href="https://docs.rs/flurry/0.4.0/flurry/">flurry</a> - Rust impl of Java's ConcurrentHashMap.  Uses seize for ref-count-based GC.</p>
+</li>
+<li>
+<p><a href="https://docs.rs/im/latest/im/">im</a> - Immutable data structures for Rust</p>
+</li>
+<li>
+<p><a href="https://github.com/rust-phf/rust-phf">rust-phf</a> - generate efficient lookup tables at compile time using perfect hash functions!</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/odht">odht</a> - "hash table that can be mapped from disk into memory without need for up-front decoding" - deterministic binary representation, and platform and endianness independent.  Sounds sweet!</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/radix_trie">radix-trie</a></p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/patricia_tree">Patricia Tree</a> - Radix-tree based map for more compact storage</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/probabilistic-collections">probabilistic-collections</a> - Bloom/Cuckoo/Quotient filters, CountMinSketch, HyperLogLog, streaming approx set membership, etc.</p>
+</li>
+<li>
+<p><a href="https://github.com/bexxmodd/priq">priq</a> - "blazing fast" priority queue built using arrays</p>
+</li>
+<li>
+<p>Using <a href="https://blog.burntsushi.net/transducers/">Finite State Automata and Rust</a> to quickly index and find data amongst HUGE amount of strings</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/ahash">ahash</a> - this seems to be the fastest hash algo for hash keys</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/metrohash">Metrohash</a> - a really fast hash algorithm</p>
+</li>
+<li>
+<p><a href="https://docs.rs/indexmap/1.3.2/indexmap/index.html">IndexMap</a> - O(1) obtain by index, iteration by index order</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/FM-index">FM-Index</a>, a neat structure that allows for fast exact string indexing and counting while compressing original string data at the same time.  There is a Rust <a href="https://crates.io/crates/fm-index">crate</a></p>
+</li>
+<li>
+<p><a href="https://docs.rs/heapless/0.5.5/heapless/">Heapless</a> - static data structures with fixed size; Vec, heap, map, set, queues</p>
+</li>
+<li>
+<p><a href="https://github.com/xacrimon/dashmap">dashmap</a> - "Blazing fast concurrent HashMap for Rust". NOTE: I don't recommend this project, I used it in my Ying profiler but it can deadlock in unpredictable ways</p>
+</li>
+<li>
+<p><a href="https://medium.com/swlh/easy-persistent-data-structures-in-rust-b58334aeaf0a">Easy Persistent Data Structures in Rust</a> - replacing <code>Box</code> with <code>Rc</code></p>
+</li>
+<li>
+<p><a href="https://contain-rs.github.io/vec-map/vec_map/">VecMap</a> - map for small integer keys, may use less space</p>
+</li>
+</ul>
+<h3 id="geospatial-and-graph"><a class="header" href="#geospatial-and-graph">Geospatial and Graph</a></h3>
+<ul>
+<li>
+<p>The base Geometry processing crate is <a href="https://docs.rs/geo/0.18.0/geo/">geo</a>.</p>
+<ul>
+<li>Geo does not (as of 0.18) handle intersections, difference, XOR etc.  Try <a href="https://crates.io/crates/geo-booleanop">geo-booleanop</a> for a Rust-only implementation using Martinez-Rueda algorithm</li>
+<li>Or use <a href="https://github.com/georust/geos">geos</a> based on the C library</li>
+</ul>
+</li>
+<li>
+<p><a href="https://crates.io/crates/spatial-join">spatial-join</a> - Spatial joins and proximity maps!</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/rstar">Rstar</a> - n-dimensional R*-Tree for geospatial indexing and nearest-neighbor</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/spade">spade</a> - R-trees and Delaunay triangulations</p>
+</li>
+<li>
+<p><a href="https://horasearch.com">Hora Search</a> - Nearest-Neighbor (NN) / geo search library that includes multiple algorithms including HNSW, SSG, PQIVF, etc.</p>
+</li>
+<li>
+<p><a href="https://docs.rs/petgraph/0.5.0/petgraph/">Petgraph</a> - Graph data structure for Rust, considered perhaps most mature right now</p>
+</li>
+</ul>
+<h3 id="string-performance"><a class="header" href="#string-performance">String Performance</a></h3>
+<p>Rust has native UTF8 string processing, which is AWESOME for performance.  However, there are two concerns usually:</p>
+<ol>
+<li>Small string memory efficiency.  The native <code>String</code> type uses at least two words just for pointer and length/cap, which might be longer than the string itself;</li>
+<li>Minimizing number of heap allocations</li>
+</ol>
+<p>Here are some solutions:</p>
+<ul>
+<li><a href="https://docs.rs/string/0.2.1/string/">String</a> - string type with configurable byte storage, including stack byte arrays!</li>
+<li><a href="http://fitzgen.github.io/inlinable_string/inlinable_string/index.html">Inlinable String</a> - stores strings up to 30 chars inline, automatic promotion to heap string if needed.</li>
+<li>Also see <a href="https://docs.rs/smallstr/0.2.0/smallstr/">smallstr</a></li>
+<li><a href="https://github.com/nu11ptr/flexstr">flexstr</a> - Enum String type to unify literals, inlined, and heap strings</li>
+<li><a href="https://docs.rs/kstring/0.1.0/kstring/">kstring</a> - intended for map keys: immutable, inlined for small keys, and have Ref/Cow types to allow efficient sharing.  :)</li>
+<li><a href="https://crates.io/crates/nested">nested</a> - reduce Vec<String> type structures to just two allocations, probably more memory efficient too.</li>
+<li><a href="https://docs.rs/tinyset/0.4.2/tinyset/">tinyset</a> - space efficient sets and maps, can be combined with nested perhaps</li>
+<li><a href="https://docs.rs/bumpalo/3.2.1/bumpalo/collections/index.html">bumpalo</a> can do really cheap group allocations in a <code>Bump</code> and has custom <code>String</code> and <code>Vec</code> versions.  At least lowers allocation overhead.</li>
+</ul>
+<h2 id="rust-and-scalajava"><a class="header" href="#rust-and-scalajava">Rust and Scala/Java</a></h2>
+<ul>
+<li>
+<p><a href="https://github.com/andyrbell/rust-for-java-developers">Rust for Java Developers</a></p>
+</li>
+<li>
+<p><a href="https://aliceevebob.com/2020/05/05/5-rust-reflections-from-java/">5 Rust Reflections from Java</a></p>
+</li>
+<li>
+<p>The presence of true unsigned types is really nice for low-level work.  I hit a bug in Scala where I used &gt;&gt; instead of &gt;&gt;&gt;.  In Rust you declare a type as unsigned and don't have to worry about this.</p>
+</li>
+<li>
+<p>Immutable byte slices and reference types again are awesome for low-level work.</p>
+</li>
+<li>
+<p>Trait monomorphisation is awesome for ensuring trait methods can be inlined.  JVM cannot do this when there is more than one implementation of a trait.</p>
+</li>
+<li>
+<p>Being able to examine assembly directly from compiler output is super nice for low level perf work (compared to examining bytecode and not knowing the final output until runtime)</p>
+</li>
+<li>
+<p>OTOH, rustc is definitely much much stricter (IMO) compared to scalac.  Much of this is for good reason though, for example lack of integer/primitive coercion, ownership, etc. gives safety guarantees.</p>
+</li>
+</ul>
+<h3 id="rust-and-python"><a class="header" href="#rust-and-python">Rust and Python</a></h3>
+<ul>
+<li><a href="https://github.com/PyO3/pyo3">PyO3</a> seems to be a gold standard of Rust-based Python module development.
+<ul>
+<li><a href="https://github.com/PyO3/maturin">Maturin</a> - for building and publishing PyO3-based/Rust Python modules, or mixed Rust/Python projects</li>
+<li>There are older posts too: <a href="https://depth-first.com/articles/2020/08/03/wrapping-rust-types-as-python-classes/">Wrapping Rust Types as Python classes</a> and <a href="https://github.com/iduartgomez/rustypy/wiki/Rust-in-Python">RustyPy</a> but they are much more work than PyO3</li>
+</ul>
+</li>
+<li><a href="https://pyoxidizer.readthedocs.io/en/stable/">PyOxidizer</a> - a Rust tool to package Python apps, interpreter, and all dependencies as a single binary, by wrapping app in a Rust program with a custom Rust Py module importer.  Also helps embed Python code in Rust apps.</li>
+<li><a href="https://www.crowdstrike.com/blog/data-science-test-drive-of-rust-programming-language/">Oh no, my data science is getting Rusty!</a> - neat post from CrowdStrike on integrating Rust with Python for improved performance AND safety</li>
+</ul>
+<h3 id="rust-otherlanguage-integration--rust-ffi"><a class="header" href="#rust-otherlanguage-integration--rust-ffi">Rust-OtherLanguage Integration / Rust FFI</a></h3>
+<ul>
+<li><a href="http://stackoverflow.com/questions/30258427/calling-rust-from-java">Calling Rust from Java</a> - especially see the hint for using jnr-ffi</li>
+<li>There is also <a href="https://astonbitecode.github.io/blog/post/j4rs_0.6.0/">j4rs</a> for calling Java from Rust</li>
+<li><a href="https://www.ditto.live/blog/posts/introducing-safer-ffi">SaferFFI</a> - a neat library to make exposing C-like APIs much safer esp dealing with pointers, nulls, borrowing etc.</li>
+<li><a href="https://www.greyblake.com/blog/2017-08-10-exposing-rust-library-to-c/">Exposing a Rust library to C</a> - has some great tips on creating .so's and working with strings</li>
+<li><a href="https://github.com/alexcrichton/cc-rs">cc-rs</a> - C/C++ build integration with Cargo</li>
+<li>It seems to me Circle CI's support for multiple docker images and explicit manifest style makes it very easy to set up multiple language and dependency support</li>
+<li><a href="https://stackoverflow.com/questions/27644586/how-to-set-up-travis-ci-with-multiple-languages">Supporting multiple languages in Travis CI</a></li>
+<li><a href="https://www.graalvm.org/docs/reference-manual/languages/llvm/">Running LLVM on GraalVM</a> - using GraalVM to embed and run LLVM bitcode!  Too bad GraalVM is commercial/Oracle only</li>
+</ul>
+<h2 id="cli-and-misc"><a class="header" href="#cli-and-misc">CLI and Misc</a></h2>
+<ul>
+<li>
+<p><a href="https://crates.io/crates/structopt">Structopt</a> - define CLI options using a struct!</p>
+</li>
+<li>
+<p><a href="https://github.com/fdehau/tui-rs">tui-rs</a> - Rust terminal UI for CLI apps.  Check out list of projects it refers to also.  Lots of options!</p>
+</li>
+<li>
+<p><a href="https://robert.kra.hn/posts/hot-reloading-rust/">Hot Reloading in Rust</a> - great article on how to hot-reload dynamic linked libraries in Rust, and on the potential pitfalls, with plenty of links.</p>
+</li>
+</ul>
+<h2 id="ideeditortooling"><a class="header" href="#ideeditortooling">IDE/Editor/Tooling</a></h2>
+<ul>
+<li><a href="https://github.com/google/evcxr/tree/master/evcxr_repl">EVCXR</a> - a Rust REPL!!!  With deps, and tab-completion for methods!!</li>
+<li><a href="https://github.com/huitseeker/comby-rust">comby-rust</a> - rewrite Rust code using comby</li>
+<li><a href="https://github.com/rustviz/rustviz">rustviz</a> - Visualize borrowing and ownership!</li>
+<li><a href="https://crates.io/crates/no-panics-whatsoever">no-panics-whatsoever</a> - crate to detect and ensure at compile time there aren't panics in your code</li>
+<li><a href="https://github.com/RazrFalcon/cargo-bloat">cargo-bloat</a> - what's taking up space in my Rust binary</li>
+<li><a href="https://github.com/alopatindev/cargo-limit">cargo-limit</a> - clean up, sort and limit error/warning output.  Great for those of us running cargo in shells!</li>
+<li><a href="https://github.com/llogiq/mutagen">mutagen</a> - mutation testing tool for Rust programs.  Generates "mutations" in your code to try to break test coverage!</li>
+<li><a href="https://github.com/danielzfranklin/cargo-rr">cargo-rr</a> - time travel/recording/reverse debugger framework for Rust using rr
+<ul>
+<li>For more explanation see <a href="https://robert.ocallahan.org/2021/04/print-debugging-should-go-away.html">Print debugging should go away</a></li>
+</ul>
+</li>
+<li><a href="https://docs.rs/cargo-hakari/0.9.4/cargo_hakari/about/index.html">cargo_hakari</a> - A crate to speed up builds of workspace-hack packages ... for when you have multiple crates or complex builds, and you have duplicate dependencies</li>
+<li><a href="https://github.com/TheDan64/inkwell">inkwell</a> - LLVM API, including LLVM IR generation and running LLVM JIT to run snippets in your code</li>
+</ul>
+<p>Dependency conflicts?  Use <code>cargo tree -i</code> to lookup reverse dependencies for specific packages (which crates are using which deps). For example, <code>cargo tree -i arrow:5.0.0-SNAPSHOT</code>.</p>
+<ul>
+<li><a href="https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/README.md">RustAnalyzer</a> - LSP-based plugin/server for IDE functionality in Sublime/VSCode/EMacs/etc</li>
+<li><a href="https://rust-lang.github.io/rustfmt/?version=v1.5.1&amp;search=">Configuring Rustfmt</a></li>
+<li><a href="https://godbolt.org">Godbolt</a> - A "compiler explorer", not Rust specific but neat to play with compiler settings and diff targets.</li>
+<li><a href="https://crates.io/crates/cargo-play">Cargo-play</a> - run Rust scripts without needing to set up a project
+<ul>
+<li>Also see <a href="https://github.com/reitermarkus/cargo-eval">cargo-eval</a> and <a href="https://github.com/stevedonovan/runner">runner</a> for diff ways of easily running scripts without projects</li>
+</ul>
+</li>
+</ul>
+<p>BTW for Rust 1.51+ you can speed up MacOS builds with this in your Cargo.toml (see the <a href="https://blog.rust-lang.org/2021/03/25/Rust-1.51.0.html">release notes</a>):</p>
+<pre><code class="language-toml">[profile.dev]
+split-debuginfo = "unpacked"
+</code></pre>
+<h2 id="testing-and-cicd"><a class="header" href="#testing-and-cicd">Testing and CI/CD</a></h2>
+<p>The two standard property testing crates are <a href="https://crates.io/crates/quickcheck">Quickcheck</a> and <a href="https://github.com/AltSysrq/proptest">proptest</a>.  Personally I prefer proptest due to much better control over input generation (without having to define your own type class).</p>
+<ul>
+<li><a href="https://kflansburg.com/posts/rust-continuous-delivery/">Rust Continuous Delivery</a> - hints on using Docker, caching deps, and automated cloud-based CI/CD workflows for Rust</li>
+<li><a href="https://nexte.st/index.html">Cargo-nextest</a> looks like a really good project to help with test organization, test CI, running tests faster, etc.</li>
+<li><a href="https://dsincl12.medium.com/speed-up-your-rust-compiler-macos-d9fbe0f32dbc">Faster Build Times on MacOS</a></li>
+<li><a href="https://www.lpalmieri.com/posts/fast-rust-docker-builds/">5x Faster Rust Docker Builds with cargo-chef</a> - you need this for faster Rust app deploys!</li>
+<li><a href="https://www.lpalmieri.com/posts/2020-09-27-zero-to-production-4-are-we-observable-yet/#5-12-cleaning-up-instrumentation-code-tracing-instrument">Are We Observable Yet?</a> - an introduction to Rust telemetry</li>
+<li><a href="https://github.com/rust-lang/miri">Miri</a> - can run binaries and test suites of cargo projects and detect certain classes of undefined behavior, including memory leaks!!</li>
+</ul>
+<h3 id="cross-compilation"><a class="header" href="#cross-compilation">Cross-compilation</a></h3>
+<p>A common concern - how do I build different versions of my Rust lib/app for say OSX and also Linux?</p>
+<ul>
+<li>Easiest way now seems to be to use <a href="https://github.com/rust-embedded/cross">cross</a> - I tried it and literally as easy as <code>cargo install cross</code> and <code>cross build --target ...</code> as long as you have Docker.
+<ul>
+<li>NOTE: crates with non-Rust code (eg jemalloc, mimalloc) often have trouble</li>
+</ul>
+</li>
+<li>Also see <a href="https://github.com/emk/rust-musl-builder">rust-musl-builder</a>, another Docker-based solution</li>
+<li>musl is the best target for Linux as it removes need for G/LIBC dependencies and versioning.  Musl creates a single static binary for super easy deploys.</li>
+<li>For automation, maybe better to create a single Docker image which combines <a href="https://hub.docker.com/r/multiarch/crossbuild/dockerfile">crossbuild</a> (which has a recipe for OSXCross + other targets) with a rustup container like <a href="https://hub.docker.com/r/abronan/rust-circleci">abronan/rust-circleci</a> which allows building both nightly and stable.  Use Docker <a href="https://stackoverflow.com/questions/39626579/is-there-a-way-to-combine-docker-images-into-1-container">multi-stage builds</a> to make combining multiple images easier</li>
+</ul>
+<p>Finally, the <a href="https://blog.rust-lang.org/2016/05/13/rustup.html">Taking Rust everywhere with Rustup</a> blog has good guide on how to use rustup to install cross toolchains, but the above steps to install OS specific linkers are still important.</p>
+<h2 id="performance-and-low-level-stuff"><a class="header" href="#performance-and-low-level-stuff">Performance and Low-Level Stuff</a></h2>
+<p>A big part of the appeal of Rust for me is super fast, SAFE, built in UTF8 string processing, access to detailed memory layout, things like SIMD.  Basically, to be able to idiomatically, safely, and beautifully (functionally?) do super fast and efficient data processing.</p>
+<ul>
+<li>
+<p><a href="https://deterministic.space/high-performance-rust.html">Cheap Tricks - Rust Performance</a> - set of quick Cargo settings to try</p>
+</li>
+<li>
+<p><a href="https://likebike.com/posts/How_To_Write_Fast_Rust_Code.html">How to Write Fast Rust Code</a> - really good guide</p>
+</li>
+<li>
+<p><a href="https://www.packtpub.com/application-development/rust-high-performance">High Performance Rust</a> - a book</p>
+</li>
+<li>
+<p><a href="http://lise-henry.github.io/articles/optimising_strings.html">Optimizing String Processing in Rust</a> - really useful stuff</p>
+</li>
+<li>
+<p><a href="http://troubles.md/posts/rust-optimization/#keep-as-much-as-possible-in-registers">Achieving warp speed with Rust</a> - great tips on performance optimization</p>
+</li>
+<li>
+<p><a href="https://medium.com/digitalfrontiers/rust-dynamic-dispatching-deep-dive-236a5896e49b">Deep Dive into Dynamic Dispatch</a> - great details and perf comparison</p>
+</li>
+<li>
+<p><a href="https://www.eventhelix.com/rust/">Rust to Assembly</a> - great series of blog posts detailing how various parts of Rust compile down to assembly</p>
+</li>
+<li>
+<p><a href="https://itnext.io/modern-storage-is-plenty-fast-it-is-the-apis-that-are-bad-6a68319fbc1a">Modern storage is plenty fast</a> - using a new Rust crate called <a href="https://crates.io/crates/glommio">glommio</a> one can achieve multi-GB per sec read throughputs from modern SSDs.  So maybe we don't need memory after all.</p>
+<ul>
+<li>Along the same lines, not Rust-specific but <a href="https://www.scylladb.com/2017/10/05/io-access-methods-scylla/">ScyllaDB and I/O Access Methods</a> - discussions of mmap vs AIO/DIO vs standard Linux I/O</li>
+<li><a href="https://itnext.io/direct-i-o-writes-the-best-way-to-improve-your-credit-score-bd6c19cdfe46">Direct I/O Writes</a> - why doing direct I/O writes may end up better than buffered</li>
+</ul>
+</li>
+<li>
+<p><a href="https://doc.rust-lang.org/reference/type-layout.html#representations">Representations</a> - super important to understand low-level memory layouts for structs.  C vs packed vs ....  including alignment issues.</p>
+</li>
+<li>
+<p>Precise memory layouts and <a href="https://stackoverflow.com/questions/26271151/precise-memory-layout-control-in-rust">how to dump out Rust struct memory layouts</a></p>
+<ul>
+<li>Or just use the <a href="https://crates.io/crates/memoffset">memoffset</a> crate</li>
+</ul>
+</li>
+<li>
+<p><a href="https://memflow.github.io/#/home">MemFlow</a> - framework to inspect machine memory.  Think about DMA/IO, debugger, or Plasma-type memory/DB applications.</p>
+</li>
+<li>
+<p>Rust uses system malloc by default. How to <a href="https://github.com/rust-lang/jemalloc">switch the default allocator</a>.</p>
+<ul>
+<li>Use <a href="https://crates.io/crates/jemallocator">jemallocator</a> and <a href="https://crates.io/crates/jemalloc-ctl">jemalloc-ctl</a> crates for stats, deep dives, etc.  Jemalloc from Facebook supposed to be fast.</li>
+<li>Also see <a href="https://crates.io/crates/mimalloc">MiMalloc</a> - a high perf allocator from Microsoft.  I got 2x improvement for JSON workloads!</li>
+<li>There are even <a href="https://crates.io/crates/crossbeam-epoch">epoch GCs</a> available</li>
+<li>Also look into the arena and <a href="https://crates.io/crates/typed-arena">typed_arena</a> crates... very cheap allocations within a region, then free entire region at once.</li>
+<li>Also see <a href="https://github.com/fitzgen/bumpalo">bumpalo</a> - bump allocator which includes custom versions of standard collections</li>
+</ul>
+</li>
+<li>
+<p>Watch out for dynamic dispatch (when you need to use <code>Box&lt;dyn MyTrait&gt;</code> etc).  One solution is to use <a href="https://docs.rs/enum_dispatch/0.2.1/enum_dispatch/index.html">enum_dispatch</a>.</p>
+<ul>
+<li>Related: <a href="https://docs.rs/auto_enums/0.7.1/auto_enums/index.html">auto_enum</a> - a way to return enums when you might need to return <code>impl A</code> for some trait A when you might be returning diff implementations</li>
+<li>Can also use <a href="https://crates.io/crates/ambassador">ambassador</a> - to delegate trait implementations</li>
+</ul>
+</li>
+</ul>
+<p>If small binary size is what you're after, check out <a href="https://github.com/johnthagen/min-sized-rust">Min-sized-Rust</a>.</p>
+<p>Rust nightly now has a super slick <a href="https://blog.rust-lang.org/inside-rust/2020/06/08/new-inline-asm.html">asm!</a> inline assembly feature.  The way that it integrates Rust variables/expressions with auto register assignment is super awesome.</p>
+<p>NOTE: simplest way to increase perf may be to enable certain CPU instructions: <code>set -x RUSTFLAGS "-C target-feature=+sse3,+sse4.2,+lzcnt,+avx,+avx2"</code></p>
+<p>NOTE2: <code>lazy_static</code> accesses are not cheap.  Don't use it in hot code paths.</p>
+<h3 id="perf-profiling"><a class="header" href="#perf-profiling">Perf profiling:</a></h3>
+<p>Note: this section is mostly about profiling tools -- detailed breakdowns of bottlenecks, as opposed to benchmarking (which is repeatable, systematic measurement).  The two benchmarking tools I recommend are <a href="https://github.com/bheisler/criterion.rs">criterion</a> and <a href="https://github.com/bheisler/iai">Iai</a> for benchmarking.</p>
+<p>NEW: I've created a Docker image for <a href="https://github.com/velvia/rust-perf-docker">Linux perf profiling</a>, super easy to use.  The best combo is cargo flamegraph followed by perf and asm analysis.</p>
+<ul>
+<li>
+<p><a href="https://github.com/ferrous-systems/cargo-flamegraph">cargo-flamegraph</a> -- this is now the easiest way to get a FlameGraph on OSX and profile your Rust binaries.  To make it work with bench and Criterion:</p>
+<ul>
+<li>First run <code>cargo bench</code> to build your bench executable</li>
+<li>If you haven't already, <code>cargo install flamegraph</code> (recommend at least v0.1.13)</li>
+<li><code>sudo flamegraph target/release/bench-aba573ea464f3f67 --profile-time 180 &lt;filter&gt; --bench</code> (replace bench-aba* with the name of your bench executable)
+<ul>
+<li>The <code>--profile-time</code> is needed for flamegraph to collect enough stats</li>
+</ul>
+</li>
+<li><code>open -a Safari flamegraph.svg</code></li>
+<li>NOTE: you need to turn on <code>debug = true</code> in release profile for symbols</li>
+<li>This method works better for apps than small benchmarks btw, as inlined methods won't show up in the graph.</li>
+</ul>
+</li>
+<li>
+<p><a href="http://carol-nichols.com/2015/12/09/rust-profiling-on-osx-cpu-time/">Rust Profiling with Instruments on OSX</a> - but apparently cannot export CSV to FlameGraph :(</p>
+<ul>
+<li>Note that you can now just install <a href="https://github.com/cmyr/cargo-instruments">cargo instruments</a></li>
+<li>Also useful for heap/memory analysis, including tracking retained vs transient allocations</li>
+</ul>
+</li>
+<li>
+<p><a href="https://blog.anp.lol/rust/2016/07/24/profiling-rust-perf-flamegraph/">Rust Performance: Perf and Flamegraph</a> - including finding hot assembly instructions</p>
+</li>
+<li>
+<p><a href="https://github.com/mstange/samply">samply</a> - used to be called perfrecord, Rust CPU CLI command profiler using Firefox as UI.  WIP.</p>
+</li>
+<li>
+<p><a href="https://github.com/bheisler/iai">Iai</a> - a one-shot Rust profiler that uses Valgrind underneath</p>
+</li>
+<li>
+<p><a href="https://easyperf.net/blog/2019/02/09/Top-Down-performance-analysis-methodology">Top-down Microarchitecture Analysis Method</a> - TMAM is a formal microprocessor perf analysis method from Intel, works with perf to find out what CPU-level bottlenecks are (mem IO? branch predictions? etc.)</p>
+</li>
+<li>
+<p><a href="http://carol-nichols.com/2017/04/20/rust-profiling-with-dtrace-on-osx/">Rust Profiling with DTrace and FlameGraphs on OSX</a> - probably the best bet (besides Instruments), can handle any native executable too</p>
+<ul>
+<li>From <code>@blaagh</code>: though the predicate should be <code>"/pid == $target/"</code> rather than using execname.</li>
+<li><a href="http://dtrace.org/guide/chp-profile.html">DTrace Guide</a> is probably pretty useful here</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/sharkdp/hyperfine/blob/master/README.md">Hyperfine</a> - Rust performnace benchmarking CLI</p>
+</li>
+<li>
+<p><a href="http://athemathmo.github.io/2016/09/14/tools-for-profiling-rust.html">Tools for Profiling Rust</a> - cpuprofiler might possibly work on OSX.  It does compile.  The cpuprofiler crate requires surrounding blocks of your code though.</p>
+</li>
+<li>
+<p><a href="https://beachape.com/blog/2016/11/02/rust-performance-testing-on-travis-ci/">Rust Performance Profiling on Travis CI</a></p>
+</li>
+<li>
+<p><a href="https://speakerdeck.com/stevej/improving-rust-performance-through-profiling-and-benchmarking?slide=81">Rust Profiling talk</a> - discusses both OSX and Linux, as well as Instruments and <a href="https://software.intel.com/en-us/vtune/choose-download">Intel VTune</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=hTHp0gjWMLQ">2017 RustConf - Improving Rust Performance through Profiling</a></p>
+</li>
+<li>
+<p><a href="https://github.com/llogiq/flamer">Flamer</a> - an alternative to generating FlameGraphs if one is willing to instrument code.  Warning: might require nightly Rust features.</p>
+</li>
+<li>
+<p><a href="https://github.com/kernelmachine/cargo-profiler">cargo-profiler</a> - only works in Linux :(</p>
+</li>
+<li>
+<p><a href="https://github.com/plasma-umass/coz">coz</a> and its Cargo plugin, <a href="https://github.com/alexcrichton/coz-rs">coz-rs</a>  -- "a new kind of profiler that unlocks optimization opportunities missed by traditional profilers. Coz employs a novel technique we call causal profiling that measures optimization potential"</p>
+</li>
+<li>
+<p><a href="https://nnethercote.github.io/perf-book/profiling.html">Rust Perf Book Profiling Page</a> - lots of good links</p>
+</li>
+</ul>
+<p><a href="https://github.com/gnzlbg/cargo-asm">cargo-asm</a> can dump out assembly or LLVM/IR output from a particular method.  I have found this useful for really low level perf analysis.  NOTE: if the method is generic, you need to give a "monomorphised" or filled out method.  Also, methods declared inline won't show up.</p>
+<ul>
+<li>What I like to do with asm output: check if rustc has inlined certain methods.  Also you can clearly see where dynamic dispatch happens and how complicated generated code seems.  More complicated code usually == slower.</li>
+<li><a href="https://www.llvm.org/docs/CommandGuide/llvm-mca.html">llvm-mca</a> - really detailed static analysis and runtime prediction at the machine instruction level</li>
+</ul>
+<p>What works on a Mac (but see cargo flamegraph above for easier way):</p>
+<pre><code class="language-sh">sudo dtrace -c './target/release/bench-2022f41cf9c87baf --profile-time 120' -o out.stacks -n 'profile-997 /pid == $target/ { @[ustack(100)] = count(); }'
+~/src/github/FlameGraph/stackcollapse.pl out.stacks | ~/src/github/FlameGraph/flamegraph.pl &gt;rust-bench.svg
+open -a Safari rust-bench.svg
+</code></pre>
+<p>where -c bench.... is the executable output of cargo bench.</p>
+<p>I was hoping <a href="https://github.com/cbourjau/cargo-with">cargo-with</a> would allow us to run above dtrace command with the name of the bench output, but alas it doesn't seem to work with bench.  (NOTE: they are working on a PR to fix this! :)</p>
+<p>NOTE: The built in <code>cargo bench</code> requires nightly Rust, it doesn't work on stable!  I highly recommend for benchmarking to use <a href="https://github.com/bheisler/criterion.rs">criterion</a>, which works on stable and has extra features such as gnuplot, parameterized benchmarking and run-to-run comparisons, as well as being able to run for longer time to work with profiling such as dtrace.</p>
+<h4 id="memoryheap-profiling"><a class="header" href="#memoryheap-profiling">Memory/Heap Profiling</a></h4>
+<p>The options I've tried out:</p>
+<ul>
+<li><a href="https://github.com/koute/bytehound">Bytehound</a> - really slick, but only works on Linux (using perf).
+<ul>
+<li>No need to modify apps, uses <code>LD_PRELOAD</code></li>
+<li>extracts full stack traces plus every alloc/dealloc, but claims it uses custom unwinding code that's much much faster</li>
+<li>tracks memory usage over time, as well as leaks explicitly, and memory fragmentation</li>
+<li>can give you <strong>flamegraphs</strong> of memory allocations or just leaks!</li>
+<li>Has a really nice UI/webapp that's bundled together</li>
+<li>Has many options to write out profiling data to different locations or over network</li>
+<li>Problems:
+<ul>
+<li>Creates giant profiling data files.  There are options to slim it down though, such as keeping only allocations that live longer than a particular threshold</li>
+<li>Bundled viewer does not seem to be able to load debug symbols when profiling data does not include them :(</li>
+<li>It seems the only way to really include full symbols in the profiling info is to run profiling with a debug build.  However this blows up the size of the data file even more...  hundreds of MBs from just a few minutes of run time!</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>jeprof: If you use <a href="https://github.com/tikv/jemallocator">jemallocator</a> and install jemalloc as your global allocator, you can get some profiling for free.
+<ul>
+<li><a href="https://github.com/jemalloc/jemalloc/wiki/Use-Case%3A-Heap-Profiling">Jemalloc Heap Profiling</a></li>
+<li><a href="https://www.igorkromin.net/index.php/2018/06/07/post-processing-jemalloc-jeprof-heap-dump-files-for-statistical-analysis/">How to parse jeprof text output</a></li>
+<li>Pros: Jemalloc profiling is sampling based and very lightweight.  It can be used in production with minimal perf impact.</li>
+<li>The profile files are also very small</li>
+<li>Cons: it's, like, really hard to use.  For example, enabling it via environment variable - the instructions are not very clear, and there is no way to write the files to anything other than the current directory
+<ul>
+<li>Runtime config: set both environment variables <code>MALLOC_CONF</code> and <code>_RJEM_MALLOC_CONF</code> (which one works depends on environment)</li>
+<li>Compile time config, for jemallocator users: <code>JEMALLOC_SYS_WITH_MALLOC_CONF</code></li>
+</ul>
+</li>
+<li>Con: The stats collected are about total memory allocated, with no differentiation for short/temporal vs long-lived allocations</li>
+<li>Con: It's not built for Rust and difficult to infer stacktraces. Many symbols are mangled.</li>
+<li>It is possible to do differential analysis: use one profile as a "base" and then diff vs other profiles.  However, the profile files use sequence numbers, so it's hard to tell which profile to use for what time.</li>
+<li>Also there is no way to sort the output and the options for simplifying the output don't work very well</li>
+</ul>
+</li>
+<li><a href="https://docs.rs/dhat/0.2.2/dhat/">dhat</a> - Swap out the global allocator, will profile your allocations &amp; max heap usage
+<ul>
+<li>One advantage DHAT has over jeprof/jemalloc is lifetime / allocation length information.  This can be used to figure out long-held things</li>
+<li>DHAT also tracks the entire call graph so it can produce a useful tree</li>
+<li>It's online viewer is also much easier to use than <code>jeprof</code></li>
+<li>Unfortunately DHAT tracks every allocation so it's not good for production use</li>
+<li>DHAT also crashes on some workloads.  This is really annoying.</li>
+</ul>
+</li>
+<li><a href="https://github.com/KDE/heaptrack">Heaptrack</a> and <a href="https://gist.github.com/HenningTimm/ab1e5c05867e9c528b38599693d70b35">working with Rust</a> works for Rust, but only on Linux.</li>
+</ul>
+<p>After the above frustrations and investigations, I decided to write my own custom memory profiler - <a href="https://github.com/velvia/ying-profiler">Ying</a> - a sampling profiler, built for rich Rust stack traces including inlined methods, which tracks retained memory and lifetimes.  Definitely experimental right now.</p>
+<ul>
+<li><a href="https://github.com/koute/memory-profiler">memory-profiler</a> - written in Rust by the Nokia team!</li>
+<li><a href="https://crates.io/crates/stats_alloc">stats_alloc</a> can dump out incremental stats about allocation.  Or just use <code>jemalloc-ctl</code>.</li>
+<li><a href="https://crates.io/crates/deepsize">deepsize</a> - macro to recursively find size of an object</li>
+<li><a href="https://github.com/paritytech/parity-common/tree/master/parity-util-mem">Parity-util-mem</a> - can find the size of collections as well?</li>
+<li><a href="https://rust-analyzer.github.io//blog/2020/12/04/measuring-memory-usage-in-rust.html">Measuring Memory Usage in Rust</a> - thoughts on working around the fact we don't have a GC to track deep memory usage</li>
+</ul>
+<h3 id="fast-string-parsing"><a class="header" href="#fast-string-parsing">Fast String Parsing</a></h3>
+<ul>
+<li>
+<p><a href="https://docs.rs/nom/4.1.1/nom/">nom</a> - a direct parser using macros, commonly accepted as fastest generic parser</p>
+</li>
+<li>
+<p><a href="https://pest.rs/#editor">pest</a> is a PEG parser using an external, easy to understand syntax file. Not quite as fast but might be easier to understand and debug.  There is also a <a href="https://pest.rs/book/intro.html">book</a>.</p>
+</li>
+<li>
+<p><a href="https://github.com/Marwes/combine">combine</a> is a parser combinator library, supposedly just as fast as nom, syntax seems slightly</p>
+</li>
+<li>
+<p><a href="https://github.com/rusticstuff/simdutf8">simdutf8</a> - SIMD lightning fast UTF-8 validation</p>
+</li>
+</ul>
+<h3 id="bitpacking-binary-structures-serialization"><a class="header" href="#bitpacking-binary-structures-serialization">Bitpacking, Binary Structures, Serialization</a></h3>
+<ul>
+<li><a href="https://crates.io/crates/bitpacking">bitpacking</a> - insanely fast integer bitpacking library</li>
+<li><a href="https://crates.io/crates/packed_struct">packed_struct</a> - bitfield packing/unpacking; can also pack arrays of bitfields; mixed endianness, etc.</li>
+<li><a href="https://crates.io/crates/rkyv">rkyv</a> - Zero-copy deserialization, for generic Rust structs, even trait objects. Uses relative pointers.</li>
+<li><a href="https://crates.io/crates/binary-layout">binary-layout</a> - "type-safe, inplace, zero-copy access to structured binary data" including open-ended byte arrays at the end</li>
+<li><a href="https://docs.rs/zerovec/latest/zerovec/#Performance">zerovec</a> - Clients upgrading to zerovec benefit from zero heap allocations when deserializing read-only data.</li>
+<li><a href="https://medium.com/tezedge/speeding-up-incoming-message-parsing-by-3-to-10-times-by-switching-from-serde-to-the-nom-library-a74b04391bb4">Speeding up incoming message parsing using nom</a> - a detailed guide to using nom for deserialization, much faster than Serde</li>
+</ul>
+<p>The ideal performance-wise is to not need serialization at all; ie be able to read directly from portions of a binary byte slice.  There are some libraries for doing this, such as flatbuffers, or <a href="https://heremaps.github.io/flatdata/">flatdata</a> for which there is a Rust crate; or Cap'n Proto.  However, there may be times when you want more control or things like Cap'n Proto are not good enough.</p>
+<p>How do we perform low-level byte/bit twiddling and precise memory access?  Unfortunately, all structs in Rust basically need to have known sizes. There's something called <a href="https://doc.rust-lang.org/nomicon/exotic-sizes.html">dynamically sized types</a> basically like slices where you can have the last element of a struct be an array of unknown size; however, they are virtually impossible to create and work with, and this only covers some cases anyhow.  So we will unfortunately need a combination of techniques.  In order of preference:</p>
+<ul>
+<li>Overall <a href="https://crates.io/crates/scroll">scroll</a> is the best general-purpose struct serialization crate; it helps with reading integers and other fields too, and takes care of endianness.  It generates pretty efficient code.  It is a bit of a pain working with numeric enums however.
+<ul>
+<li><a href="https://docs.rs/num_enum/0.5.0/num_enum/">num_enum</a> - a way to derive TryFrom for numeric enums helps a little bit.</li>
+</ul>
+</li>
+<li>I have found <a href="https://github.com/randomites/plain">plain</a> works really well.  Mark your structs with <code>#[repr(C)]</code>.  It only helps with size and alignment, not endianness - so maybe more for in-memory structures or when you are sure you don't need code to work across endianness platforms.  If your structures are not aligned then use <code>#[repr(C, packed)]</code> or <code>#[align(1)]</code>.</li>
+<li>Use a crate such as <a href="https://crates.io/crates/bytes">bytes</a> or <a href="https://crates.io/crates/scroll">scroll</a> to help extract and write structs and primitives to/from buffers. Might need extra copying though. Also see <a href="https://crates.io/crates/iobuf">iobuf</a></li>
+<li><a href="https://crates.io/crates/rel-ptr">rel-ptr</a> - small library for relative pointers/offsets, should be super useful for custom file formats and binary/persistent data structures</li>
+<li><a href="https://docs.rs/arrayref/0.3.5/arrayref/">arrayref</a> might help extract fixed size arrays from longer ones.</li>
+<li><a href="https://docs.rs/bytemuck/1.1.0/bytemuck/">bytemuck</a> for casts</li>
+<li>Also <a href="https://docs.rs/zerocopy/latest/zerocopy/">zerocopy</a> with <code>FromBytes</code> and <code>AsBytes</code> traits for easy transmuting</li>
+<li><a href="https://crates.io/crates/bitmatch">bitmatch</a> could be great for bitfield parsing
+<ul>
+<li>Also see <a href="https://docs.rs/zero/0.1.2/zero/">zero</a></li>
+</ul>
+</li>
+<li>Allocate a <code>Vec::&lt;u8&gt;</code> and <a href="https://stackoverflow.com/questions/25917260/getting-raw-bytes-from-packed-struct">transmute</a> specific portions to/from structs of known size, or convert pointers within regions back to references:</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let foobar: *mut Foobar = mybytes[..].as_ptr() as *mut Foobar;
+    let &amp;mut Foobar = (unsafe { foobar.as_ref() }).expect("Cannot convert foobar to ref");
+<span class="boring">}</span></code></pre></pre>
+<ul>
+<li>Or <a href="https://crates.io/crates/structview">structview</a> which offers types for unaligned integers etc.</li>
+<li>There are some DST crates worth checking out: <a href="https://crates.io/crates/slice-dst">slice-dst</a>, <a href="https://crates.io/crates/thin-dst">thin-dst</a></li>
+<li>As a last resort, work with <a href="https://doc.rust-lang.org/std/primitive.pointer.html">raw pointer</a> math using the add/sub/offset methods, but this is REALLY UNSAFE.</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let foobar: *mut Foobar = mybytes[..].as_ptr() as *mut Foobar;
+    unsafe {
+      (*foobar).foo = 17;
+      (*foobar).bar = -1;
+    }
+<span class="boring">}</span></code></pre></pre>
+<p>Want to zero memory quickly?  Use <a href="https://docs.rs/slice-fill/1.0.1/slice_fill/">slice_fill</a> for memset optimization, since there is no memory filling for slices in Rust yet.</p>
+<p>Also check out the crazy number of crates available under <a href="https://crates.io/search?q=compression&amp;sort=recent-downloads">compression</a> - including various interesting radix and trie data structures, and more compression algorithms that one has never heard of.</p>
+<h3 id="enums-thin-pointers-type-wrapping"><a class="header" href="#enums-thin-pointers-type-wrapping">Enums, Thin Pointers, Type Wrapping</a></h3>
+<p>A frequent problem, esp when working with data, is to have a "union" of different types.  Perhaps <code>Option</code> will suffice, but sometimes we need to wrap <code>Vec&lt;A&gt;</code> and <code>Vec&lt;B&gt;</code> together in the same type.  We don't want to just use <code>Box&lt;dyn MyTrait&gt;</code> as that allocates and results in dynamic dispatch.   Here are some crates and patterns that may help in working with enums, or alternatives:</p>
+<ul>
+<li><a href="https://docs.rs/enum_dispatch/0.2.1/enum_dispatch/index.html">enum_dispatch</a> - macro to implement the <code>dyn MyTrait</code> trait object pattern for enums, so we get fast static dispatch.  Basically implements traits for underlying types in enums</li>
+<li><a href="https://lib.rs/crates/enum_delegate">enum_delegate</a> is an alternative that works with associated types in traits - but not generics</li>
+<li><a href="https://docs.rs/strum/latest/strum/">strum</a> - derive strings and discriminant enums using macros</li>
+<li>You can use <a href="https://doc.rust-lang.org/std/mem/fn.discriminant.html"><code>std::mem::discriminant</code></a>, a built-in function, to find the numeric discriminant for an enum</li>
+<li>Also enum discriminants can be explicitly specified using <code>#[repr(..)]</code>, see <a href="https://users.rust-lang.org/t/inconsistencies-in-enum-discriminants/85968">here</a> - you can then transmute the enum into something explicit</li>
+</ul>
+<p>Some non-enum crates that can also help:</p>
+<ul>
+<li><a href="https://docs.rs/ptr-union/latest/ptr_union/index.html">ptr_union</a> - "Pointer union types the since of a pointer by storing the tag in the alignment bits" :)</li>
+<li><a href="https://crates.io/crates/erasable">erasable</a> - "Type-erased thin pointers" - need to see how this is different from <code>std::any::Any</code></li>
+</ul>
+<h3 id="simd"><a class="header" href="#simd">SIMD</a></h3>
+<p>There is this great article on <a href="https://raphlinus.github.io/rust/simd/2018/10/19/fearless-simd.html">Towards fearless SIMD</a>, about why SIMD is hard, and how to make it easier.   Along with pointers to many interesting crates doing SIMD.  (There is a built in crate, <code>std::simd</code> but it is really lacking) (However, <a href="https://crates.io/crates/packed_simd">packed_simd</a> will soon be merged into it)</p>
+<p>Another great article: <a href="https://medium.com/@razican/learning-simd-with-rust-by-finding-planets-b85ccfb724c3">learning simd with rust by finding planets</a> is great too. simd is really about parallelism.  it is better to do multiple operations in a parallel (vertical) fashion, vector on vector, than to do horizontal operations where the different components of a wide register depend on one another.</p>
+<ul>
+<li>
+<p><a href="https://crates.io/crates/ssimd">ssimd</a> - an effort to bring std::simd/packed_simd to Rust stable, with auto vectorization (meaning auto detect and implement code paths and fallbacks for when SIMD not available!)</p>
+</li>
+<li>
+<p><a href="https://github.com/AdamNiederer/faster">faster</a> - "SIMD for Humans" -- probably my favorite one, very high level translation of numeric map loops into SIMD</p>
+</li>
+<li>
+<p><a href="https://github.com/raphlinus/fearless_simd">fearless_simd</a>, the blog post author's crate.  Runtime CPU detection and use of the most optimal code, no need for unsafe, but only focused on f32.</p>
+</li>
+<li>
+<p><a href="https://github.com/jackmott/simdeez">SIMDeez</a> - abstracts intrinsic SIMD instructions over different instruction sets &amp; vector widths, runtime detection</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/simd_aligned">simd_aligned</a> and <a href="https://github.com/ralfbiedert/simd_aligned_rust">simd_aligned_rust</a> - work with SIMD and packed_simd using vectors which have guaranteed alignment</p>
+</li>
+<li>
+<p><a href="https://docs.rs/aligned/0.3.2/aligned/">aligned</a> - newtype with byte alignment, for stack or heap!</p>
+</li>
+<li>
+<p>https://www.rustsim.org/blog/2020/03/23/simd-aosoa-in-nalgebra/</p>
+</li>
+</ul>
+<p>NOTE: <code>shuffle</code> in <code>packed_simd</code> is not very fast.  Replace with native instructions if possible.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-learning-resources"><a class="header" href="#-learning-resources">🦀 Learning Resources</a></h1>
+<p>The first part of this list is a refined and personalized version of <a href="https://towardsdatascience.com/you-want-to-learn-rust-but-you-dont-know-where-to-start-fc826402d5ba">this one</a></p>
+<h3 id="books-1"><a class="header" href="#books-1">Books</a></h3>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+<a href="https://doc.rust-lang.org/book/">The Rust Book</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://learning.oreilly.com/library/view/programming-rust-2nd/9781492052586/">Programming Rust</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://gumroad.com/l/zero2prod?wanted=true">Zero to Prod</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://dhghomon.github.io/easy_rust/">Easy Rust</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://stevedonovan.github.io/rust-gentle-intro/readme.html#a-gentle-introduction-to-rust">Gentle Introduction To Rust</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://doc.rust-lang.org/rust-by-example/">Rust by Examples</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://doc.rust-lang.org/cargo/index.html">The Cargo Book</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://rust-cli.github.io/book/tutorial/index.html">CLI apps in Rust</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://rust-unofficial.github.io/too-many-lists/">Learning Rust With Entirely Too Many Linked Lists</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://zsiciarz.github.io/24daysofrust/index.html">24 Days of Rust</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://fasterthanli.me/articles/a-half-hour-to-learn-rust">Half-Hour to learn Rust</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://rust-lang.github.io/async-book/01_getting_started/01_chapter.html">Async Book</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://cfsamson.github.io/books-futures-explained/introduction.html">Futures in 200 Lines of Rust</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://sokoban.iolivia.me/">Sokoban Game Development</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://nostarch.com/rust-rustaceans">Rust for Rustaceans</a></li>
+</ul>
+<h3 id="interactive"><a class="header" href="#interactive">Interactive</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<a href="https://exercism.io/">Exercism</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://github.com/TonioGela/to-do-rust">Small Projects to learn Rust</a></li>
+<li><input disabled="" type="checkbox" checked=""/>
+<a href="https://github.com/rust-lang/rustlings">Rustlings!</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://learning-rust.github.io/">Learning Rust</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://tourofrust.com/">Tour of Rust</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://docs.microsoft.com/en-us/learn/paths/rust-first-steps/">First Steps with Rust</a></li>
+</ul>
+<h3 id="videos"><a class="header" href="#videos">Videos</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<a href="https://www.youtube.com/channel/UCpeX4D-ArTrsqvhLapAHprQ">Ryan Levick</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://www.youtube.com/channel/UCDmSWx6SK0zCU2NqPJ0VmDQ">David Pedersen</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://www.youtube.com/playlist?list=PLfllocyHVgsRwLkTAhG0E-2QxCf-ozBkk">Easy Rust</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://hello-rust.show/">Hello Rust</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://livevideo.manning.com/module/42_1_1/rust-in-motion/introduction-to-the-course-and-rust-syntax/introduction">Rust In Motion</a> (look <a href="https://twitter.com/Carols10cents/status/1177609934902562816?s=20">here</a> for a 50% discount)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://youtu.be/skos4B5x7qE">Without Boats: Zero-Cost Async IO</a></li>
+</ul>
+<h3 id="blogs-1"><a class="header" href="#blogs-1">Blogs</a></h3>
+<ul>
+<li><a href="https://www.geekabyte.io/2020/01/learning-rust-day-1.html">GeekAByte - Learn Rust</a></li>
+<li><a href="https://miguelraz.github.io/blog/juliatorust/">Julia To Rust</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="learning-rust"><a class="header" href="#learning-rust">Learning Rust</a></h1>
+<p><a href="https://www.rust-lang.org/learn/get-started">Getting Started + Installation</a> | <a href="https://cheats.rs/">Cheat Sheet</a></p>
+<h2 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h2>
+<ol>
+<li><a href="https://gist.github.com/noxasaxon/7bf5ebf930e281529161e51cd221cf8a#how-do-i-start-learning-rust">How Do I Start Learning Rust?!</a></li>
+<li><a href="https://gist.github.com/noxasaxon/7bf5ebf930e281529161e51cd221cf8a#ok-i-think-i-know-the-basics-but-how-do-i-get-better">Ok, I Think I Know The Basics But How Do I Get Better?!</a></li>
+<li><a href="https://gist.github.com/noxasaxon/7bf5ebf930e281529161e51cd221cf8a#rustlang-tooling">Rustlang Tooling</a></li>
+<li><a href="https://gist.github.com/noxasaxon/7bf5ebf930e281529161e51cd221cf8a#helpful-references-throughout-your-journey">Helpful References Throughout Your Journey</a></li>
+<li><a href="https://gist.github.com/noxasaxon/7bf5ebf930e281529161e51cd221cf8a#the-rust-community">The Rust Community</a></li>
+<li><a href="https://gist.github.com/noxasaxon/7bf5ebf930e281529161e51cd221cf8a#recommended-but-not-free-books--courses">Recommended (but not free) Books &amp; Courses</a></li>
+</ol>
+<h2 id="how-do-i-start-learning-rust"><a class="header" href="#how-do-i-start-learning-rust">How Do I Start Learning Rust?!</a></h2>
+<h3 id="by-reading"><a class="header" href="#by-reading">by Reading</a></h3>
+<ul>
+<li><a href="https://doc.rust-lang.org/book/"><strong>The Book</strong></a>: start reading now, read it whenever you can, and don't worry if it takes a long time to get through. You will reference it for most of your time using Rust. or try the <a href="https://rust-book.cs.brown.edu/experiment-intro.html">Rust Book with Quizzes</a>
+<blockquote>
+<p>Affectionately nicknamed “the book,” The Rust Programming Language will give you an overview of the language from first principles. You’ll build a few projects along the way, and by the end, you’ll have a solid grasp of the language.</p>
+</blockquote>
+</li>
+<li><a href="https://doc.rust-lang.org/stable/rust-by-example/index.html"><strong>Rust By Example</strong></a>: like 'The Book', with less docs and more sample code
+<blockquote>
+<p>If reading multiple hundreds of pages about a language isn’t your style, then Rust By Example has you covered. While the book talks about code with a lot of words, RBE shows off a bunch of code, and keeps the talking to a minimum. It also includes exercises!"</p>
+</blockquote>
+</li>
+<li>(Blog) <a href="https://kerkour.com/rust-mental-models">Mental Models for Learning Rust. (<code>kerkour</code>)</a></li>
+<li>(Blog) <a href="https://fasterthanli.me/articles/a-half-hour-to-learn-rust">A Half Hour to Learn Rust. (<code>fasterthanlime</code>)</a></li>
+<li>(Blog Series) <a href="http://cliffle.com/p/dangerust/">Learn Rust the Dangerous Way (<code>cliffle</code>)</a> "Rust features in context for low-level C programmers"
+<blockquote>
+<p>Existing Rust tutorials are great, but they focus on safe features. This companion tutorial takes an unsafe-first approach that may be more appealing for low-level systems programmers like me.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="by-watching"><a class="header" href="#by-watching">by Watching</a></h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=ygL_xcavzQ4&amp;t=2s">"Learn Rust in One Video"</a> : highly rated video for learning rust concepts from scratch.</li>
+<li><a href="https://www.youtube.com/watch?v=5QsEuoIt7JQ">"Going through the Rust Programming Book Live!"</a></li>
+</ul>
+<h3 id="by-doing"><a class="header" href="#by-doing">by Doing</a></h3>
+<ul>
+<li><a href="https://tourofrust.com/">Tour of Rust</a>: Step-by-step interactive walkthrough of Rust, all in your browser.</li>
+<li><a href="https://github.com/rust-lang/rustlings"><strong>Rustlings</strong></a>: Rust by Example -style exercises you complete via your own local environment
+<blockquote>
+<p>Alternatively, Rustlings guides you through downloading and setting up the Rust toolchain, and teaches you the basics of reading and writing Rust syntax, on the command line. It's an alternative to Rust by Example that works with your own environment.</p>
+</blockquote>
+</li>
+<li><a href="https://exercism.org"><strong>Exercism.org</strong></a>: Work through examples in order from "hello world!" to advanced concepts like Doubly-linked lists. Do work in the browser or via your local environment using the exercism CLI, with progress reflected in the web app. Get mentorship and guidance from real people.
+<blockquote>
+<p>We’re building a place where anyone can learn and master programming for free, without ever feeling lost or stupid. We're here to help everyone get really good at programming, regardless of their background. We want to share our love of programming, and help people upskill as part of their upward social mobility.</p>
+</blockquote>
+</li>
+<li><a href="https://google.github.io/comprehensive-rust/">Comprehensive Rust</a>: From the Google Android team
+<blockquote>
+<p>This is a four day Rust course developed by the Android team. The course covers the full spectrum of Rust, from basic syntax to advanced topics like generics and error handling. It also includes Android-specific content on the last day.
+The goal of the course is to teach you Rust. We assume you don’t know anything about Rust and hope to:
+Give you a comprehensive understanding of the Rust syntax and language.
+Enable you to modify existing programs and write new programs in Rust.
+Show you common Rust idioms.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="ok-i-think-i-know-the-basics-but-how-do-i-get-better"><a class="header" href="#ok-i-think-i-know-the-basics-but-how-do-i-get-better">Ok, I Think I Know The Basics But How Do I Get Better?!</a></h2>
+<h3 id="by-reading-1"><a class="header" href="#by-reading-1">by Reading</a></h3>
+<ul>
+<li><a href="http://cliffle.com/blog/rust-typestate/">The 'Typestate Pattern' in Rust (<code>cliffle</code>)</a></li>
+<li><a href="https://rust-unofficial.github.io/patterns/">Rust Design Patterns</a></li>
+<li>Design Patterns, in Rust (<code>refactoring.guru</code>)<a href="https://refactoring.guru/design-patterns/rust">Website</a> | <a href="https://github.com/fadeevab/design-patterns-rust">Repo</a></li>
+<li><a href="https://www.reddit.com/r/rust/comments/v4dnaj/twitter_thread_with_trivia_about_rust_types/">Rust Types Trivia (<code>jonhoo</code>)</a></li>
+<li><a href="http://cliffle.com/blog/not-thread-safe/">Safely Writing Code That Isn't Thread Safe (<code>cliffle</code>)</a></li>
+<li><a href="https://blog.yoshuawuyts.com/futures-concurrency-3/">Futures Concurrency III: (avoiding) <code>Select!</code> in Async Code</a></li>
+</ul>
+<h3 id="by-watching-1"><a class="header" href="#by-watching-1">by Watching</a></h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=rAl-9HwD858&amp;list=PLqbS7AVVErFiWDOAVrPt7aYmnuuOLYvOa">Crust of Rust (series) <code>jonhoo</code></a></li>
+</ul>
+<h3 id="by-doing-1"><a class="header" href="#by-doing-1">by Doing</a></h3>
+<ul>
+<li><a href="https://github.com/mgattozzi/whorl"><code>whorl</code></a>
+<blockquote>
+<p>whorl was created to teach you how async executors work in Rust. It is not the fastest executor nor is it's API perfect, but it will teach you about them and how they work and where to get started if you wanted to make your own.</p>
+</blockquote>
+</li>
+<li><a href="https://github.com/pingcap/talent-plan/#series-2-rust-programming">TP-201: Practical Networked Applications in Rust</a>
+<blockquote>
+<p>A series of projects that incrementally develop a single Rust project from the ground up into a high-performance,</p>
+</blockquote>
+</li>
+<li>https://github.com/dpc/sniper
+<blockquote>
+<p>Educational Rust implemenation of Auction Sniper from Growing Object-Oriented Software, Guided By Tests
+networked, parallel and asynchronous key/value store. Along the way various real-world Rust development subject matter are explored and discussed.</p>
+</blockquote>
+</li>
+<li><a href="https://blog.tempus-ex.com/hello-video-codec/">Learn Video Codecs by Implementing one in 100 lines of Rust</a></li>
+</ul>
+<h2 id="rustlang-tooling"><a class="header" href="#rustlang-tooling">Rustlang Tooling</a></h2>
+<ul>
+<li><strong><a href="https://rust-analyzer.github.io/manual.html#installation">Rust-Analyzer</a></strong>: An incredible IDE plugin for the rust language. plugin links: <a href="https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer">vscode</a>, <a href="https://github.com/rust-lang/rust.vim">vim</a></li>
+<li><a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021">The Rust Playground: run and share rust snippets in the browser</a></li>
+</ul>
+<h2 id="helpful-references-throughout-your-journey"><a class="header" href="#helpful-references-throughout-your-journey">Helpful References Throughout Your Journey</a></h2>
+<ul>
+<li><a href="https://doc.rust-lang.org/book/"><strong>The Book</strong></a></li>
+<li><a href="https://rust-unofficial.github.io/patterns/">Rust Design Patterns</a></li>
+<li><a href="https://cheats.rs">Rust Cheat Sheet</a></li>
+</ul>
+<h2 id="the-rust-community"><a class="header" href="#the-rust-community">The Rust Community</a></h2>
+<ul>
+<li><a href="https://www.reddit.com/r/rust/">Rust subreddit</a></li>
+<li><a href="https://users.rust-lang.org/">Rust community forum</a></li>
+<li><a href="https://discord.gg/rust-lang">Rust Community Discord</a></li>
+</ul>
+<h2 id="recommended-but-not-free-books--courses"><a class="header" href="#recommended-but-not-free-books--courses">Recommended (but not free) Books &amp; Courses</a></h2>
+<h3 id="beginner"><a class="header" href="#beginner">Beginner</a></h3>
+<ul>
+<li>📘 <a href="https://www.oreilly.com/library/view/beginning-rust-from/9781484234686/">Beginning Rust From Novice to Professional (O'Reilly)</a></li>
+<li>👩‍🎓 <a href="https://www.rustadventure.dev/">Rust Adventure <code>chrisbiscardi</code></a></li>
+<li>📘/👩‍🎓 <a href="https://www.manning.com/books/learn-rust-in-a-month-of-lunches">Learn Rust in a Month of Lunches (Manning, Macleod)</a></li>
+<li>📘 <a href="https://www.zero2prod.com/">Zero to Production in Rust <code>luca palmieri</code></a></li>
+<li>📘/👩‍🎓 ~$30 - <a href="https://www.manning.com/livevideo/rust-in-motion">Rust In Motion (Manning)</a>: From creators of The Book, a video walkthrough  + interactive transcript for BRAND NEW Rustaceans that goes over critical concepts</li>
+<li>👩‍🎓 $129 - <a href="https://rustforjs.dev/">Rust for Javascript Developers</a></li>
+</ul>
+<h3 id="intermediate"><a class="header" href="#intermediate">Intermediate</a></h3>
+<ul>
+<li>📘 <a href="https://www.oreilly.com/library/view/programming-rust-2nd/9781492052586/">Programming Rust (O'Reilly)</a></li>
+<li>📘 ~$35 - <a href="https://www.manning.com/books/rust-in-action">Rust In Action</a></li>
+<li>📘 ~$30 - <a href="https://nostarch.com/rust-rustaceans">Rust for Rustaceans (nostarch press)</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-libraries"><a class="header" href="#-libraries">🦀 Libraries</a></h1>
+<h3 id="gui"><a class="header" href="#gui">GUI</a></h3>
+<p>Check <a href="rust/">Are We Gui Yet?</a></p>
+<ul>
+<li><a href="https://tauri.studio/en/">Tauri</a></li>
+<li><a href="https://github.com/linebender/druid">Druid</a></li>
+</ul>
+<h3 id="serialization"><a class="header" href="#serialization">Serialization</a></h3>
+<p>Read <a href="https://blog.logrocket.com/rust-serialization-whats-ready-for-production-today/">here</a> for production ready stuff</p>
+<ul>
+<li><a href="https://github.com/djc/askama">Askama</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-command-line-tools"><a class="header" href="#-command-line-tools">🦀 Command Line Tools</a></h1>
+<p>Read <a href="https://zaiste.net/posts/shell-commands-rust/">here</a> for a bootstrap or <a href="https://dev.to/22mahmoud/my-terminal-became-more-rusty-4g8l">Rusty Terminal</a></p>
+<ul>
+<li><a href="https://www.getzola.org/">Zola</a> for blog generation</li>
+<li><a href="https://github.com/casey/just">Just</a></li>
+<li><a href="https://zellij.dev/news/beta/">Zellij</a></li>
+<li><a href="https://github.com/Svetlitski/fcp">Fcp</a></li>
+<li><a href="https://github.com/ibraheemdev/modern-unix">Modern Unix</a></li>
+<li><a href="https://github.com/chrisvest/xxv">XXV</a></li>
+<li><a href="https://github.com/ogham/exa">Exa</a> replacement for ls</li>
+<li><a href="https://github.com/chmln/sd">sd</a> sed alternative</li>
+<li><a href="https://github.com/sharkdp/hexyl">hexyl</a> command-line hex viewer</li>
+<li><a href="https://github.com/sharkdp/fd">fd</a>  fast and user-friendly alternative to 'find'</li>
+<li><a href="https://github.com/sayanarijit/xplr">xplr</a> file tree navigation (to be tested)</li>
+<li><a href="https://github.com/BurntSushi/ripgrep">ripgrep</a></li>
+<li><a href="https://github.com/rust-lang/mdBook">mdbook</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-various"><a class="header" href="#-various">🦀 Various</a></h1>
+<h3 id="blogs-2"><a class="header" href="#blogs-2">Blogs</a></h3>
+<ul>
+<li><a href="https://darkcoding.net/">Dark Coding - Interesting Blog</a></li>
+<li><a href="https://www.lpalmieri.com/">Luca Palmieri</a></li>
+<li><a href="https://www.fpcomplete.com/tags/rust/">FpComplete Rust</a></li>
+</ul>
+<h3 id="other"><a class="header" href="#other">Other</a></h3>
+<ul>
+<li><a href="https://matklad.github.io/2023/01/26/rusts-ugly-syntax.html">Ugly Syntax</a></li>
+<li><a href="https://github.com/flamegraph-rs/flamegraph">Flamegraph rs</a></li>
+<li><a href="https://dev.to/aviillouz/writing-a-lambda-with-rust-using-aws-lambda-rust-runtime-and-aws-sdk-rust-1aln">Aws Lambda with Rust</a></li>
+<li><a href="https://dev.to/somedood/optimizing-immutable-strings-in-rust-2ahj#fn2">Optimizing Strings</a></li>
+<li><a href="https://ryhl.io/blog/async-what-is-blocking/">Async in Rust</a></li>
+<li><a href="https://stackoverflow.com/questions/57686549/cannot-borrow-as-mutable-in-a-loop-when-calling-a-closure-that-borrows-as-immuta">Cannot borrow as mutable in a loop when calling a closure that borrows as immutable?</a></li>
+<li><a href="https://cprimozic.net/blog/speeding-up-webcola-with-webassembly/#avoiding-expensive-f32is_finite-call">Speeding up Graph with Rust and WASM</a></li>
+<li><a href="https://github.com/johnthagen/min-sized-rust">How to minify a binary</a></li>
+<li><a href="https://blog.yoshuawuyts.com/error-handling-survey/">Error Handling Survey</a></li>
+<li><a href="https://www.fpcomplete.com/blog/collect-rust-traverse-haskell-scala/">Traverse</a></li>
+<li><a href="https://bodil.lol/parser-combinators/">Parser Combinators</a></li>
+<li><a href="https://kerkour.com/blog/rust-for-web-development-2-years-later/">Rust for Web Dev</a></li>
+<li><a href="https://docs.google.com/document/d/1P5i5AdnnJ7jTpxBJ6vrNGz-yGIT3zl68a94YZKuQovg/edit#">TrueLayer Exercize</a></li>
+<li><a href="https://github.com/emilk/egui">Rust/Egui</a></li>
+<li><a href="https://github.com/cargo-generate/cargo-generate">Cargo Generate</a></li>
+<li><a href="https://rust-unofficial.github.io/patterns/">Rust Design Patterns</a></li>
+<li><a href="https://shaneutt.com/blog/rust-fast-small-docker-image-builds/">Small Docker Rust</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="command-line-tools-vim-and-various"><a class="header" href="#command-line-tools-vim-and-various">Command line tools, vim and various</a></h1>
+<h2 id="speed-up-zsh"><a class="header" href="#speed-up-zsh">Speed up zsh</a></h2>
+<ul>
+<li>https://registerspill.thorstenball.com/p/how-fast-is-your-shell</li>
+<li>https://htr3n.github.io/2018/07/faster-zsh/#macos-optimisations</li>
+<li>https://gist.github.com/ctechols/ca1035271ad134841284</li>
+<li>https://blog.jonlu.ca/posts/speeding-up-zsh</li>
+<li>https://github.com/htr3n/zsh-config/blob/master/zlogin</li>
+<li>https://askubuntu.com/questions/438150/why-are-scripts-in-etc-profile-d-being-ignored-system-wide-bash-aliases/438170#438170</li>
+<li>https://askubuntu.com/questions/879364/differentiate-interactive-login-and-non-interactive-non-login-shell/879400#879400</li>
+<li>https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html</li>
+<li>https://linux.die.net/man/1/zshcontrib</li>
+</ul>
+<h2 id="split-it-in-to-categories"><a class="header" href="#split-it-in-to-categories">Split it in to categories!</a></h2>
+<ul>
+<li><a href="https://themouseless.dev">Mouseless.dev</a></li>
+<li><a href="https://www.tweag.io/blog/2020-05-25-flakes/">Nix Flakes</a></li>
+<li><a href="https://carbon.now.sh/">Carbon.sh</a></li>
+<li><a href="https://fishshell.com/docs/current/index.html#">Fish Shell</a></li>
+<li><a href="https://gist.github.com/zmre/b5e23a6ac1be92ce4f90390940d7f03a">SKHD configuration</a></li>
+<li><a href="https://crispgm.com/page/neovim-is-overpowering.html">NeoVim is Overpowering</a></li>
+<li><a href="https://explainshell.com/">Explain Shell</a></li>
+<li><a href="https://terminalsare.sexy/">Terminals Are Sexy</a></li>
+<li><a href="https://terminal.sexy/">Terminal.Sexy</a></li>
+<li><a href="https://dev.to/deepu105/my-beautiful-linux-development-environment-2afc">Beautiful Linux Environment</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Box-drawing_character">Box Drawing Characters</a></li>
+<li><a href="https://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">Learn Vim</a></li>
+<li><a href="https://themes.vscode.one/your-themes/">VSCode Theme Creator</a></li>
+<li><a href="https://mrigank11.github.io/2018/03/zsh-auto-completion/">ZSH Autocomplete</a></li>
+<li><a href="https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org">ZSH Autocomplete 2</a></li>
+<li><a href="https://christine.website/blog/nixos-desktop-flow-2020-04-25">How does NixOs work</a></li>
+<li><a href="http://app.programmingfonts.org/">Programming Fonts Tester</a></li>
+<li><a href="http://mathew-kurian.github.io/CharacterMap/">CharMap</a></li>
+<li><a href="http://david.rothlis.net/emacs/howtolearn.html">How to learn Emacs</a></li>
+<li><a href="https://statico.github.io/vim3.html">Vim After 15 Years</a></li>
+<li><a href="https://blog.dnmfarrell.com/post/modulinos-in-bash/">Modulinos in Bash</a></li>
+<li><a href="https://mywiki.wooledge.org/BashPitfalls">Bash Pitfalls</a></li>
+<li><a href="https://hurl.dev/">Hurl</a></li>
+<li><a href="https://github.com/d0c-s4vage/lookatme/issues">LookAtMe</a></li>
+<li><a href="https://nts.strzibny.name/ruby-for-ebook-publishing/">Ruby for ebook</a></li>
+<li><a href="https://htr3n.github.io/2018/07/faster-zsh/">Zsh Profiling</a></li>
+<li><a href="https://mywiki.wooledge.org/BashFAQ/066">Bash</a></li>
+<li><a href="https://asciidoctor.org/">Ascii Doctor</a></li>
+<li><a href="https://rclone.org/docs/">Rclone</a></li>
+<li><a href="https://graphviz.org/">GraphViz</a></li>
+<li><a href="https://www.golinuxcloud.com/bash-getopts">getopts</a></li>
+</ul>
+<h2 id="keybindings-for-terminal"><a class="header" href="#keybindings-for-terminal">Keybindings for terminal</a></h2>
+<p>Open the iTerm preferences <code>⌘+</code>, and navigate to the Profiles tab (the Keys tab can be used, but adding keybinding to your profile allows you to save your profile and sync it to multiple computers) and keys sub-tab and enter the following:</p>
+<h3 id="delete-all-characters-left-of-the-cursor"><a class="header" href="#delete-all-characters-left-of-the-cursor">Delete all characters left of the cursor</a></h3>
+<p><code>⌘+←Delete</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x18 0x7f</code> – Less compatible, doesn't work in node and won't work in zsh by default, see below to fix zsh (bash/irb/pry should be fine), performs desired functionality when it does work.</li>
+<li><code>0x15</code> – More compatible, but typical functionality is to delete the entire line rather than just the characters to the left of the cursor.</li>
+</ul>
+<h3 id="delete-all-characters-right-of-the-cursor"><a class="header" href="#delete-all-characters-right-of-the-cursor">Delete all characters right of the cursor</a></h3>
+<p><code>⌘+fn+←Delete</code> or <code>⌘+Delete→</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x0b</code></li>
+</ul>
+<h3 id="delete-one-word-to-left-of-cursor"><a class="header" href="#delete-one-word-to-left-of-cursor">Delete one word to left of cursor</a></h3>
+<p><code>⌥+←Delete</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x01b 0x08</code></li>
+</ul>
+<h3 id="delete-one-word-to-right-of-cursor"><a class="header" href="#delete-one-word-to-right-of-cursor">Delete one word to right of cursor</a></h3>
+<p><code>⌥+fn←Delete</code> or <code>⌥+Delete→</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x01b 0x64</code></li>
+</ul>
+<h3 id="move-cursor-to-the-front-of-line"><a class="header" href="#move-cursor-to-the-front-of-line">Move cursor to the front of line</a></h3>
+<p><code>⌘+←</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x01</code></li>
+</ul>
+<h3 id="move-cursor-to-the-end-of-line"><a class="header" href="#move-cursor-to-the-end-of-line">Move cursor to the end of line</a></h3>
+<p><code>⌘+→</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x05</code></li>
+</ul>
+<h3 id="move-cursor-one-word-left"><a class="header" href="#move-cursor-one-word-left">Move cursor one word left</a></h3>
+<p><code>⌥+←</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x1b 0x62</code></li>
+</ul>
+<h3 id="move-cursor-one-word-right"><a class="header" href="#move-cursor-one-word-right">Move cursor one word right</a></h3>
+<p><code>⌥+→</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x1b 0x66</code></li>
+</ul>
+<h3 id="undo"><a class="header" href="#undo">Undo</a></h3>
+<p><code>⌘+z</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x1f</code></li>
+</ul>
+<h3 id="redo"><a class="header" href="#redo">Redo</a></h3>
+<p>Typically not bound in bash, zsh or readline, so we can set it to a unused hexcode which we can then fix in zsh.</p>
+<p><code>⇧+⌘+Z</code> or <code>⌘+y</code> Send Hex Codes:</p>
+<ul>
+<li><code>0x18 0x1f</code></li>
+</ul>
+<p><em>Stolen from: http://stackoverflow.com/questions/6205157/iterm2-how-to-get-jump-to-beginning-end-of-line-in-bash-shell#answer-29403520</em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lfcs"><a class="header" href="#lfcs">LFCS</a></h1>
+<ul>
+<li><a href="https://github.com/simonesavi/lfcs">Notes from Simone Savi</a> (import those!)</li>
+<li><a href="https://github.com/Bes0n/LFCS">Notes from BesOn</a> (import these as well)</li>
+<li><a href="https://medium.com/@obohovyk/how-to-prepare-and-pass-linux-foundation-certified-system-administrator-lfcs-exam-bd4cad4f6c64">How to prepare and pass LFCS</a></li>
+<li><a href="https://www.udemy.com/course/lfcs-linux-foundation-system-administrator-practice-test">Udemy Fac-Simile Tests</a></li>
+<li><a href="https://ozguryarikkas.medium.com/lfcs-linux-foundation-system-administrator-exam-study-guide-with-exercises-part-1-d9ddc9efc39f">Some exercisez solved</a></li>
+<li><a href="https://linuxconfig.org/how-to-create-systemd-service-unit-in-linux">How to create a systemd unit</a></li>
+<li><a href="https://www.tecmint.com/sed-command-to-create-edit-and-manipulate-files-in-linux/">Tecmint series about LFCS</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="various"><a class="header" href="#various">Various</a></h1>
+<ul>
+<li><a href="https://nakedeb.arpinux.org/index-en.html">Slim Linux: Naked Deb</a></li>
+<li><a href="https://codingkaiser.blog/2021/07/17/create-your-own-system-calls%e2%80%8a-%e2%80%8aprocess-weights/">Modifying the Linux Kernel</a></li>
+<li><a href="https://dietpi.com/">DietPi (Minimal OS for Raspberry)</a></li>
+<li><a href="https://rachelbythebay.com/w/2021/10/05/cmd/">Read it and toss it</a></li>
+<li><a href="https://waydro.id/">Android Containers</a></li>
+<li><a href="https://batocera.org/">Batocera Linux</a></li>
+<li><a href="https://www.losant.com/blog/getting-started-with-the-raspberry-pi-zero-w-without-a-monitor">Pi Zero w/o a screen</a></li>
+<li><a href="https://www.youtube.com/watch?v=FhwsfH2TpFA&amp;list=PLLKxUydDyo_5uxdGnnBYixfG4yaeAl5Rk&amp;index=116">Terminal Password Manager</a></li>
+</ul>
+<h2 id="docker"><a class="header" href="#docker">Docker</a></h2>
+<ul>
+<li><a href="https://docker-curriculum.com/">Docker Curriculum</a></li>
+<li><a href="https://dev.to/mrbrazel/docker-image-size-reduction-220a">Docker Image Reduction</a></li>
+<li><a href="https://contains.dev/">Contains.dev</a></li>
+</ul>
+<h2 id="linux-kernels-low-level"><a class="header" href="#linux-kernels-low-level">Linux, Kernels, Low-Level</a></h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/1216267/ab-program-freezes-after-lots-of-requests-why">Why AB freezes</a></li>
+<li><a href="https://dev.to/abregman/collection-of-linux-resources-3nhk">Linux Studying Resources</a></li>
+<li><a href="https://devopsdirective.com/posts/2021/04/tiny-container-image/">6kb WebServer</a></li>
+<li><a href="https://justine.lol/cosmopolitan/index.html">Build-once run-anywhere C library</a></li>
+<li><a href="http://www.buildyourownlinux.com/">Build Your Own Linux</a></li>
+<li><a href="https://sysdig.com/blog/fascinating-world-linux-system-calls/">The Fascinating World of Linux System Calls</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF Format</a></li>
+</ul>
+<h2 id="security"><a class="header" href="#security">Security</a></h2>
+<ul>
+<li><a href="https://victoria.dev/blog/your-cybersecurity-starter-pack/">Cyber Security</a></li>
+<li><a href="http://blog.wesleyac.com/posts/elliptic-curves">Elliptic Curve Cryptography for Beginners</a></li>
+<li><a href="https://eff-certbot.readthedocs.io/en/stable/using.html#manual">Certbot</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-setup-a-server-as-a-time-machine-backup"><a class="header" href="#how-to-setup-a-server-as-a-time-machine-backup">How to setup a server as a time-machine backup</a></h1>
+<h3 id="get-a-static-ip-in-your-network"><a class="header" href="#get-a-static-ip-in-your-network">Get a static IP in your network</a></h3>
+<p><code>192.168.0.99</code> will be your static ip, while <code>192.168.0.1</code> is your home router ip.</p>
+<pre><code>$ sudo nmcli connection show
+NAME                UUID                                  TYPE      DEVICE 
+Wired connection 1  91d78f79-c7cf-32fc-8a91-bc3d587a2461  ethernet  enp0s3 
+virbr0              b5402c70-eb3d-4a45-a7ad-43e1652798b1  bridge    virbr0
+</code></pre>
+<pre><code>$ sudo nmcli connection modify 91d78f79-c7cf-32fc-8a91-bc3d587a2461 IPv4.method  manual
+$ sudo nmcli connection modify 91d78f79-c7cf-32fc-8a91-bc3d587a2461 IPv4.address 192.168.0.99/24
+$ sudo nmcli connection modify 91d78f79-c7cf-32fc-8a91-bc3d587a2461 IPv4.gateway 192.168.0.1
+$ sudo nmcli connection modify 91d78f79-c7cf-32fc-8a91-bc3d587a2461 IPv4.dns     192.168.0.1
+</code></pre>
+<pre><code>$ sudo nmcli connection down 91d78f79-c7cf-32fc-8a91-bc3d587a2461
+$ sudo nmcli connection up 91d78f79-c7cf-32fc-8a91-bc3d587a2461
+</code></pre>
+<pre><code>$ ping www.google.com
+</code></pre>
+<h3 id="install-netatalk-and-avahi"><a class="header" href="#install-netatalk-and-avahi">Install Netatalk and Avahi</a></h3>
+<pre><code>$ dnf install -y netatalk avahi
+</code></pre>
+<p>Assign timemachine to the right user</p>
+<pre><code>$ chown timemachine:timemachine /timemachine
+</code></pre>
+<pre><code>$ vi /etc/netatalk/afp.conf
+[Name of the Time Machine Volume in Time Machine]
+path = /timemachine
+time machine = yes
+valid users = timemachine // assuming this is you user
+</code></pre>
+<p>You can repeat the configuration up here for multiple volumes</p>
+<pre><code>$ systemctl enable --now netatalk avahi-daemon
+</code></pre>
+<h3 id="add-firewall-rules"><a class="header" href="#add-firewall-rules">Add firewall rules</a></h3>
+<pre><code>$ firewall-cmd --permanent --add-port={548,5353,49152,52883}/{tcp,udp}
+$ firewall-cmd --reload
+</code></pre>
+<h3 id="prevent-lid-turning-off-the-server"><a class="header" href="#prevent-lid-turning-off-the-server">Prevent lid turning off the server</a></h3>
+<pre><code>$ sudo vi /etc/systemd/logind.conf
+HandleLidSwitch=ignore
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="low-level-stuff--assembly"><a class="header" href="#low-level-stuff--assembly">Low level stuff + Assembly</a></h1>
+<p>https://dev.to/frosnerd/writing-my-own-boot-loader-3mld</p>
+<p>https://dev.to/visheshpatel/how-c-program-stored-in-ram-memory-3773</p>
+<p>https://dev.to/quantumsheep/basics-of-multithreading-in-c-4pam</p>
+<p>https://nandgame.com/</p>
+<p>https://www.nand2tetris.org/</p>
+<p>Turing Complete game on Steam</p>
+<p>https://www.turingtumble.com/</p>
+<p>https://cs.lmu.edu/~ray/notes/nasmtutorial/</p>
+<p>https://dev.to/frosnerd/writing-my-own-boot-loader-3mld</p>
+<p>https://www.robertwinkler.com/projects/mips_book/mips_book.html#_chapter_0_hello_world</p>
+<p>https://asmtutor.com/#lesson1</p>
+<ul>
+<li><a href="https://www.youtube.com/channel/UCS0N5baNlQWJCUrhCEo8WlA">Ben Eater channel</a></li>
+</ul>
+<p>https://tmewett.com/c-tips/</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="software-development"><a class="header" href="#software-development">Software Development</a></h1>
+<ul>
+<li><a href="https://cs3110.github.io/textbook/cover.html">Ocaml</a></li>
+<li><a href="https://learnxinyminutes.com/">Learn X in Y minutes</a></li>
+<li><a href="https://flutter.dev/">Flutter</a></li>
+<li><a href="https://itnext.io/getting-started-with-flutter-desktop-91e8293bafcf">Flutter for Desktop</a></li>
+<li><a href="https://central.sonatype.org/publish/publish-guide/#create-a-ticket-with-sonatype">Publish Guide on Maven Central</a></li>
+<li><a href="https://allenkim67.github.io/programming/2016/05/04/how-to-make-your-own-bittorrent-client.html">Bit Torrent Client</a></li>
+<li><a href="http://jeffe.cs.illinois.edu/teaching/algorithms/?">Algorithms by Jeff Erickson</a></li>
+<li><a href="https://en.m.wikipedia.org/wiki/Transformation_Priority_Premise">Transformation Priority Premise</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Byzantine_fault_tolerance">Byzantine Fault Tolerance</a></li>
+<li><a href="https://sourcemaking.com/design_patterns">Design Patterns</a></li>
+<li><a href="https://talawah.io/blog/extreme-http-performance-tuning-one-point-two-million/">Extreme HTTP Performance</a></li>
+<li><a href="https://hub.qovery.com/guides/engineering/terraform-not-the-golden-hammer/">Terraform not golden hammer</a></li>
+<li><a href="https://fly.io/blog/globally-distributed-postgres/">Globally Distributed Postgres</a></li>
+<li><a href="https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/">Programmers Names</a></li>
+<li><a href="https://www.cloudflare.com/learning/">DNS Cloudflare Study Resources</a></li>
+<li><a href="http://tutorials.jenkov.com/javafx/tableview.html">Java Fx Tutorial</a></li>
+<li><a href="https://learnk8s.io/kubernetes-instance-calculator">K8s Instance Calculator</a></li>
+<li><a href="https://real-world-plantuml.com/?type=sequence">Real World UML</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="macosx"><a class="header" href="#macosx">MacosX</a></h1>
+<ul>
+<li><a href="https://theevilbit.github.io/beyond/">Launch Agents</a></li>
+<li><a href="http://darlinghq.org/">Darling - MacOsX Software on Linux</a></li>
+<li><a href="https://www.simple-bar.com/en/">Status Bar Yabai</a></li>
+<li><a href="https://getutm.app/">VM on Apple M1</a></li>
+<li><a href="https://www.veracode.com/blog/secure-development/distribute-your-java-app-brew">Homebrew: Java App</a></li>
+<li><a href="https://scriptingosx.com/2019/09/notarize-a-command-line-tool/">Notarize a command line app</a></li>
+<li><a href="https://dev.to/equiman/how-to-use-macos-s-touch-id-on-terminal-5fhg">Sudo with TouchID</a></li>
+<li><a href="https://www.synack.com/2017/09/08/high-sierras-secure-kernel-extension-loading-is-broken/">High Sierra's Secure Kernel Extension Load is Broken</a></li>
+<li><a href="http://footle.org/WeatherBar/">Implementing Mac WeatherBar</a></li>
+<li><a href="https://nsrover.wordpress.com/2014/10/10/creating-a-os-x-menubar-only-app/">Creating a OS X menubar only app</a></li>
+<li><a href="https://saurabhs.org/advanced-macos-commands">Advanced Commands</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="python"><a class="header" href="#python">Python</a></h1>
+<ul>
+<li><a href="https://sadh.life/post/builtins/#compile-exec-and-eval-how-the-code-works">Python through its builtins</a></li>
+<li><a href="https://jupytext.readthedocs.io/en/latest/install.html">Jupyter Notebook in Plain Text</a></li>
+<li><a href="https://build-system.fman.io/">Desktop App Build System</a></li>
+<li><a href="https://python-poetry.org/">Poetry Build System</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="frontend-or-presentations"><a class="header" href="#frontend-or-presentations">Frontend or Presentations</a></h1>
+<ul>
+<li><a href="https://voussoir.net/writing/css_for_printing">Css for Printing</a></li>
+<li><a href="https://modernfontstacks.com/">Modern Font Stacks</a></li>
+<li><a href="https://www.synfig.org/">Synfig</a></li>
+<li><a href="https://marp.app/">Marp</a></li>
+<li><a href="https://github.com/webpro/reveal-md">Reveal-Md</a></li>
+<li><a href="https://sozi.baierouge.fr/">Sozi</a></li>
+<li><a href="https://www.gimp.org/">Gimp</a></li>
+<li><a href="https://inkscape.org/it/">Inkscape</a></li>
+</ul>
+<hr />
+<ul>
+<li><a href="https://deno.land/#installation">Deno</a></li>
+<li><a href="https://imba.io/">Imba</a></li>
+<li><a href="https://www.chiaravianello.com/google-analytics-traffico-anomalo-ashburn">Analytics</a></li>
+<li><a href="https://css-tricks.com/lodge/svg/09-svg-data-uris/">Svg Favicon</a></li>
+<li><a href="https://austingil.com/svg-favicons/">Svg Favicon 2</a></li>
+<li><a href="https://support.mozilla.org/en-US/questions/1190923">Override New Window as New Tab in Firefox</a></li>
+<li><a href="https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/">Lobotomized Owls</a></li>
+<li><a href="https://vega.github.io/vega/">Vegai</a></li>
+<li><a href="https://www.a11yproject.com/checklist/">Accessibility</a></li>
+<li><a href="https://cyber.dabamos.de/88x31/index.html">Vintage Gifs</a></li>
+<li><a href="https://frontendchecklist.io/">The Front-End Checklist</a></li>
+<li><a href="https://colors.lol/">Colors</a></li>
+<li><a href="https://pustelto.com/blog/css-vs-css-in-js-perf/">Css in Js</a></li>
+<li><a href="https://tinypng.com/">TinyPng</a></li>
+<li><a href="https://compressor.io/">Compressor</a></li>
+<li><a href="https://compressjpeg.com/">Compress</a></li>
+<li><a href="https://streamlineicons.com/free/">Streamline 3.0</a></li>
+<li><a href="https://developers.google.com/search/">Developers Google</a></li>
+<li><a href="https://icomoon.io/app/">Icomoon - Optimize Font</a></li>
+<li><a href="https://www.webpagetest.org/">WebPageTest</a></li>
+<li><a href="https://gtmetrix.com/">GTMetrix</a></li>
+<li><a href="https://www.immuniweb.com/websec/">WebSite Security Test</a></li>
+<li><a href="https://securityheaders.com/">Security Headers</a></li>
+<li><a href="https://testmysite.io/">Testmysite.io</a></li>
+<li><a href="http://debug.iframely.com/">Iframely</a></li>
+<li><a href="https://uncss-online.com/">UnCss</a></li>
+<li><a href="https://dev.to/fullstack_to/units-in-css-em-rem-pt-px-vw-vh-vmin-vmax-ex-ch-53l0">Units in Css</a></li>
+<li><a href="https://css.30secondsofcode.org/">Css - 30 Seconds of Code</a></li>
+<li><a href="http://less2scss.awk5.com/">Less 2 SCSS</a></li>
+<li><a href="https://realfavicongenerator.net/">Real Favicon Generator</a></li>
+<li><a href="https://www.matuzo.at/blog/html-boilerplate/">Html Boilerplate</a></li>
+<li><a href="https://blog.webjeda.com/optimize-fontawesome/">Optimizing Fontawesome</a></li>
+<li><a href="https://jaydenseric.com/blog/favicon-optimization">How to super optimize a favicon</a></li>
+<li><a href="https://nystudio107.com/blog/the-css-background-image-property-as-an-anti-pattern">Background Image Anti-Pattern</a></li>
+<li><a href="https://www.codelord.net/2013/08/23/css-tip-overflowing-with-text/">Css text overflow</a></li>
+<li><a href="https://www.svgrepo.com/">Svg Repo</a></li>
+<li><a href="https://yqnn.github.io/svg-path-editor/">Svg Path Drawer</a></li>
+<li><a href="https://www.vectorlogo.zone/">Svg Logos</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="gameboy-development"><a class="header" href="#gameboy-development">Gameboy Development</a></h1>
+<ul>
+<li>https://laroldsjubilantjunkyard.com/</li>
+<li>https://www.youtube.com/watch?v=rCN-jwYn7Qw</li>
+<li>https://www.youtube.com/watch?v=eYT9s9bvKYU&amp;list=PLrW43fNmjaQVmjvIj3Ho3rzW46GEw14F9&amp;index=21&amp;t=1814s</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="personal-and-language-learning"><a class="header" href="#personal-and-language-learning">Personal And Language Learning</a></h1>
+<ul>
+<li><a href="https://leaderdisettore.wordpress.com/">Leader di Settore</a></li>
+<li><a href="https://happilyevertravels.com/best-way-to-use-duolingo/">Optimize Duolinguo</a></li>
+<li><a href="https://www.italki.com/">Italki</a></li>
+<li><a href="https://metacognitive.me/memory-palace/">Memory Palaces</a></li>
+<li><a href="https://lunduke.substack.com/p/the-best-vga-dos-games-period">Best Dos Games</a></li>
+<li><a href="https://www.youtube.com/watch?v=p7lvNs7Xkbk">Which games are these?</a></li>
+<li><a href="https://www.authentichappiness.sas.upenn.edu">Authentic Happiness</a></li>
+<li><a href="https://theoatmeal.com/comics/unhappy">How to be perfectly unhappy</a></li>
+<li><a href="https://www.ilpost.it/2021/09/29/complotti-polidoro/">Zio Complottista</a></li>
+<li><a href="https://www.frasimania.it/modi-di-dire-inglesi/">Modi di dire in inglese</a></li>
+</ul>
+<h2 id="organizing-tools-and-techniques"><a class="header" href="#organizing-tools-and-techniques">Organizing Tools and Techniques</a></h2>
+<ul>
+<li><a href="https://dev.to/atapas/my-favorite-blogging-tools-to-make-you-a-productive-blogger-50c">Blogging Tools</a></li>
+<li><a href="https://swimlanes.io/">Swimlanes</a></li>
+<li><a href="http://www.hemingwayapp.com/">Hemingway - Valutate text</a></li>
+<li><a href="https://12factor.net/">The Twelve-Factor App</a></li>
+<li><a href="https://keepachangelog.com/en/1.0.0/">Keep A Changelog</a></li>
+<li><a href="https://processing.org/">Processing.org</a></li>
+<li><a href="https://www.overleaf.com">Overleaf</a></li>
+<li><a href="https://medium.com/@marc.bojakowski/software-development-done-right-is-boring-e7277242c3ff">Boring Software Development</a></li>
+<li><a href="http://pranay.gp/how-to-learn-things-at-1000x-the-speed">Learn Things at 1000x</a></li>
+<li><a href="https://qotoqot.com/blog/improving-focus/">How I got to 200 productive hours a month</a></li>
+</ul>
+<h2 id="gaming-and-various"><a class="header" href="#gaming-and-various">Gaming and Various</a></h2>
+<ul>
+<li><a href="https://www.userchrome.org/">Firefox Customizations</a></li>
+<li><a href="https://www.codingame.com/home">Codin Game</a></li>
+<li><a href="http://www.centrometeolombardo.com/radar/">Meteo</a></li>
+<li><a href="https://blog.usejournal.com/a-beginners-guide-to-modding-minecraft-9a42536495f6">Develop Minecraft Mod</a></li>
+<li><a href="http://readasterix.blogspot.com/">Read Asterix</a></li>
+<li><a href="http://tylervigen.com/spurious-correlations">Spurious Correlations</a></li>
+<li><a href="https://juinjutsuteam.wixsite.com/sito/one-piece">One Piece</a></li>
+<li><a href="https://airma.sh/">AirMash</a></li>
+<li><a href="https://history.nasa.gov/books_sort_SP.html">Nasa Ebooks</a></li>
+<li><a href="https://www.brainbashers.com/skyscrapers.asp">Daily Skyscrapers</a></li>
+<li><a href="https://osgameclones.com/">Open Source Game Clones</a></li>
+<li><a href="https://www.jamiefuller.com/portal/">Portal for C64</a></li>
+<li><a href="https://copy.sh/v86/">Virtual x86</a></li>
+<li><a href="http://uk.businessinsider.com/programmer-automates-his-job-2015-11">Programmer automates his job</a></li>
+<li><a href="https://www.milanotoday.it/attualita/percorsi-bici_milano.html">Percorsi Bici Milano</a></li>
+<li><a href="https://www.wondersofphysics.com/2020/04/best-physics-movies.html">Best Physics Movies</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ricette"><a class="header" href="#ricette">Ricette</a></h1>
+<ul>
+<li><a href="https://www.thebluebirdkitchen.com/banana-bread/">Banana Bread</a></li>
+<li><a href="https://www.thebluebirdkitchen.com/polpette-di-melanzane/">Polpette di Melanzane</a></li>
+<li><a href="https://thehappyfoodie.co.uk/recipes/gloriously-sticky-toffee-cake">Sticky Toffee Cake</a></li>
+<li><a href="https://www.tavolartegusto.it/ricetta/torta-di-carote/">Torta di Carote</a></li>
+<li><a href="https://www.thebluebirdkitchen.com/torta-di-mele-e-gocce-di-cioccolato/">Torta di Mele</a></li>
+<li><a href="https://www.thebluebirdkitchen.com/pakora-al-forno/">Pakora</a></li>
+<li><a href="https://www.thebluebirdkitchen.com/torta-salata-pomodorini-e-feta/">Torta Pomodorini Feta</a></li>
+<li><a href="https://www.thebluebirdkitchen.com/aperitivo-casalingo/">Aperitivo Casalingo</a></li>
+<li><a href="https://www.thebluebirdkitchen.com/insalata-di-patate-e-piselli/">Insalata Patate e Piselli</a></li>
+<li><a href="https://www.thebluebirdkitchen.com/tortillas-al-cacao-con-moscardini-piccanti/">Tortillas Cacao e Moscardini</a></li>
+<li><a href="https://www.gustoblog.it/post/192123/torta-rabarbaro-mele-ricetta-golosa">Torta Mele e Rabarbaro</a></li>
+<li><a href="https://chiaramaci.com/crescioni/">Crescioni</a></li>
+<li><a href="https://www.bonappetit.com/recipe/far-breton">Far Breton</a></li>
+<li><a href="https://www.littlesweetbaker.com/bakery-style-chocolate-chip-muffins-2/">Chocolate Chip Muffins</a></li>
+</ul>
+<details>
+<summary>Cinnamon Rolls</summary>
+<p>Ingredients for the dough:</p>
+<ul>
+<li>177ml whole (or 2%) milk at 40ºC</li>
+<li>24 gr quick rise or active yeast</li>
+<li>50 gr granulated sugar</li>
+<li>420 gr BREAD flour, not for cakes</li>
+<li>1 egg plus 1 egg yolk at room temperature</li>
+<li>60 gr butter melted but not hot</li>
+<li>3/4 teaspoon salt</li>
+</ul>
+<p>For the filling:</p>
+<ul>
+<li>400 gr dark brown sugar</li>
+<li>1,5 tablespoons ground cinnamon</li>
+<li>50 gr butter, softened but not melted</li>
+</ul>
+<p>For the cream cheese frosting:</p>
+<ul>
+<li>Powdered Sugar</li>
+<li>Milk</li>
+</ul>
+<p>Instructions:</p>
+<ul>
+<li>
+<p>Warm the milk to ~40ºC and sprinkle the dry yeast on top of it. Wait ~5/10 minutes until it melts completely. While you wait, stir flour and salt toghether.</p>
+</li>
+<li>
+<p>Mix the milk with the sugar, the eggs and the melted butter. Once done mix solid and liquid ingredients toghether.</p>
+</li>
+<li>
+<p>Work the dough for 8/10 minutes, then let it rise covered in a oiled bowl for at least 2 hours. Keep the butter outside the fridge to have it ready for filling.</p>
+</li>
+<li>
+<p>Roll out the dough the size of a tagliere, and spread the softened butter over it leaving a margin, and then rub the cinnamon/brown sugar mixture over it.</p>
+</li>
+<li>
+<p>Roll up tightly the dough along the long side and cut 2 cm sections with a sharp knife. Place the rolls on a greased (or parchment-papered) pan and let them rise of 45/60 minutes.</p>
+</li>
+<li>
+<p>Preheat the oven to 180ºC and cook them for 20/25 minutes. Let them cool for 5/10 minutes before frosting. For the frosting mix powdered sugar and milk. Spread over cinnamon rolls and serve immediately.</p>
+</li>
+</ul>
+</details>
+<details>
+<summary>Torta Cocco e Cioccolato</summary>
+<p>Ingredienti:</p>
+<ul>
+<li>100 gr di zucchero</li>
+<li>125 gr di burro</li>
+<li>200 gr di cioccolato fondente</li>
+<li>80 gr di farina di cocco</li>
+<li>4 uova</li>
+<li>2 cucchiai di farina</li>
+</ul>
+<p>Preparazione:
+Fondere burro e cioccolato in un tegame di media grandezza a bagnomaria, togliere dal fuoco ed unire lo zucchero. Aggiungere un uovo alla volta mescolando bene, quindi i cucchiai di farina e il cocco.
+Imburrare e infarinare bene una teglia di 24-26 cm di diametro, versare tutto nella teglia e mettere nel forno già caldo a 180 gradi per 20-25 minuti. A fine cottura capovolgere la torta per far evaporare l'umidità dalla parte inferiore e spolverare di zucchero a velo.</p>
+</details>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="this-is-a-mess-you-should-really-organize-it"><a class="header" href="#this-is-a-mess-you-should-really-organize-it">This is a mess, you should really organize it</a></h1>
+<ul>
+<li><a href="https://docs.haskellstack.org/en/stable/scripts/">Stack Scripts</a></li>
+<li><a href="https://pi4j.com/examples/">Pi4j</a></li>
+<li><a href="https://www.google.com/search?tbm=vid&amp;q=Asus+Zenbook+Duo+14+UX482&amp;spell=1">Asus Zenbook Duo 14 UX482</a></li>
+<li><a href="https://support.mozilla.org/en-US/questions/1258193">Firefox Settigns for link and new tabs</a></li>
+<li><a href="https://send.djazz.se/">Send to Kindle</a></li>
+<li><a href="http://nil.csail.mit.edu/6.824/2022/schedule.html">Distributed Systems Class</a></li>
+<li><a href="http://blogoscoped.com/archive/2005-08-24-n14.html">10X - Why Good Programmers Are Lazy and Dumb</a></li>
+<li><a href="http://cosplayengine.com/">CosPlay - 2D ASCII Game Engine for Scala</a></li>
+<li><a href="http://xn--rpa.cc/irl/term.html">on terminal control</a></li>
+<li><a href="https://0xax.gitbooks.io/linux-insides/content/">Introduction · Linux Inside</a></li>
+<li><a href="https://adit.io/">adit.io</a></li>
+<li><a href="https://alexn.org/blog/2020/10/10/when-my-world-vanishes/">When My World Vanishes - Alexandru Nedelcu</a></li>
+<li><a href="https://algs4.cs.princeton.edu/23quicksort/Quick.java.html">Quick.java</a></li>
+<li><a href="https://alterclass.io/">The modular online course platform for developers - AlterClass</a></li>
+<li><a href="https://aphyr.com/posts/342-typing-the-technical-interview">Typing the technical interview</a></li>
+<li><a href="https://app.gather.town/app">Home | Gather</a></li>
+<li><a href="https://beachape.com/blog/2016/10/24/accumulating-results-in-rust-with-validated/">Accumulating Results in Rust With Validated - BeachApe.</a></li>
+<li><a href="https://betterprogramming.pub/haskell-vs-code-setup-in-2021-6267cc991551">My Haskell VS Code Setup in 2021. Power up your IDE with debugging… | by Ivan Hrekov | Better Programming</a></li>
+<li><a href="https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/">Writing like a pro with vale &amp; neovim</a></li>
+<li><a href="https://blog.adamchalmers.com/">A Less Mad March</a></li>
+<li><a href="https://blog.adamchalmers.com/making-a-dns-client/">Making a DNS Client</a></li>
+<li><a href="https://blog.bruchez.name/posts/generalized-type-constraints-in-scala/#question-2-why-does-look-so-much-like-an-operator">Sad Man With Hat: Type Constraint</a></li>
+<li><a href="https://blog.ceejbot.com/posts/reduce-friction/">Reduce Friction: Ceejbot's notes</a></li>
+<li><a href="https://blog.darknedgy.net/technology/2020/05/02/0/">systemd 10 years later: a historical and technical retrospective</a></li>
+<li><a href="https://blog.higher-order.com/blog/2016/04/02/a-comonad-of-graph-decompositions/">A Comonad of Graph Decompositions - Higher Order</a></li>
+<li><a href="https://blog.indoorvivants.com/2022-06-10-smithy4s-fullstack-part-1">Indoor Vivants: Smithy4s full stack (p.1): Introduction</a></li>
+<li><a href="https://blog.rpeters.dev/2020/01/08/pure-scala/">The Journey of Moving to Pure Functional Scala · Ryan Peters</a></li>
+<li><a href="https://blog.softwaremill.com/functional-pancakes-cf70023f0dcb">Let's apply functional programming to solve a practical problem | SoftwareMill Tech Blog</a></li>
+<li><a href="https://blog.sunfishcode.online/bugs-in-hello-world/">Bugs in Hello World · sunfishcode's blog</a></li>
+<li><a href="https://buddy.works/blog/how-deploy-projects-with-git">How to deploy projects with Git | Buddy: The DevOps Automation Platform</a></li>
+<li><a href="https://build-system.fman.io/">Python and Qt simplified. Create a Python GUI in minutes.</a></li>
+<li><a href="https://build-system.fman.io/">Python and Qt simplified. Create a Python GUI in minutes.</a></li>
+<li><a href="https://ciechanow.ski/mechanical-watch/">Mechanical Watches</a></li>
+<li><a href="https://cj.rs/">Clément Joly : Software Engineer</a></li>
+<li><a href="https://contains.dev/">contains.dev</a></li>
+<li><a href="https://contains.dev/blog/optimizing-docker-image-size">Optimizing Docker image size and why it matters - contains.dev</a></li>
+<li><a href="https://cs.stackexchange.com/questions/3/why-is-quicksort-better-than-other-sorting-algorithms-in-practice">Why is quicksort better than other sorting algorithms in practice? - Computer Science Stack Exchange</a></li>
+<li><a href="https://danmackinlay.name/notebook/macos_hacks.html">Making macOS behave itself - Dan MacKinlay</a></li>
+<li><a href="https://dashboard.ngrok.com/get-started/setup">Ngrok</a></li>
+<li><a href="https://databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html">What Is a Lakehouse? - The Databricks Blog</a></li>
+<li><a href="https://datmt.com/linux/how-to-set-static-ip-to-virtualbox-vm/">How To Set Static IP To VirtualBox VM - datmt</a></li>
+<li><a href="https://dioxuslabs.com/">dioxuslabs.com/</a></li>
+<li><a href="https://docs.scala-lang.org/overviews/core/binary-compatibility-for-library-authors.html#why-binary-compatibility-matters">Binary Compatibility for library authors | Scala Documentation</a></li>
+<li><a href="https://en.m.wikipedia.org/wiki/Tentura">Tentura - Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Paxos_(computer_science)">Paxos (computer science) - Wikipedia</a></li>
+<li><a href="https://endless4s.github.io/nutshell.html">In a nutshell ·</a></li>
+<li><a href="https://engineerworkshop.com/blog/connecting-your-raspberry-pi-web-server-to-the-internet/">Connecting Your Raspberry Pi Web Server To The Internet: A Beginner's Guide to Port Forwarding and Dynamic DNS</a></li>
+<li><a href="https://fasterthanli.me/articles/pin-and-suffering">Pin and suffering</a></li>
+<li><a href="https://fasterthanli.me/articles/remote-development-with-rust-on-fly-io">Remote development with Rust on fly.io</a></li>
+<li><a href="https://fleet.rs/">Fleet</a></li>
+<li><a href="https://flix.dev/about/">Flix | About</a></li>
+<li><a href="https://gist.github.com/BalmungSan/c19557030181c0dc36533f3de7d7abf4">Polymorphism in Scala</a></li>
+<li><a href="https://gist.github.com/huytd/668fc018b019fbc49fa1c09101363397">A Todo list syntax in Vim with an actual checkbox</a></li>
+<li><a href="https://github.com/fomkin/korolev">fomkin/korolev: Single Page Applications running on the server side.</a></li>
+<li><a href="https://github.com/jvm-profiling-tools/honest-profiler/wiki">Home · jvm-profiling-tools/honest-profiler Wiki</a></li>
+<li><a href="https://github.com/mattmc3/zsh_unplugged">mattmc3/zsh_unplugged: 🤔 perhaps you don't need a Zsh plugin manager after all...</a></li>
+<li><a href="https://github.com/nanotee/nvim-lua-guide">nanotee/nvim-lua-guide: A guide to using Lua in Neovim</a></li>
+<li><a href="https://github.com/plokhotnyuk/jsoniter-scala">plokhotnyuk/jsoniter-scala: Scala macros for compile-time generation of safe and ultra-fast JSON codecs</a></li>
+<li><a href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/common-rust-lifetime-misconceptions.md#2-if-t-static-then-t-must-be-valid-for-the-entire-program">rust-blog/common-rust-lifetime-misconceptions.md at master · pretzelhammer/rust-blog</a></li>
+<li><a href="https://github.com/shellspec/shellspec">shellspec/shellspec: A full-featured BDD unit testing framework for bash, ksh, zsh, dash and all POSIX shells</a></li>
+<li><a href="https://github.com/stashapp/stash">stashapp/stash: An organizer for your written in Go</a>"</li>
+<li><a href="https://github.com/tokio-rs/tokio/issues/2401">Tokio Future Join All</a></li>
+<li><a href="https://github.com/wagoodman/dive">wagoodman/dive: A tool for exploring each layer in a docker image</a></li>
+<li><a href="https://grow.google/certificates/interview-warmup/">Interview Warmup</a></li>
+<li><a href="https://guillaumebogard.dev/posts/functional-error-handling/">Functional error handling with monads, monad transformers and Cats MTL :: λ Guillaume Bogard</a></li>
+<li><a href="https://gvolpe.com/blog/fsm-fs2-a-match-made-in-heaven/">Finite-State Machines + FS2 streams: A match made in heaven • gvolpe's blog</a></li>
+<li><a href="https://helix-editor.com/">Helix</a></li>
+<li><a href="https://hirrolot.github.io/posts/why-static-languages-suffer-from-complexity">Why Static Languages Suffer From Complexity</a></li>
+<li><a href="https://http4s.org/v1.0/index.html">Http4s - Quick Start</a></li>
+<li><a href="https://ianthehenry.com/posts/how-to-learn-nix/quick-start-guide/">How to Learn Nix, Part 4: Quick starts, full hearts</a></li>
+<li><a href="https://jaredkrinke.github.io/md2blog/index.html">md2blog: A zero-config static site generator for dev blogs</a></li>
+<li><a href="https://jmmv.dev/2020/04/rust-into-trait.html">What is Rust's Into<T> for? - Julio Merino (jmmv.dev)</a></li>
+<li><a href="https://jodd.org/">Jodd</a></li>
+<li><a href="https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/">What Color is Your Function? – journal.stuffwithstuff.com</a></li>
+<li><a href="https://jvns.ca/blog/2014/04/20/debug-your-programs-like-theyre-closed-source/">Debug your programs like they're closed source!</a></li>
+<li><a href="https://knowyourmeme.com/memes/10x-engineer#fn5">10x Engineer | Know Your Meme</a></li>
+<li><a href="https://krausefx.com/blog/announcing-inappbrowsercom-see-what-javascript-commands-get-executed-in-an-in-app-browser">iOS Privacy: Announcing InAppBrowser.com - see what JavaScript commands get injected through an in-app browser · Felix Krause</a></li>
+<li><a href="https://lapce.dev/">Lapce</a></li>
+<li><a href="https://librivox.org/">LibriVox | free public domain audiobooks</a></li>
+<li><a href="https://linear.app/">Linear – The issue tracking tool you'll enjoy using</a></li>
+<li><a href="https://linoscope.github.io/writing-a-game-boy-emulator-in-ocaml/#fnref:1">Writing a Game Boy Emulator in OCaml - The Linoscope Machine</a></li>
+<li><a href="https://linrunner.de/tlp/">Linux battery laptop</a></li>
+<li><a href="https://mazzo.li/posts/fast-pipes.html">How fast are Linux pipes anyway?</a></li>
+<li><a href="https://microservices.io/patterns/data/saga.html">Sagas</a></li>
+<li><a href="https://neovim.discourse.group/t/disable-comment-auto-insertion/892/4">Disable comment auto-insertion - Neovim - Neovim Discourse</a></li>
+<li><a href="https://nixos.org/guides/nix-pills/functions-and-imports.html">NixOS - Nix Pills</a></li>
+<li><a href="https://nixsanctuary.com/best-linux-hardware-system-info-commands/">Best Linux Commands For Advanced Hardware and System Info</a></li>
+<li><a href="https://nixsanctuary.com/boycott-7-zip-limited-open-source-security-issues/">Boycott 7-zip: ""Limited"" Open Source &amp; Security Issues</a></li>
+<li><a href="https://nordace.com/it/product/nordace-siena-smart-backpack/">Nordace Siena - Zaino Smart</a></li>
+<li><a href="https://okmij.org/ftp/tagless-final/index.html">Tagless-Final Style</a></li>
+<li><a href="https://planet42.github.io/Laika/index.html">Laika</a></li>
+<li><a href="https://planetscale.com/blog/the-operational-relational-schema-paradigm">The operational relational schema paradigm</a></li>
+<li><a href="https://playwright.dev/java/docs/intro">Getting started | Playwright Java</a></li>
+<li><a href="https://precondition.github.io/home-row-mods#what-are-home-row-mods">A guide to home row mods</a></li>
+<li><a href="https://python-poetry.org/">Poetry - Python dependency management and packaging made easy</a></li>
+<li><a href="https://reasonabledeviations.com/2021/09/18/how-i-use-notion/#how-i-use-notion-as-a-second-brain">How I use Notion · Reasonable Deviations</a></li>
+<li><a href="https://remote.com/">Global HR Solutions for Distributed Teams | Remote</a></li>
+<li><a href="https://rubenerd.com/losslessly-optimise-images/">Rubenerd: Losslessly optimising images</a></li>
+<li><a href="https://runwes.com/2020/02/11/howilearnedfrench.html">How I Learned French in 12 Months | Wesley Runnels</a></li>
+<li><a href="https://rust-cli-recommendations.sunshowers.io/cli-parser.html">Picking an argument parser - Rain's Rust CLI recommendations</a></li>
+<li><a href="https://rust-unofficial.github.io/patterns/intro.html">Introduction - Rust Design Patterns</a></li>
+<li><a href="https://scalac.io/blog/scala-3-inline-macro-like-superpowers/">Scala 3 inline: macro-like superpowers</a></li>
+<li><a href="https://shop.flipperzero.one/">Flipper Zero Shop</a></li>
+<li><a href="https://smallstep.com/blog/use-ssh-certificates/">If You're Not Using SSH Certificates You're Doing SSH Wrong | Smallstep Blog</a></li>
+<li><a href="https://tauri.studio/en/">Build smaller, faster, and more secure desktop applications with a web frontend | Tauri Studio</a></li>
+<li><a href="https://tera.netlify.app/docs/#getting-started">Tera</a></li>
+<li><a href="https://themakingofamillionaire.com/there-is-a-much-larger-problem-than-the-great-resignation-no-one-wants-to-talk-about-it-3922cf8aefd2">There Is a Much Larger Problem Than the Great Resignation. No One Wants to Talk About It. | by Peter Shanosky | Jan, 2022 | Making of a Millionaire</a></li>
+<li><a href="https://thevaluable.dev/vim-runtime-guide-example/">What's The Vim Runtime? A Guide With Examples</a></li>
+<li><a href="https://threadreaderapp.com/thread/1526464502086131715.html">Thread by @GeoffreyDeSmet on Thread Reader App – Thread Reader App</a></li>
+<li><a href="https://threadreaderapp.com/thread/1563956635529347072.html">Thread by @ACupOfInfinity on Thread Reader App – Thread Reader App</a></li>
+<li><a href="https://tim.mcnamara.nz/post/683022094467039232/easy-mode-for-rust">Tim McNamara – Creating an Easy Mode for Rust</a></li>
+<li><a href="https://tokio.rs/tokio/tutorial/io">I/O | Tokio - An asynchronous Rust runtime</a></li>
+<li><a href="https://two-wrongs.com/awk-state-machine-parser-pattern.html">The AWK State Machine Parser Pattern</a></li>
+<li><a href="https://typelevel.org/blog/2018/08/25/http4s-error-handling-mtl.html">Typelevel.scala | Error handling in Http4s with classy optics</a></li>
+<li><a href="https://typicalprogrammer.com/introduction-to-abject-oriented-programming">10X - Typical Programmer</a></li>
+<li><a href="https://vale.sh/">Vale.sh - A linter for prose</a></li>
+<li><a href="https://vitalik.ca/general/2022/06/20/backpack.html">My 40-liter backpack travel guide</a></li>
+<li><a href="https://vitalik.ca/general/2022/06/20/backpack.html">My 40-liter backpack travel guide</a></li>
+<li><a href="https://wiki.c2.com/?LazinessImpatienceHubris=">10X - Laziness Impatience Hubris</a></li>
+<li><a href="https://www.bejarano.io/hardening-macos/">Hardening MacOsX</a></li>
+<li><a href="https://www.bookstackapp.com/">BookStack</a></li>
+<li><a href="https://www.city17.xyz/musl/">Rust Musl</a></li>
+<li><a href="https://www.eficode.com/blog/the-future-of-kubernetes-and-why-developers-should-look-beyond-kubernetes-in-2022">The future of Kubernetes – and why developers should look beyond Kubernetes in 2022</a></li>
+<li><a href="https://www.eficode.com/blog/the-future-of-kubernetes-and-why-developers-should-look-beyond-kubernetes-in-2022">The future of Kubernetes – and why developers should look beyond Kubernetes in 2022</a></li>
+<li><a href="https://www.foxhound.systems/blog/final-tagless/">Final tagless encodings have little to do with typeclasses – Foxhound Systems</a></li>
+<li><a href="https://www.fpcomplete.com/blog/collect-rust-traverse-haskell-scala/">Collect in Rust, traverse in Haskell and Scala</a></li>
+<li><a href="https://www.gresearch.co.uk/blog/article/metatesting-your-property-based-tests/">Metatesting your property-based tests - G Research</a></li>
+<li><a href="https://www.julian.com/guide/muscle/workout-supplements">Building Muscle: How to Start</a></li>
+<li><a href="https://www.keychron.com/products/keychron-k7-ultra-slim-wireless-mechanical-keyboard?variant=39396243374169">Keychron K7 Ultra-slim Wireless Mechanical Keyboard</a></li>
+<li><a href="https://www.makeuseof.com/raspberry-pi-set-static-ip/">How Do I Set a Static IP Address on Raspberry Pi?</a></li>
+<li><a href="https://www.patrologos.gr/en/kentayros#menu_c0p0s0p0">How the wise Centaur educated the Greek Heroes</a></li>
+<li><a href="https://www.stackbuilders.com/blog/generics/">Stack Builders - GHC Generics Explained</a></li>
+<li><a href="https://www.textualize.io/">Textualize</a></li>
+<li><a href="https://www.tobyhobson.com/posts/cats/monad-error/">MonadError - Handling failed futures functionally | Toby Hobson</a></li>
+<li><a href="https://www.wired.co.uk/article/best-sci-fi-movies-of-all-time">The Best Sci-Fi Movies Everyone Should Watch Once | WIRED UK</a></li>
+<li><a href="https://www.youtube.com/channel/UCIfWXqdiEvM8nBFAA594Kjw/videos">Neil Sabde - YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=1iDlOHt6sZY">Stop Adding Features to Your Software - YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=bWdbKN9F18U">Async I/O in Depth: Iterative TCP Echo Server - YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=ihKdrhPaZjg">[Full VOD] - Scala | NeoVim - All the info you ever wanted. - YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=m3Qh-MmWpbM">Tagless Final in Scala - YouTube</a></li>
+<li><a href="https://yew.rs/ja/docs/tutorial">Tutorial | Yew</a></li>
+<li><a href="https://youtube.com/shorts/w4Fczis0D5Q?feature=share">Watch 5 books that will help you become laser focused🔥#shorts #books on YouTube</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="horror-movies-to-see"><a class="header" href="#horror-movies-to-see">Horror Movies To See</a></h1>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+Psycho (1960)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Exorcist (1973)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Rosemary's Baby (1968)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+A Nightmare on Elm Street (1984)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Carrie (1976)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Saw (2004)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Shining (1980)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Invasion of the Body Snatchers (1956)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Scream (1996)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Cabin in the Woods (2012)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Nosferatu (1922)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Conjuring (2013)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Thing (1982)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Alien (1979)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://play.google.com/store/movies/details/Gli_Uccelli?id=HhLxet2BSjY">The Birds</a> (1963)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://altadefinizionecommunity.tv/titolo/2389-la-moglie-di-frankenstein/watching.html">Bride of Frankenstein</a> (1935)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://play.google.com/store/movies/details/The_Grudge?id=PvLuYyE2HA8.P">The Grudge</a> (2006)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://www.primevideo.com/detail/0HX6TCOO4I41L6QYGY7UXQ13R0/ref=atv_dl_rdr?tag=justwatch07-21">The Haunting</a> (1963)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Silence of the Lambs (1991)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Final Destination</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Evil Dead (1981)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://play.google.com/store/movies/details/Il_presagio?id=QRxlT2KU2Lk.P">The Omen</a> (1976)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://play.google.com/store/movies/details/Poltergeist_Demoniache_Presenze?id=QVPQ_e5skBc.P">Poltergeist</a> (1982)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://www.primevideo.com/detail/0HIROEAKHVOF23JSTAOGIY79OX/ref=atv_dl_rdr?tag=justwatch07-21">Halloween</a> (1978)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+I Know What You Did Last Summer (1997)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Blair Witch Project (1999)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Jaws (1975)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Get Out (2017)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://www.primevideo.com/detail/0U47CYSUXPJ7GWG1KUF85YVKKB/ref=atv_dl_rdr?tag=justwatch07-21">An American Werewolf in London</a> (1981)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Ring (2002)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://www.disneyplus.com/it-it/movies/la-mosca/63rLDcO32J7I">The Fly</a> (1986)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://supervideo.tv/mgt43xy57asx">Misery</a> (1990)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://play.google.com/store/movies/details/Auguri_per_la_tua_morte?id=3YBt-Q_8SV8">Happy Death Day</a> (2017)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://youtu.be/MiyFtJXwwN4">The Texas Chainsaw Massacre</a> (1974)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://www.netflix.com/title/80177770">It</a> (2017)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://play.google.com/store/movies/details/The_Strangers?id=xkTUlga7j2Y">The Strangers</a> (2008)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://supervideo.tv/5zg09kz6yuxp">Let the Right One In</a> (2008)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Friday the 13th (1980)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+A Quiet Place (2018)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Childs Play (1988)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Witch</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Midsommar</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://play.google.com/store/movies/details/Hereditary?id=XCBhIE4B1h8">Hereditary</a></li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Purge</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Paranormal Activity (2009)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://play.google.com/store/movies/details/Candyman_Terrore_Dietro_lo_Specchio?id=bIel6gAqF2U">Candyman</a> (1992)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Us (2019)</li>
+<li><input disabled="" type="checkbox" checked=""/>
+The Babadook (2014)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://www.primevideo.com/detail/0JGIT4GJ9Z3DOBGZ31FK4LJTJK/ref=atv_dl_rdr?tag=justwatch07-21">Don't Breathe</a> (2016)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://www.primevideo.com/detail/0PKHUYSJ0SS1CEY8ZD2B50A73H/ref=atv_dl_rdr?tag=justwatch07-21">Train to Busan</a> (2016)</li>
+<li><input disabled="" type="checkbox"/>
+<a href="https://streamtape.com/v/aYvwleQlLrTbWb">The Town That Dreaded Sundown</a> (1976)</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

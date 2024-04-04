@@ -1,0 +1,376 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>To Be Organized - Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello.html">Hello!</a></li><li class="spacer"></li><li class="chapter-item expanded "><div>Scala</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="scala/learning_stuff.html">Learning</a></li><li class="chapter-item expanded "><a href="scala/various.html">Various</a></li></ol></li><li class="chapter-item expanded "><div>Rust</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="rust/whole_list.html">Whole New List</a></li><li class="chapter-item expanded "><a href="rust/learning_stuff.html">Learning</a></li><li class="chapter-item expanded "><a href="rust/learning_rust.html">Other Learning List</a></li><li class="chapter-item expanded "><a href="rust/libraries.html">Libraries</a></li><li class="chapter-item expanded "><a href="rust/cli.html">Cli Tools</a></li><li class="chapter-item expanded "><a href="rust/various.html">Various</a></li></ol></li><li class="chapter-item expanded "><div>Command Line Church</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="command_line/tools.html">Tools</a></li></ol></li><li class="chapter-item expanded "><div>Linux</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="linux/lfcs.html">LFCS</a></li><li class="chapter-item expanded "><a href="linux/various.html">Various</a></li><li class="chapter-item expanded "><a href="linux/timemachine.html">Time Machine</a></li></ol></li><li class="chapter-item expanded "><a href="low_level/low_level.html">Low Level</a></li><li class="chapter-item expanded "><a href="software_development/software_development.html">Software Development</a></li><li class="chapter-item expanded "><a href="macosx/macosx.html">MacosX</a></li><li class="chapter-item expanded "><a href="python/python.html">Python</a></li><li class="chapter-item expanded "><a href="frontend/frontend.html">Frontend</a></li><li class="chapter-item expanded "><a href="gameboy/gameboy.html">Gameboy</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="personal/personal.html">Personal And Language Learning</a></li><li class="chapter-item expanded "><a href="ricette/ricette.html">Ricette</a></li><li class="chapter-item expanded "><a href="mess.html" class="active">To Be Organized</a></li><li class="chapter-item expanded "><a href="horror.html">Horror Movies</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/TonioGela/mdbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="this-is-a-mess-you-should-really-organize-it"><a class="header" href="#this-is-a-mess-you-should-really-organize-it">This is a mess, you should really organize it</a></h1>
+<ul>
+<li><a href="https://docs.haskellstack.org/en/stable/scripts/">Stack Scripts</a></li>
+<li><a href="https://pi4j.com/examples/">Pi4j</a></li>
+<li><a href="https://www.google.com/search?tbm=vid&amp;q=Asus+Zenbook+Duo+14+UX482&amp;spell=1">Asus Zenbook Duo 14 UX482</a></li>
+<li><a href="https://support.mozilla.org/en-US/questions/1258193">Firefox Settigns for link and new tabs</a></li>
+<li><a href="https://send.djazz.se/">Send to Kindle</a></li>
+<li><a href="http://nil.csail.mit.edu/6.824/2022/schedule.html">Distributed Systems Class</a></li>
+<li><a href="http://blogoscoped.com/archive/2005-08-24-n14.html">10X - Why Good Programmers Are Lazy and Dumb</a></li>
+<li><a href="http://cosplayengine.com/">CosPlay - 2D ASCII Game Engine for Scala</a></li>
+<li><a href="http://xn--rpa.cc/irl/term.html">on terminal control</a></li>
+<li><a href="https://0xax.gitbooks.io/linux-insides/content/">Introduction · Linux Inside</a></li>
+<li><a href="https://adit.io/">adit.io</a></li>
+<li><a href="https://alexn.org/blog/2020/10/10/when-my-world-vanishes/">When My World Vanishes - Alexandru Nedelcu</a></li>
+<li><a href="https://algs4.cs.princeton.edu/23quicksort/Quick.java.html">Quick.java</a></li>
+<li><a href="https://alterclass.io/">The modular online course platform for developers - AlterClass</a></li>
+<li><a href="https://aphyr.com/posts/342-typing-the-technical-interview">Typing the technical interview</a></li>
+<li><a href="https://app.gather.town/app">Home | Gather</a></li>
+<li><a href="https://beachape.com/blog/2016/10/24/accumulating-results-in-rust-with-validated/">Accumulating Results in Rust With Validated - BeachApe.</a></li>
+<li><a href="https://betterprogramming.pub/haskell-vs-code-setup-in-2021-6267cc991551">My Haskell VS Code Setup in 2021. Power up your IDE with debugging… | by Ivan Hrekov | Better Programming</a></li>
+<li><a href="https://bhupesh.me/writing-like-a-pro-with-vale-and-neovim/">Writing like a pro with vale &amp; neovim</a></li>
+<li><a href="https://blog.adamchalmers.com/">A Less Mad March</a></li>
+<li><a href="https://blog.adamchalmers.com/making-a-dns-client/">Making a DNS Client</a></li>
+<li><a href="https://blog.bruchez.name/posts/generalized-type-constraints-in-scala/#question-2-why-does-look-so-much-like-an-operator">Sad Man With Hat: Type Constraint</a></li>
+<li><a href="https://blog.ceejbot.com/posts/reduce-friction/">Reduce Friction: Ceejbot's notes</a></li>
+<li><a href="https://blog.darknedgy.net/technology/2020/05/02/0/">systemd 10 years later: a historical and technical retrospective</a></li>
+<li><a href="https://blog.higher-order.com/blog/2016/04/02/a-comonad-of-graph-decompositions/">A Comonad of Graph Decompositions - Higher Order</a></li>
+<li><a href="https://blog.indoorvivants.com/2022-06-10-smithy4s-fullstack-part-1">Indoor Vivants: Smithy4s full stack (p.1): Introduction</a></li>
+<li><a href="https://blog.rpeters.dev/2020/01/08/pure-scala/">The Journey of Moving to Pure Functional Scala · Ryan Peters</a></li>
+<li><a href="https://blog.softwaremill.com/functional-pancakes-cf70023f0dcb">Let's apply functional programming to solve a practical problem | SoftwareMill Tech Blog</a></li>
+<li><a href="https://blog.sunfishcode.online/bugs-in-hello-world/">Bugs in Hello World · sunfishcode's blog</a></li>
+<li><a href="https://buddy.works/blog/how-deploy-projects-with-git">How to deploy projects with Git | Buddy: The DevOps Automation Platform</a></li>
+<li><a href="https://build-system.fman.io/">Python and Qt simplified. Create a Python GUI in minutes.</a></li>
+<li><a href="https://build-system.fman.io/">Python and Qt simplified. Create a Python GUI in minutes.</a></li>
+<li><a href="https://ciechanow.ski/mechanical-watch/">Mechanical Watches</a></li>
+<li><a href="https://cj.rs/">Clément Joly : Software Engineer</a></li>
+<li><a href="https://contains.dev/">contains.dev</a></li>
+<li><a href="https://contains.dev/blog/optimizing-docker-image-size">Optimizing Docker image size and why it matters - contains.dev</a></li>
+<li><a href="https://cs.stackexchange.com/questions/3/why-is-quicksort-better-than-other-sorting-algorithms-in-practice">Why is quicksort better than other sorting algorithms in practice? - Computer Science Stack Exchange</a></li>
+<li><a href="https://danmackinlay.name/notebook/macos_hacks.html">Making macOS behave itself - Dan MacKinlay</a></li>
+<li><a href="https://dashboard.ngrok.com/get-started/setup">Ngrok</a></li>
+<li><a href="https://databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html">What Is a Lakehouse? - The Databricks Blog</a></li>
+<li><a href="https://datmt.com/linux/how-to-set-static-ip-to-virtualbox-vm/">How To Set Static IP To VirtualBox VM - datmt</a></li>
+<li><a href="https://dioxuslabs.com/">dioxuslabs.com/</a></li>
+<li><a href="https://docs.scala-lang.org/overviews/core/binary-compatibility-for-library-authors.html#why-binary-compatibility-matters">Binary Compatibility for library authors | Scala Documentation</a></li>
+<li><a href="https://en.m.wikipedia.org/wiki/Tentura">Tentura - Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Paxos_(computer_science)">Paxos (computer science) - Wikipedia</a></li>
+<li><a href="https://endless4s.github.io/nutshell.html">In a nutshell ·</a></li>
+<li><a href="https://engineerworkshop.com/blog/connecting-your-raspberry-pi-web-server-to-the-internet/">Connecting Your Raspberry Pi Web Server To The Internet: A Beginner's Guide to Port Forwarding and Dynamic DNS</a></li>
+<li><a href="https://fasterthanli.me/articles/pin-and-suffering">Pin and suffering</a></li>
+<li><a href="https://fasterthanli.me/articles/remote-development-with-rust-on-fly-io">Remote development with Rust on fly.io</a></li>
+<li><a href="https://fleet.rs/">Fleet</a></li>
+<li><a href="https://flix.dev/about/">Flix | About</a></li>
+<li><a href="https://gist.github.com/BalmungSan/c19557030181c0dc36533f3de7d7abf4">Polymorphism in Scala</a></li>
+<li><a href="https://gist.github.com/huytd/668fc018b019fbc49fa1c09101363397">A Todo list syntax in Vim with an actual checkbox</a></li>
+<li><a href="https://github.com/fomkin/korolev">fomkin/korolev: Single Page Applications running on the server side.</a></li>
+<li><a href="https://github.com/jvm-profiling-tools/honest-profiler/wiki">Home · jvm-profiling-tools/honest-profiler Wiki</a></li>
+<li><a href="https://github.com/mattmc3/zsh_unplugged">mattmc3/zsh_unplugged: 🤔 perhaps you don't need a Zsh plugin manager after all...</a></li>
+<li><a href="https://github.com/nanotee/nvim-lua-guide">nanotee/nvim-lua-guide: A guide to using Lua in Neovim</a></li>
+<li><a href="https://github.com/plokhotnyuk/jsoniter-scala">plokhotnyuk/jsoniter-scala: Scala macros for compile-time generation of safe and ultra-fast JSON codecs</a></li>
+<li><a href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/common-rust-lifetime-misconceptions.md#2-if-t-static-then-t-must-be-valid-for-the-entire-program">rust-blog/common-rust-lifetime-misconceptions.md at master · pretzelhammer/rust-blog</a></li>
+<li><a href="https://github.com/shellspec/shellspec">shellspec/shellspec: A full-featured BDD unit testing framework for bash, ksh, zsh, dash and all POSIX shells</a></li>
+<li><a href="https://github.com/stashapp/stash">stashapp/stash: An organizer for your written in Go</a>"</li>
+<li><a href="https://github.com/tokio-rs/tokio/issues/2401">Tokio Future Join All</a></li>
+<li><a href="https://github.com/wagoodman/dive">wagoodman/dive: A tool for exploring each layer in a docker image</a></li>
+<li><a href="https://grow.google/certificates/interview-warmup/">Interview Warmup</a></li>
+<li><a href="https://guillaumebogard.dev/posts/functional-error-handling/">Functional error handling with monads, monad transformers and Cats MTL :: λ Guillaume Bogard</a></li>
+<li><a href="https://gvolpe.com/blog/fsm-fs2-a-match-made-in-heaven/">Finite-State Machines + FS2 streams: A match made in heaven • gvolpe's blog</a></li>
+<li><a href="https://helix-editor.com/">Helix</a></li>
+<li><a href="https://hirrolot.github.io/posts/why-static-languages-suffer-from-complexity">Why Static Languages Suffer From Complexity</a></li>
+<li><a href="https://http4s.org/v1.0/index.html">Http4s - Quick Start</a></li>
+<li><a href="https://ianthehenry.com/posts/how-to-learn-nix/quick-start-guide/">How to Learn Nix, Part 4: Quick starts, full hearts</a></li>
+<li><a href="https://jaredkrinke.github.io/md2blog/index.html">md2blog: A zero-config static site generator for dev blogs</a></li>
+<li><a href="https://jmmv.dev/2020/04/rust-into-trait.html">What is Rust's Into<T> for? - Julio Merino (jmmv.dev)</a></li>
+<li><a href="https://jodd.org/">Jodd</a></li>
+<li><a href="https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/">What Color is Your Function? – journal.stuffwithstuff.com</a></li>
+<li><a href="https://jvns.ca/blog/2014/04/20/debug-your-programs-like-theyre-closed-source/">Debug your programs like they're closed source!</a></li>
+<li><a href="https://knowyourmeme.com/memes/10x-engineer#fn5">10x Engineer | Know Your Meme</a></li>
+<li><a href="https://krausefx.com/blog/announcing-inappbrowsercom-see-what-javascript-commands-get-executed-in-an-in-app-browser">iOS Privacy: Announcing InAppBrowser.com - see what JavaScript commands get injected through an in-app browser · Felix Krause</a></li>
+<li><a href="https://lapce.dev/">Lapce</a></li>
+<li><a href="https://librivox.org/">LibriVox | free public domain audiobooks</a></li>
+<li><a href="https://linear.app/">Linear – The issue tracking tool you'll enjoy using</a></li>
+<li><a href="https://linoscope.github.io/writing-a-game-boy-emulator-in-ocaml/#fnref:1">Writing a Game Boy Emulator in OCaml - The Linoscope Machine</a></li>
+<li><a href="https://linrunner.de/tlp/">Linux battery laptop</a></li>
+<li><a href="https://mazzo.li/posts/fast-pipes.html">How fast are Linux pipes anyway?</a></li>
+<li><a href="https://microservices.io/patterns/data/saga.html">Sagas</a></li>
+<li><a href="https://neovim.discourse.group/t/disable-comment-auto-insertion/892/4">Disable comment auto-insertion - Neovim - Neovim Discourse</a></li>
+<li><a href="https://nixos.org/guides/nix-pills/functions-and-imports.html">NixOS - Nix Pills</a></li>
+<li><a href="https://nixsanctuary.com/best-linux-hardware-system-info-commands/">Best Linux Commands For Advanced Hardware and System Info</a></li>
+<li><a href="https://nixsanctuary.com/boycott-7-zip-limited-open-source-security-issues/">Boycott 7-zip: ""Limited"" Open Source &amp; Security Issues</a></li>
+<li><a href="https://nordace.com/it/product/nordace-siena-smart-backpack/">Nordace Siena - Zaino Smart</a></li>
+<li><a href="https://okmij.org/ftp/tagless-final/index.html">Tagless-Final Style</a></li>
+<li><a href="https://planet42.github.io/Laika/index.html">Laika</a></li>
+<li><a href="https://planetscale.com/blog/the-operational-relational-schema-paradigm">The operational relational schema paradigm</a></li>
+<li><a href="https://playwright.dev/java/docs/intro">Getting started | Playwright Java</a></li>
+<li><a href="https://precondition.github.io/home-row-mods#what-are-home-row-mods">A guide to home row mods</a></li>
+<li><a href="https://python-poetry.org/">Poetry - Python dependency management and packaging made easy</a></li>
+<li><a href="https://reasonabledeviations.com/2021/09/18/how-i-use-notion/#how-i-use-notion-as-a-second-brain">How I use Notion · Reasonable Deviations</a></li>
+<li><a href="https://remote.com/">Global HR Solutions for Distributed Teams | Remote</a></li>
+<li><a href="https://rubenerd.com/losslessly-optimise-images/">Rubenerd: Losslessly optimising images</a></li>
+<li><a href="https://runwes.com/2020/02/11/howilearnedfrench.html">How I Learned French in 12 Months | Wesley Runnels</a></li>
+<li><a href="https://rust-cli-recommendations.sunshowers.io/cli-parser.html">Picking an argument parser - Rain's Rust CLI recommendations</a></li>
+<li><a href="https://rust-unofficial.github.io/patterns/intro.html">Introduction - Rust Design Patterns</a></li>
+<li><a href="https://scalac.io/blog/scala-3-inline-macro-like-superpowers/">Scala 3 inline: macro-like superpowers</a></li>
+<li><a href="https://shop.flipperzero.one/">Flipper Zero Shop</a></li>
+<li><a href="https://smallstep.com/blog/use-ssh-certificates/">If You're Not Using SSH Certificates You're Doing SSH Wrong | Smallstep Blog</a></li>
+<li><a href="https://tauri.studio/en/">Build smaller, faster, and more secure desktop applications with a web frontend | Tauri Studio</a></li>
+<li><a href="https://tera.netlify.app/docs/#getting-started">Tera</a></li>
+<li><a href="https://themakingofamillionaire.com/there-is-a-much-larger-problem-than-the-great-resignation-no-one-wants-to-talk-about-it-3922cf8aefd2">There Is a Much Larger Problem Than the Great Resignation. No One Wants to Talk About It. | by Peter Shanosky | Jan, 2022 | Making of a Millionaire</a></li>
+<li><a href="https://thevaluable.dev/vim-runtime-guide-example/">What's The Vim Runtime? A Guide With Examples</a></li>
+<li><a href="https://threadreaderapp.com/thread/1526464502086131715.html">Thread by @GeoffreyDeSmet on Thread Reader App – Thread Reader App</a></li>
+<li><a href="https://threadreaderapp.com/thread/1563956635529347072.html">Thread by @ACupOfInfinity on Thread Reader App – Thread Reader App</a></li>
+<li><a href="https://tim.mcnamara.nz/post/683022094467039232/easy-mode-for-rust">Tim McNamara – Creating an Easy Mode for Rust</a></li>
+<li><a href="https://tokio.rs/tokio/tutorial/io">I/O | Tokio - An asynchronous Rust runtime</a></li>
+<li><a href="https://two-wrongs.com/awk-state-machine-parser-pattern.html">The AWK State Machine Parser Pattern</a></li>
+<li><a href="https://typelevel.org/blog/2018/08/25/http4s-error-handling-mtl.html">Typelevel.scala | Error handling in Http4s with classy optics</a></li>
+<li><a href="https://typicalprogrammer.com/introduction-to-abject-oriented-programming">10X - Typical Programmer</a></li>
+<li><a href="https://vale.sh/">Vale.sh - A linter for prose</a></li>
+<li><a href="https://vitalik.ca/general/2022/06/20/backpack.html">My 40-liter backpack travel guide</a></li>
+<li><a href="https://vitalik.ca/general/2022/06/20/backpack.html">My 40-liter backpack travel guide</a></li>
+<li><a href="https://wiki.c2.com/?LazinessImpatienceHubris=">10X - Laziness Impatience Hubris</a></li>
+<li><a href="https://www.bejarano.io/hardening-macos/">Hardening MacOsX</a></li>
+<li><a href="https://www.bookstackapp.com/">BookStack</a></li>
+<li><a href="https://www.city17.xyz/musl/">Rust Musl</a></li>
+<li><a href="https://www.eficode.com/blog/the-future-of-kubernetes-and-why-developers-should-look-beyond-kubernetes-in-2022">The future of Kubernetes – and why developers should look beyond Kubernetes in 2022</a></li>
+<li><a href="https://www.eficode.com/blog/the-future-of-kubernetes-and-why-developers-should-look-beyond-kubernetes-in-2022">The future of Kubernetes – and why developers should look beyond Kubernetes in 2022</a></li>
+<li><a href="https://www.foxhound.systems/blog/final-tagless/">Final tagless encodings have little to do with typeclasses – Foxhound Systems</a></li>
+<li><a href="https://www.fpcomplete.com/blog/collect-rust-traverse-haskell-scala/">Collect in Rust, traverse in Haskell and Scala</a></li>
+<li><a href="https://www.gresearch.co.uk/blog/article/metatesting-your-property-based-tests/">Metatesting your property-based tests - G Research</a></li>
+<li><a href="https://www.julian.com/guide/muscle/workout-supplements">Building Muscle: How to Start</a></li>
+<li><a href="https://www.keychron.com/products/keychron-k7-ultra-slim-wireless-mechanical-keyboard?variant=39396243374169">Keychron K7 Ultra-slim Wireless Mechanical Keyboard</a></li>
+<li><a href="https://www.makeuseof.com/raspberry-pi-set-static-ip/">How Do I Set a Static IP Address on Raspberry Pi?</a></li>
+<li><a href="https://www.patrologos.gr/en/kentayros#menu_c0p0s0p0">How the wise Centaur educated the Greek Heroes</a></li>
+<li><a href="https://www.stackbuilders.com/blog/generics/">Stack Builders - GHC Generics Explained</a></li>
+<li><a href="https://www.textualize.io/">Textualize</a></li>
+<li><a href="https://www.tobyhobson.com/posts/cats/monad-error/">MonadError - Handling failed futures functionally | Toby Hobson</a></li>
+<li><a href="https://www.wired.co.uk/article/best-sci-fi-movies-of-all-time">The Best Sci-Fi Movies Everyone Should Watch Once | WIRED UK</a></li>
+<li><a href="https://www.youtube.com/channel/UCIfWXqdiEvM8nBFAA594Kjw/videos">Neil Sabde - YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=1iDlOHt6sZY">Stop Adding Features to Your Software - YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=bWdbKN9F18U">Async I/O in Depth: Iterative TCP Echo Server - YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=ihKdrhPaZjg">[Full VOD] - Scala | NeoVim - All the info you ever wanted. - YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=m3Qh-MmWpbM">Tagless Final in Scala - YouTube</a></li>
+<li><a href="https://yew.rs/ja/docs/tutorial">Tutorial | Yew</a></li>
+<li><a href="https://youtube.com/shorts/w4Fczis0D5Q?feature=share">Watch 5 books that will help you become laser focused🔥#shorts #books on YouTube</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ricette/ricette.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="horror.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ricette/ricette.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="horror.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

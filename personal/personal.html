@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Personal And Language Learning - Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../hello.html">Hello!</a></li><li class="spacer"></li><li class="chapter-item expanded "><div>Scala</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scala/learning_stuff.html">Learning</a></li><li class="chapter-item expanded "><a href="../scala/various.html">Various</a></li></ol></li><li class="chapter-item expanded "><div>Rust</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../rust/whole_list.html">Whole New List</a></li><li class="chapter-item expanded "><a href="../rust/learning_stuff.html">Learning</a></li><li class="chapter-item expanded "><a href="../rust/learning_rust.html">Other Learning List</a></li><li class="chapter-item expanded "><a href="../rust/libraries.html">Libraries</a></li><li class="chapter-item expanded "><a href="../rust/cli.html">Cli Tools</a></li><li class="chapter-item expanded "><a href="../rust/various.html">Various</a></li></ol></li><li class="chapter-item expanded "><div>Command Line Church</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../command_line/tools.html">Tools</a></li></ol></li><li class="chapter-item expanded "><div>Linux</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linux/lfcs.html">LFCS</a></li><li class="chapter-item expanded "><a href="../linux/various.html">Various</a></li><li class="chapter-item expanded "><a href="../linux/timemachine.html">Time Machine</a></li></ol></li><li class="chapter-item expanded "><a href="../low_level/low_level.html">Low Level</a></li><li class="chapter-item expanded "><a href="../software_development/software_development.html">Software Development</a></li><li class="chapter-item expanded "><a href="../macosx/macosx.html">MacosX</a></li><li class="chapter-item expanded "><a href="../python/python.html">Python</a></li><li class="chapter-item expanded "><a href="../frontend/frontend.html">Frontend</a></li><li class="chapter-item expanded "><a href="../gameboy/gameboy.html">Gameboy</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../personal/personal.html" class="active">Personal And Language Learning</a></li><li class="chapter-item expanded "><a href="../ricette/ricette.html">Ricette</a></li><li class="chapter-item expanded "><a href="../mess.html">To Be Organized</a></li><li class="chapter-item expanded "><a href="../horror.html">Horror Movies</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/TonioGela/mdbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="personal-and-language-learning"><a class="header" href="#personal-and-language-learning">Personal And Language Learning</a></h1>
+<ul>
+<li><a href="https://leaderdisettore.wordpress.com/">Leader di Settore</a></li>
+<li><a href="https://happilyevertravels.com/best-way-to-use-duolingo/">Optimize Duolinguo</a></li>
+<li><a href="https://www.italki.com/">Italki</a></li>
+<li><a href="https://metacognitive.me/memory-palace/">Memory Palaces</a></li>
+<li><a href="https://lunduke.substack.com/p/the-best-vga-dos-games-period">Best Dos Games</a></li>
+<li><a href="https://www.youtube.com/watch?v=p7lvNs7Xkbk">Which games are these?</a></li>
+<li><a href="https://www.authentichappiness.sas.upenn.edu">Authentic Happiness</a></li>
+<li><a href="https://theoatmeal.com/comics/unhappy">How to be perfectly unhappy</a></li>
+<li><a href="https://www.ilpost.it/2021/09/29/complotti-polidoro/">Zio Complottista</a></li>
+<li><a href="https://www.frasimania.it/modi-di-dire-inglesi/">Modi di dire in inglese</a></li>
+</ul>
+<h2 id="organizing-tools-and-techniques"><a class="header" href="#organizing-tools-and-techniques">Organizing Tools and Techniques</a></h2>
+<ul>
+<li><a href="https://dev.to/atapas/my-favorite-blogging-tools-to-make-you-a-productive-blogger-50c">Blogging Tools</a></li>
+<li><a href="https://swimlanes.io/">Swimlanes</a></li>
+<li><a href="http://www.hemingwayapp.com/">Hemingway - Valutate text</a></li>
+<li><a href="https://12factor.net/">The Twelve-Factor App</a></li>
+<li><a href="https://keepachangelog.com/en/1.0.0/">Keep A Changelog</a></li>
+<li><a href="https://processing.org/">Processing.org</a></li>
+<li><a href="https://www.overleaf.com">Overleaf</a></li>
+<li><a href="https://medium.com/@marc.bojakowski/software-development-done-right-is-boring-e7277242c3ff">Boring Software Development</a></li>
+<li><a href="http://pranay.gp/how-to-learn-things-at-1000x-the-speed">Learn Things at 1000x</a></li>
+<li><a href="https://qotoqot.com/blog/improving-focus/">How I got to 200 productive hours a month</a></li>
+</ul>
+<h2 id="gaming-and-various"><a class="header" href="#gaming-and-various">Gaming and Various</a></h2>
+<ul>
+<li><a href="https://www.userchrome.org/">Firefox Customizations</a></li>
+<li><a href="https://www.codingame.com/home">Codin Game</a></li>
+<li><a href="http://www.centrometeolombardo.com/radar/">Meteo</a></li>
+<li><a href="https://blog.usejournal.com/a-beginners-guide-to-modding-minecraft-9a42536495f6">Develop Minecraft Mod</a></li>
+<li><a href="http://readasterix.blogspot.com/">Read Asterix</a></li>
+<li><a href="http://tylervigen.com/spurious-correlations">Spurious Correlations</a></li>
+<li><a href="https://juinjutsuteam.wixsite.com/sito/one-piece">One Piece</a></li>
+<li><a href="https://airma.sh/">AirMash</a></li>
+<li><a href="https://history.nasa.gov/books_sort_SP.html">Nasa Ebooks</a></li>
+<li><a href="https://www.brainbashers.com/skyscrapers.asp">Daily Skyscrapers</a></li>
+<li><a href="https://osgameclones.com/">Open Source Game Clones</a></li>
+<li><a href="https://www.jamiefuller.com/portal/">Portal for C64</a></li>
+<li><a href="https://copy.sh/v86/">Virtual x86</a></li>
+<li><a href="http://uk.businessinsider.com/programmer-automates-his-job-2015-11">Programmer automates his job</a></li>
+<li><a href="https://www.milanotoday.it/attualita/percorsi-bici_milano.html">Percorsi Bici Milano</a></li>
+<li><a href="https://www.wondersofphysics.com/2020/04/best-physics-movies.html">Best Physics Movies</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../gameboy/gameboy.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../ricette/ricette.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../gameboy/gameboy.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../ricette/ricette.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

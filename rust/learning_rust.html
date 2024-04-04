@@ -1,0 +1,358 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Other Learning List - Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../hello.html">Hello!</a></li><li class="spacer"></li><li class="chapter-item expanded "><div>Scala</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scala/learning_stuff.html">Learning</a></li><li class="chapter-item expanded "><a href="../scala/various.html">Various</a></li></ol></li><li class="chapter-item expanded "><div>Rust</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../rust/whole_list.html">Whole New List</a></li><li class="chapter-item expanded "><a href="../rust/learning_stuff.html">Learning</a></li><li class="chapter-item expanded "><a href="../rust/learning_rust.html" class="active">Other Learning List</a></li><li class="chapter-item expanded "><a href="../rust/libraries.html">Libraries</a></li><li class="chapter-item expanded "><a href="../rust/cli.html">Cli Tools</a></li><li class="chapter-item expanded "><a href="../rust/various.html">Various</a></li></ol></li><li class="chapter-item expanded "><div>Command Line Church</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../command_line/tools.html">Tools</a></li></ol></li><li class="chapter-item expanded "><div>Linux</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linux/lfcs.html">LFCS</a></li><li class="chapter-item expanded "><a href="../linux/various.html">Various</a></li><li class="chapter-item expanded "><a href="../linux/timemachine.html">Time Machine</a></li></ol></li><li class="chapter-item expanded "><a href="../low_level/low_level.html">Low Level</a></li><li class="chapter-item expanded "><a href="../software_development/software_development.html">Software Development</a></li><li class="chapter-item expanded "><a href="../macosx/macosx.html">MacosX</a></li><li class="chapter-item expanded "><a href="../python/python.html">Python</a></li><li class="chapter-item expanded "><a href="../frontend/frontend.html">Frontend</a></li><li class="chapter-item expanded "><a href="../gameboy/gameboy.html">Gameboy</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../personal/personal.html">Personal And Language Learning</a></li><li class="chapter-item expanded "><a href="../ricette/ricette.html">Ricette</a></li><li class="chapter-item expanded "><a href="../mess.html">To Be Organized</a></li><li class="chapter-item expanded "><a href="../horror.html">Horror Movies</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/TonioGela/mdbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="learning-rust"><a class="header" href="#learning-rust">Learning Rust</a></h1>
+<p><a href="https://www.rust-lang.org/learn/get-started">Getting Started + Installation</a> | <a href="https://cheats.rs/">Cheat Sheet</a></p>
+<h2 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h2>
+<ol>
+<li><a href="https://gist.github.com/noxasaxon/7bf5ebf930e281529161e51cd221cf8a#how-do-i-start-learning-rust">How Do I Start Learning Rust?!</a></li>
+<li><a href="https://gist.github.com/noxasaxon/7bf5ebf930e281529161e51cd221cf8a#ok-i-think-i-know-the-basics-but-how-do-i-get-better">Ok, I Think I Know The Basics But How Do I Get Better?!</a></li>
+<li><a href="https://gist.github.com/noxasaxon/7bf5ebf930e281529161e51cd221cf8a#rustlang-tooling">Rustlang Tooling</a></li>
+<li><a href="https://gist.github.com/noxasaxon/7bf5ebf930e281529161e51cd221cf8a#helpful-references-throughout-your-journey">Helpful References Throughout Your Journey</a></li>
+<li><a href="https://gist.github.com/noxasaxon/7bf5ebf930e281529161e51cd221cf8a#the-rust-community">The Rust Community</a></li>
+<li><a href="https://gist.github.com/noxasaxon/7bf5ebf930e281529161e51cd221cf8a#recommended-but-not-free-books--courses">Recommended (but not free) Books &amp; Courses</a></li>
+</ol>
+<h2 id="how-do-i-start-learning-rust"><a class="header" href="#how-do-i-start-learning-rust">How Do I Start Learning Rust?!</a></h2>
+<h3 id="by-reading"><a class="header" href="#by-reading">by Reading</a></h3>
+<ul>
+<li><a href="https://doc.rust-lang.org/book/"><strong>The Book</strong></a>: start reading now, read it whenever you can, and don't worry if it takes a long time to get through. You will reference it for most of your time using Rust. or try the <a href="https://rust-book.cs.brown.edu/experiment-intro.html">Rust Book with Quizzes</a>
+<blockquote>
+<p>Affectionately nicknamed “the book,” The Rust Programming Language will give you an overview of the language from first principles. You’ll build a few projects along the way, and by the end, you’ll have a solid grasp of the language.</p>
+</blockquote>
+</li>
+<li><a href="https://doc.rust-lang.org/stable/rust-by-example/index.html"><strong>Rust By Example</strong></a>: like 'The Book', with less docs and more sample code
+<blockquote>
+<p>If reading multiple hundreds of pages about a language isn’t your style, then Rust By Example has you covered. While the book talks about code with a lot of words, RBE shows off a bunch of code, and keeps the talking to a minimum. It also includes exercises!"</p>
+</blockquote>
+</li>
+<li>(Blog) <a href="https://kerkour.com/rust-mental-models">Mental Models for Learning Rust. (<code>kerkour</code>)</a></li>
+<li>(Blog) <a href="https://fasterthanli.me/articles/a-half-hour-to-learn-rust">A Half Hour to Learn Rust. (<code>fasterthanlime</code>)</a></li>
+<li>(Blog Series) <a href="http://cliffle.com/p/dangerust/">Learn Rust the Dangerous Way (<code>cliffle</code>)</a> "Rust features in context for low-level C programmers"
+<blockquote>
+<p>Existing Rust tutorials are great, but they focus on safe features. This companion tutorial takes an unsafe-first approach that may be more appealing for low-level systems programmers like me.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="by-watching"><a class="header" href="#by-watching">by Watching</a></h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=ygL_xcavzQ4&amp;t=2s">"Learn Rust in One Video"</a> : highly rated video for learning rust concepts from scratch.</li>
+<li><a href="https://www.youtube.com/watch?v=5QsEuoIt7JQ">"Going through the Rust Programming Book Live!"</a></li>
+</ul>
+<h3 id="by-doing"><a class="header" href="#by-doing">by Doing</a></h3>
+<ul>
+<li><a href="https://tourofrust.com/">Tour of Rust</a>: Step-by-step interactive walkthrough of Rust, all in your browser.</li>
+<li><a href="https://github.com/rust-lang/rustlings"><strong>Rustlings</strong></a>: Rust by Example -style exercises you complete via your own local environment
+<blockquote>
+<p>Alternatively, Rustlings guides you through downloading and setting up the Rust toolchain, and teaches you the basics of reading and writing Rust syntax, on the command line. It's an alternative to Rust by Example that works with your own environment.</p>
+</blockquote>
+</li>
+<li><a href="https://exercism.org"><strong>Exercism.org</strong></a>: Work through examples in order from "hello world!" to advanced concepts like Doubly-linked lists. Do work in the browser or via your local environment using the exercism CLI, with progress reflected in the web app. Get mentorship and guidance from real people.
+<blockquote>
+<p>We’re building a place where anyone can learn and master programming for free, without ever feeling lost or stupid. We're here to help everyone get really good at programming, regardless of their background. We want to share our love of programming, and help people upskill as part of their upward social mobility.</p>
+</blockquote>
+</li>
+<li><a href="https://google.github.io/comprehensive-rust/">Comprehensive Rust</a>: From the Google Android team
+<blockquote>
+<p>This is a four day Rust course developed by the Android team. The course covers the full spectrum of Rust, from basic syntax to advanced topics like generics and error handling. It also includes Android-specific content on the last day.
+The goal of the course is to teach you Rust. We assume you don’t know anything about Rust and hope to:
+Give you a comprehensive understanding of the Rust syntax and language.
+Enable you to modify existing programs and write new programs in Rust.
+Show you common Rust idioms.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="ok-i-think-i-know-the-basics-but-how-do-i-get-better"><a class="header" href="#ok-i-think-i-know-the-basics-but-how-do-i-get-better">Ok, I Think I Know The Basics But How Do I Get Better?!</a></h2>
+<h3 id="by-reading-1"><a class="header" href="#by-reading-1">by Reading</a></h3>
+<ul>
+<li><a href="http://cliffle.com/blog/rust-typestate/">The 'Typestate Pattern' in Rust (<code>cliffle</code>)</a></li>
+<li><a href="https://rust-unofficial.github.io/patterns/">Rust Design Patterns</a></li>
+<li>Design Patterns, in Rust (<code>refactoring.guru</code>)<a href="https://refactoring.guru/design-patterns/rust">Website</a> | <a href="https://github.com/fadeevab/design-patterns-rust">Repo</a></li>
+<li><a href="https://www.reddit.com/r/rust/comments/v4dnaj/twitter_thread_with_trivia_about_rust_types/">Rust Types Trivia (<code>jonhoo</code>)</a></li>
+<li><a href="http://cliffle.com/blog/not-thread-safe/">Safely Writing Code That Isn't Thread Safe (<code>cliffle</code>)</a></li>
+<li><a href="https://blog.yoshuawuyts.com/futures-concurrency-3/">Futures Concurrency III: (avoiding) <code>Select!</code> in Async Code</a></li>
+</ul>
+<h3 id="by-watching-1"><a class="header" href="#by-watching-1">by Watching</a></h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=rAl-9HwD858&amp;list=PLqbS7AVVErFiWDOAVrPt7aYmnuuOLYvOa">Crust of Rust (series) <code>jonhoo</code></a></li>
+</ul>
+<h3 id="by-doing-1"><a class="header" href="#by-doing-1">by Doing</a></h3>
+<ul>
+<li><a href="https://github.com/mgattozzi/whorl"><code>whorl</code></a>
+<blockquote>
+<p>whorl was created to teach you how async executors work in Rust. It is not the fastest executor nor is it's API perfect, but it will teach you about them and how they work and where to get started if you wanted to make your own.</p>
+</blockquote>
+</li>
+<li><a href="https://github.com/pingcap/talent-plan/#series-2-rust-programming">TP-201: Practical Networked Applications in Rust</a>
+<blockquote>
+<p>A series of projects that incrementally develop a single Rust project from the ground up into a high-performance,</p>
+</blockquote>
+</li>
+<li>https://github.com/dpc/sniper
+<blockquote>
+<p>Educational Rust implemenation of Auction Sniper from Growing Object-Oriented Software, Guided By Tests
+networked, parallel and asynchronous key/value store. Along the way various real-world Rust development subject matter are explored and discussed.</p>
+</blockquote>
+</li>
+<li><a href="https://blog.tempus-ex.com/hello-video-codec/">Learn Video Codecs by Implementing one in 100 lines of Rust</a></li>
+</ul>
+<h2 id="rustlang-tooling"><a class="header" href="#rustlang-tooling">Rustlang Tooling</a></h2>
+<ul>
+<li><strong><a href="https://rust-analyzer.github.io/manual.html#installation">Rust-Analyzer</a></strong>: An incredible IDE plugin for the rust language. plugin links: <a href="https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer">vscode</a>, <a href="https://github.com/rust-lang/rust.vim">vim</a></li>
+<li><a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021">The Rust Playground: run and share rust snippets in the browser</a></li>
+</ul>
+<h2 id="helpful-references-throughout-your-journey"><a class="header" href="#helpful-references-throughout-your-journey">Helpful References Throughout Your Journey</a></h2>
+<ul>
+<li><a href="https://doc.rust-lang.org/book/"><strong>The Book</strong></a></li>
+<li><a href="https://rust-unofficial.github.io/patterns/">Rust Design Patterns</a></li>
+<li><a href="https://cheats.rs">Rust Cheat Sheet</a></li>
+</ul>
+<h2 id="the-rust-community"><a class="header" href="#the-rust-community">The Rust Community</a></h2>
+<ul>
+<li><a href="https://www.reddit.com/r/rust/">Rust subreddit</a></li>
+<li><a href="https://users.rust-lang.org/">Rust community forum</a></li>
+<li><a href="https://discord.gg/rust-lang">Rust Community Discord</a></li>
+</ul>
+<h2 id="recommended-but-not-free-books--courses"><a class="header" href="#recommended-but-not-free-books--courses">Recommended (but not free) Books &amp; Courses</a></h2>
+<h3 id="beginner"><a class="header" href="#beginner">Beginner</a></h3>
+<ul>
+<li>📘 <a href="https://www.oreilly.com/library/view/beginning-rust-from/9781484234686/">Beginning Rust From Novice to Professional (O'Reilly)</a></li>
+<li>👩‍🎓 <a href="https://www.rustadventure.dev/">Rust Adventure <code>chrisbiscardi</code></a></li>
+<li>📘/👩‍🎓 <a href="https://www.manning.com/books/learn-rust-in-a-month-of-lunches">Learn Rust in a Month of Lunches (Manning, Macleod)</a></li>
+<li>📘 <a href="https://www.zero2prod.com/">Zero to Production in Rust <code>luca palmieri</code></a></li>
+<li>📘/👩‍🎓 ~$30 - <a href="https://www.manning.com/livevideo/rust-in-motion">Rust In Motion (Manning)</a>: From creators of The Book, a video walkthrough  + interactive transcript for BRAND NEW Rustaceans that goes over critical concepts</li>
+<li>👩‍🎓 $129 - <a href="https://rustforjs.dev/">Rust for Javascript Developers</a></li>
+</ul>
+<h3 id="intermediate"><a class="header" href="#intermediate">Intermediate</a></h3>
+<ul>
+<li>📘 <a href="https://www.oreilly.com/library/view/programming-rust-2nd/9781492052586/">Programming Rust (O'Reilly)</a></li>
+<li>📘 ~$35 - <a href="https://www.manning.com/books/rust-in-action">Rust In Action</a></li>
+<li>📘 ~$30 - <a href="https://nostarch.com/rust-rustaceans">Rust for Rustaceans (nostarch press)</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../rust/learning_stuff.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../rust/libraries.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../rust/learning_stuff.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../rust/libraries.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

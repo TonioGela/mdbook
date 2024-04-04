@@ -1,0 +1,1280 @@
+<!DOCTYPE HTML>
+<html lang="en" class="ayu" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Whole New List - Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../hello.html">Hello!</a></li><li class="spacer"></li><li class="chapter-item expanded "><div>Scala</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../scala/learning_stuff.html">Learning</a></li><li class="chapter-item expanded "><a href="../scala/various.html">Various</a></li></ol></li><li class="chapter-item expanded "><div>Rust</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../rust/whole_list.html" class="active">Whole New List</a></li><li class="chapter-item expanded "><a href="../rust/learning_stuff.html">Learning</a></li><li class="chapter-item expanded "><a href="../rust/learning_rust.html">Other Learning List</a></li><li class="chapter-item expanded "><a href="../rust/libraries.html">Libraries</a></li><li class="chapter-item expanded "><a href="../rust/cli.html">Cli Tools</a></li><li class="chapter-item expanded "><a href="../rust/various.html">Various</a></li></ol></li><li class="chapter-item expanded "><div>Command Line Church</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../command_line/tools.html">Tools</a></li></ol></li><li class="chapter-item expanded "><div>Linux</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../linux/lfcs.html">LFCS</a></li><li class="chapter-item expanded "><a href="../linux/various.html">Various</a></li><li class="chapter-item expanded "><a href="../linux/timemachine.html">Time Machine</a></li></ol></li><li class="chapter-item expanded "><a href="../low_level/low_level.html">Low Level</a></li><li class="chapter-item expanded "><a href="../software_development/software_development.html">Software Development</a></li><li class="chapter-item expanded "><a href="../macosx/macosx.html">MacosX</a></li><li class="chapter-item expanded "><a href="../python/python.html">Python</a></li><li class="chapter-item expanded "><a href="../frontend/frontend.html">Frontend</a></li><li class="chapter-item expanded "><a href="../gameboy/gameboy.html">Gameboy</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../personal/personal.html">Personal And Language Learning</a></li><li class="chapter-item expanded "><a href="../ricette/ricette.html">Ricette</a></li><li class="chapter-item expanded "><a href="../mess.html">To Be Organized</a></li><li class="chapter-item expanded "><a href="../horror.html">Horror Movies</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/TonioGela/mdbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<p><strong>Table of Contents</strong>  <em>generated with <a href="https://github.com/thlorenz/doctoc">DocToc</a></em></p>
+<ul>
+<li><a href="#getting-started-with-rust">Getting Started with Rust</a></li>
+<li><a href="#some-links-on-rust">Some links on Rust</a></li>
+<li><a href="#borrowing-and-lifetime-tricks">Borrowing and Lifetime Tricks</a></li>
+<li><a href="#macros">Macros</a></li>
+<li><a href="#cool-rust-projects">Cool Rust Projects</a></li>
+<li><a href="#rust-error-handling">Rust Error Handling</a></li>
+<li><a href="#rust-concurrency">Rust Concurrency</a>
+<ul>
+<li><a href="#shared-data-across-multiple-threads">Shared Data Across Multiple Threads</a></li>
+</ul>
+</li>
+<li><a href="#data-processing-and-data-structures">Data Processing and Data Structures</a>
+<ul>
+<li><a href="#json-processing">JSON Processing</a></li>
+<li><a href="#cool-data-structures">Cool Data Structures</a></li>
+<li><a href="#geospatial-and-graph">Geospatial and Graph</a></li>
+<li><a href="#string-performance">String Performance</a></li>
+</ul>
+</li>
+<li><a href="#rust-and-scalajava">Rust and Scala/Java</a>
+<ul>
+<li><a href="#rust-and-python">Rust and Python</a></li>
+<li><a href="#rust-otherlanguage-integration--rust-ffi">Rust-OtherLanguage Integration / Rust FFI</a></li>
+</ul>
+</li>
+<li><a href="#cli-and-misc">CLI and Misc</a></li>
+<li><a href="#ideeditortooling">IDE/Editor/Tooling</a></li>
+<li><a href="#testing-and-cicd">Testing and CI/CD</a>
+<ul>
+<li><a href="#cross-compilation">Cross-compilation</a></li>
+</ul>
+</li>
+<li><a href="#performance-and-low-level-stuff">Performance and Low-Level Stuff</a>
+<ul>
+<li><a href="#perf-profiling">Perf profiling:</a>
+<ul>
+<li><a href="#memoryheap-profiling">Memory/Heap Profiling</a></li>
+</ul>
+</li>
+<li><a href="#fast-string-parsing">Fast String Parsing</a></li>
+<li><a href="#bitpacking-binary-structures-serialization">Bitpacking, Binary Structures, Serialization</a></li>
+<li><a href="#enums-thin-pointers-type-wrapping">Enums, Thin Pointers, Type Wrapping</a></li>
+<li><a href="#simd">SIMD</a></li>
+</ul>
+</li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h2 id="getting-started-with-rust"><a class="header" href="#getting-started-with-rust">Getting Started with Rust</a></h2>
+<p><a href="https://stackoverflow.blog/2020/06/05/why-the-developers-who-use-rust-love-it-so-much/">Why the developers who use Rust love it so much</a> - from StackOverflow survey, really good quotes</p>
+<p>If you want a Rust REPL, check out <a href="https://github.com/google/evcxr/tree/master/evcxr_repl">evcxr</a>.</p>
+<p>I highly recommend <a href="https://rust-analyzer.github.io">rust-analyzer</a> to support fast compile checks, references, refactorings, etc. in your editor.
+VSCode works pretty well - install rust-analyzer and the "Even Better TOML" extension and you should be set.</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/book/2018-edition/ch00-00-introduction.html">The Rust Book</a> - probably the best starting point</li>
+<li><a href="https://github.com/rust-lang/rustlings/blob/master/README.md">Rustlings</a> - small exercises to learn</li>
+<li><a href="https://www.youtube.com/watch?v=-lYeJeQ11OI&amp;list=PLfllocyHVgsRwLkTAhG0E-2QxCf-ozBkk">Easy Rust Youtube Channel</a> - great videos</li>
+<li><a href="http://rustbyexample.com/">Rust By Example</a> - also the guide on their site is pretty good.</li>
+<li><a href="https://katib.moe/the-completesh-rust-cheat-sheet?source=personalized-newsletter&amp;source-id=2023-05-25">Complete(sh) Rust Cheat Sheet</a></li>
+<li><a href="https://jrvidal.github.io/explaine.rs/">explaine.rs</a> - paste Rust code into the window and hover over keywords to get explanations. Great for learning.</li>
+<li><a href="https://www.softax.pl/blog/rust-lang-in-a-nutshell-1-introduction/">Rustlang in a Nutshell</a> - great introduction</li>
+<li><a href="https://kerkour.com/rust-mental-models">Mental models for learning Rust</a> - really really short blurb on how to approach learning Rust</li>
+<li><a href="http://squidarth.com/rc/rust/2018/05/31/rust-borrowing-and-ownership.html">Rust Borrowing and Ownership</a> - easy-to-read, short summary of basic ownership, borrowing, and lifetime references</li>
+<li><a href="https://medium.com/@rotc21/rust-adventures-a-java-programmer-understanding-rust-ownership-edbeb6b8001">A Java Programmer Understanding Rust Ownership</a></li>
+<li><a href="https://theomn.com/rust-error-handling-for-pythonistas/">Rust Error Handling for Pythonistas</a></li>
+<li><a href="https://www.zero2prod.com">Zero to Production in Rust</a></li>
+</ul>
+<p>Easy short intros:</p>
+<ul>
+<li><a href="https://www.thecodedmessage.com/posts/rust-map-entry/">A Rust Gem: The Rust Map API</a> - comparing C++, Java, and Rust Map APIs and why Option and not having nulls makes the Rust Map API superior</li>
+</ul>
+<p>Online resources and help:</p>
+<ul>
+<li><a href="https://cheats.rs">cheats.rs</a> - Awesome quick ref.</li>
+<li>The Rust <a href="https://discordapp.com/channels/442252698964721669/448238009733742612">Discord #beginners</a> channel has been pretty helpful for me</li>
+<li><a href="http://client00.chat.mibbit.com/?server=irc.mozilla.org&amp;channel=%23rust">Rust IRC channel</a></li>
+<li><a href="http://www.rustforrubyists.com/">Rust for Rubyists</a></li>
+<li><a href="http://play.rust-lang.org/">Rust Playpen</a> - closest thing to a REPL  :(</li>
+<li><a href="http://makepad.nl">makepad</a> - Web-based Rust + WebASM multimedia playground</li>
+<li><a href="https://rustbeginners.github.io/awesome-rust-mentors/">Awesome Rust Mentors</a></li>
+</ul>
+<h2 id="some-links-on-rust"><a class="header" href="#some-links-on-rust">Some links on Rust</a></h2>
+<ul>
+<li>
+<p><a href="https://danielkeep.github.io/itercheat_baked.html">Cheat sheet for Iterator methods</a></p>
+</li>
+<li>
+<p><a href="https://rust-unofficial.github.io/patterns/intro.html">Rust Design Patterns</a> - super helpful resource</p>
+</li>
+<li>
+<p><a href="https://blog.logrocket.com/what-you-cant-do-in-rust-and-what-to-do-instead/">What you Can't Do in Rust and What To Do Instead</a> - great guide for anti-patterns</p>
+</li>
+<li>
+<p><a href="https://limpet.net/mbrubeck/2019/02/07/rust-a-unique-perspective.html">Rust: A Unique Perspective</a> - comprehensive summary about Rust ownership from angle of unique access, covers RC/Arc etc.</p>
+</li>
+<li>
+<p><a href="https://gregoryszorc.com/blog/2021/04/13/rust-is-for-professionals/">Rust is for Professionals</a> - great perspective on what makes Rust unique and so appealing</p>
+</li>
+<li>
+<p><a href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/tour-of-rusts-standard-library-traits.md">Tour of Rust's Standard Library Traits</a> - really great detailed guide with an explanation about traits, generics, associated types, etc.</p>
+</li>
+<li>
+<p><a href="https://medium.com/nearprotocol/understanding-rust-lifetimes-e813bcd405fa">Understanding Rust Lifetimes</a></p>
+<ul>
+<li><a href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/common-rust-lifetime-misconceptions.md">Common Rust Lifetime Misconceptions</a> -- a great detailed dive into nuances</li>
+</ul>
+</li>
+<li>
+<p><a href="https://rust-unofficial.github.io/too-many-lists/">Learn Rust with Too Many Linked Lists</a> - hilarious.</p>
+</li>
+<li>
+<p><a href="https://andrewjpritchard.medium.com/shared-mutability-in-rust-3f92155ddbf7">Shared Mutability in Rust: Acyclic Graphs</a> - really good article on mutable child entities, and how to share things which need to be mutable (hint: don't, instead use an "arena" pattern where a single owner mutates things)</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=rAl-9HwD858#action=share">Jon Gjengset on Rust Lifetime Annotations</a> - actually check out his Youtube channel, lots of great tutorials</p>
+</li>
+<li>
+<p><a href="http://antoyo.ml/evolution-rust-programmer">The Evolution of Rust Programmers</a> - hilarious look at different coding styles</p>
+</li>
+<li>
+<p><a href="https://brson.github.io/fireflowers/">Fireflowers: Rust in the words of its Practitioners</a> - just brilliant commentary on what Rust is.</p>
+</li>
+<li>
+<p><a href="https://blog.mgattozzi.dev/oxidizing-the-technical-interview/">Oxidizing the Interview</a> - hilarious read on a Rust technical interview</p>
+</li>
+<li>
+<p><a href="https://blog.usejournal.com/rust-and-the-three-laws-of-informatics-4324062b322b">Rust and the Three Laws of Informatics</a> - great detailed guide to how Rust allows developers to uncompromisingly achieve correctness, maintainability, AND efficiency</p>
+</li>
+<li>
+<p><a href="https://www.nature.com/articles/d41586-020-03382-2">Why Scientists are turning to Rust</a> - from Nature mag</p>
+</li>
+<li>
+<p><a href="http://dtrace.org/blogs/bmc/2020/10/11/rust-after-the-honeymoon/">Rust After the Honeymoon</a> - by Bryan Cantrill, a list of top favorite Rust tricks/properties.  Did you know that <code>{:#x?}</code> will pretty-print structs in HEX??</p>
+</li>
+<li>
+<p><a href="http://cliffle.com/blog/prefer-rust/">Prefer Rust over C/C++</a> - when to and when not to prefer Rust</p>
+</li>
+<li>
+<p><a href="https://www.flocknetworks.com/moving-from-c-to-rust/">Moving from C to Rust</a></p>
+<ul>
+<li><a href="https://immunant.com/blog/2020/01/quake3/">C2Rust and Quake</a> - a tool to auto translate C to Rust!</li>
+</ul>
+</li>
+<li>
+<p><a href="http://www.sheshbabu.com/posts/rust-module-system/">Clear Explanation of Rust's Module System</a> - easy intro guide</p>
+</li>
+<li>
+<p><a href="https://gist.github.com/DanielKeep/470f4e114d28cd0c8d43">On Rusts Module System</a> - good explanation of paths, naming, modules -- see this when compiler complains about cannot find symbols</p>
+</li>
+<li>
+<p><a href="https://piyushagarwal.hashnode.dev/null-the-billion-dollar-mistake-and-how-rust-provides-a-solution?source=personalized-newsletter&amp;source-id=2023-07-27">Null The Billion Dollar Mistake and how Rust Provides a Solution</a></p>
+</li>
+</ul>
+<p><a href="http://fitzgeraldnick.com/2018/02/26/speed-without-wizardry.html">Speed without wizardry</a> - how using Rust is safer and better than using hacks in Javascript</p>
+<p>Dealing with strings are confusing in rust, because there are two types: a heap-
+allocated <code>String</code> and a pointer to a slice of String bytes: <code>&amp;str</code>.  Knowing
+what to use, and defining structures on them, immediately exposes the steep
+learning curve of ownership.</p>
+<p>See the <a href="http://doc.rust-lang.org/guide-strings.html">Guide to Strings</a> for some help.</p>
+<p>Specific topics:</p>
+<ul>
+<li>
+<p><a href="http://carols10cents.github.io/rust-conversion-reference/">Rust conversion reference</a></p>
+</li>
+<li>
+<p><a href="https://cj.rs//blog/rust-default-values-for-maintainability/">Default Values for Maintainability</a> - short and easy guide</p>
+</li>
+<li>
+<p><a href="https://thomashartmann.dev/blog/async-rust/">Async Rust</a> - A really concise and great intro to async/await</p>
+</li>
+<li>
+<p><a href="https://msarmi9.github.io/posts/async-rust/">Async Rust: Futures, Tasks, Wakers; Oh My!</a> - another great concise intro, starting with basic async concepts/syntax and diving into details about Wakers and the Future mechanism</p>
+</li>
+<li>
+<p><a href="https://morestina.net/blog/1686/rust-async-is-colored">Rust Async is Colored</a> - great deep dive into async vs sync, connecting the two worlds, and implications</p>
+</li>
+<li>
+<p><a href="https://docs.rs/dtolnay/latest/dtolnay/macro._02__reference_types.html">Shared/Exclusive Refs, not Mutable/Immutable</a> - excellent explanation from @dtolnay on thinking about <code>&amp;mut T</code> as exclusive, not immutable.  Also explaining interior mutability and <code>RefCell</code> etc. - and why they allow <code>&amp;self</code> safely while providing mutation.</p>
+</li>
+<li>
+<p><a href="https://deterministic.space/elegant-apis-in-rust.html">Elegant library APIs in Rust</a> - lots of good tips here</p>
+</li>
+<li>
+<p><a href="https://rust-cli-recommendations.sunshowers.io">Rain's Rust CLI Guide</a> - how to write and organize Rust CLI apps</p>
+</li>
+<li>
+<p><a href="https://hermanradtke.com/2015/06/22/effectively-using-iterators-in-rust.html">Effectively using Iterators in Rust</a> - on differences between <code>iter()</code>, <code>into_iter()</code>, types, etc.</p>
+</li>
+<li>
+<p><a href="https://blog.thomasheartman.com/posts/on-generics-and-associated-types">Generics and Associated Types</a> - when to use each one</p>
+</li>
+<li>
+<p><a href="https://depth-first.com/articles/2020/06/22/returning-rust-iterators/">Returning Iterators</a> - really helpful article, this is not easy</p>
+<ul>
+<li><a href="https://fasterthanli.me/articles/recursive-iterators-rust">Recursive Iterators in Rust</a> - yelch, using Box</li>
+<li><a href="https://docs.rs/internal-iterator/0.1.1/internal_iterator/">Internal-iterator</a> - a potentially better solution for easily implementing some iterators</li>
+<li><a href="https://github.com/withoutboats/propane">propane</a> - Creating iterators via generator/yield API</li>
+</ul>
+</li>
+<li>
+<p><a href="https://blog.jcoglan.com/2019/04/22/generic-returns-in-rust/">Generic Return Types in Rust</a> - deep dive into <code>Iterator.collect()</code>, traits, and Rust's type system</p>
+</li>
+<li>
+<p><a href="https://github.com/japaric/rust-san/blob/master/README.md">Rust-san</a> - sanitizers for Rust code, if the basic compiler checks are not enough  :)</p>
+</li>
+<li>
+<p><a href="https://github.com/athre0z/color-backtrace">Colorized Rust backtraces</a>. :)</p>
+</li>
+<li>
+<p><a href="http://cliffle.com/blog/rust-typestate/">Rust TypeState Pattern</a></p>
+</li>
+<li>
+<p><a href="https://hoverbear.org/blog/rust-state-machine-pattern/">Pretty State Machines in Rust</a> - great article on diff state machine patterns, use of enums and structs</p>
+</li>
+<li>
+<p><a href="https://xaeroxe.github.io/init-struct-pattern/">Init Struct Pattern</a> - on patterns for initializing structs</p>
+</li>
+<li>
+<p><a href="http://i.hsfzxjy.site/2019-06-23-rc-refcell-pattern/">Rc and RefCell tricks</a> - good explanations of the two</p>
+</li>
+<li>
+<p><a href="https://oribenshir.github.io/afternoon_rusting/blog/copy-on-write">COW, Rust vs C++</a> - great dive into details of copy-on-write. Might be a great pattern for working with things like strings, where cloning might be expensive.</p>
+</li>
+<li>
+<p><a href="https://www.hardmo.de/article/2021-03-14-zst-proof-types.md">Magical Zero-Sized Types and Proofs</a> - for type masochists</p>
+</li>
+<li>
+<p><a href="https://beachape.com/blog/2021/05/25/structural-typing-in-rust/">Structural Typing in Rust</a> - HLists, ability to use path-based and shape/signature based trait typing instead of by name</p>
+</li>
+<li>
+<p><a href="https://stephencoakley.com/2019/04/24/how-rust-solved-dependency-hell">How Rust Solved Dependency Hell</a> - neat look at what's underneath Cargo to help solve dep issues.  Rustc can handle multiple versions of a dependency.</p>
+</li>
+<li>
+<p><a href="https://rymc.io/blog/2021/cacao-rs-macos-ios-rust/">Cacao: Building macOS/iOS Apps in Rust</a></p>
+</li>
+</ul>
+<h2 id="borrowing-and-lifetime-tricks"><a class="header" href="#borrowing-and-lifetime-tricks">Borrowing and Lifetime Tricks</a></h2>
+<p>If you need to borrow multiple items mutably from a Vec/array/SmallVec/etc.:</p>
+<ul>
+<li>The <a href="https://stackoverflow.com/questions/30073684/how-to-get-mutable-references-to-two-array-elements-at-the-same-time">thread</a> on solutions</li>
+<li>You can use <a href="https://docs.rs/smallvec/1.10.0/smallvec/struct.SmallVec.html#method.split_at_mut">split_at_mut()</a> but this is clumsy</li>
+<li><a href="https://docs.rs/arref/latest/arref/">Arref</a> gives a great solution</li>
+<li>There is a nightly <a href="https://doc.rust-lang.org/core/primitive.slice.html#method.get_many_mut">get_many_mut()</a> API</li>
+</ul>
+<p>If you have a Trait with an associated type that must deal with lifetimes:
+https://stackoverflow.com/questions/33734640/how-do-i-specify-lifetime-parameters-in-an-associated-type</p>
+<h2 id="macros"><a class="header" href="#macros">Macros</a></h2>
+<p>I started writing Rust macros and it is not only lots of fun, but pretty essential for writing concise, performant code IMO.  Writing Rust has lots of boilerplate sometimes, especially owing to not having real inheritance.  I recommend starting with <code>macro_rules!</code> which are fancy templates and really easy.  Here are some links to help:</p>
+<ul>
+<li><a href="https://blog.logrocket.com/macros-in-rust-a-tutorial-with-examples/">Macros in Rust - a Tutorial</a> - really easy tutorial, esp for <code>macro_rules!</code></li>
+<li><a href="https://danielkeep.github.io/tlborm/book/mbe-README.html">Macros - a Methodical Introduction</a> - very detailed book mostly about <code>macro_rules!</code> with explanations for the minutae of parsing
+<ul>
+<li><a href="https://danielkeep.github.io/tlborm/book/mbe-macro-rules.html">macro_rules</a></li>
+</ul>
+</li>
+<li><a href="https://gist.github.com/Kestrer/8c05ebd4e0e9347eb05f265dfb7252e1">How to Write Hygienic Rust Macros</a> - important and short.  Read this to ensure your macros work everywhere - so users don't have to worry about imports, etc.</li>
+<li><a href="https://github.com/dtolnay/case-studies/blob/master/README.md">Rust Macros case studies</a></li>
+<li><a href="https://words.steveklabnik.com/an-overview-of-macros-in-rust">Overview of Macros in Rust</a> - from Steve Klabnik</li>
+</ul>
+<p>Some crates that may help write macros:</p>
+<ul>
+<li><a href="https://crates.io/crates/spez">spez</a> - match and specialize on the type of an expression.  "A trick to do specialization in non-generic contexts on stable Rust"</li>
+<li><a href="https://crates.io/crates/concat-idents">concat-ident</a> - macro to concat multiple identifiers etc. and use the result, perhaps as a struct or method name. Very useful in macros</li>
+</ul>
+<h2 id="cool-rust-projects"><a class="header" href="#cool-rust-projects">Cool Rust Projects</a></h2>
+<p>NOTE: there's a separate section for Data-related projects.</p>
+<p>CLI tools:</p>
+<ul>
+<li><a href="https://github.com/BurntSushi/xsv">XSV</a> - a fast CSV parsing and analysis tool</li>
+<li><a href="https://github.com/ajeetdsouza/zoxide">zoxide</a> - a supercharged, AI-based replacement for cd with rank-based search of your most frequently used dirs
+<ul>
+<li><a href="https://github.com/cantino/mcfly">mcfly</a> - Upgraded, smarter Ctrl-R for bash etc.  (note: fish users already have this built in, basically)</li>
+</ul>
+</li>
+<li><a href="https://github.com/BurntSushi/ripgrep">Ripgrep</a> - insanely fast grep utility, great for code searches.  Shows off power of Rust regex library</li>
+<li><a href="https://github.com/sharkdp/bat">Bat</a> - A super <code>cat</code> with syntax highlighting, git integration, other features</li>
+<li><a href="https://github.com/ClementTsang/bottom">Bottom</a> - Cross-platform fancy <code>top</code> in Rust - process/sys mon with graphs, very useful!</li>
+<li><a href="https://github.com/Extrawurst/gitui">gitui</a> - awesome, fast Git terminal UI.  It will change your life!</li>
+<li><a href="https://github.com/lotabout/skim">skim</a> - <code>sk</code> is a general purpose fuzzy-finder; it can work with ripgrep and other utils too</li>
+<li><a href="https://zellij.dev">zellij</a> - terminal mux/session detach like tmux/screen, but with a pretty UI and plugins</li>
+<li><a href="https://github.com/Nukesor/pueue">pueue</a> - instead of using tmux, queue and manage your background tasks</li>
+<li><a href="https://github.com/ducaale/xh">xh</a> - HTTPie clone / much better <code>curl</code> alternative</li>
+<li><a href="https://github.com/bootandy/dust">Dust</a> - Rust graphical-text faster and friendlier version of du</li>
+<li><a href="https://github.com/imsnif/diskonaut">Diskonaut</a> - another Text-UI folder/file space usage and browsing tool</li>
+<li><a href="https://github.com/sharkdp/fd">fd</a> - Rust CLI, friendlier and faster replacement for <code>find</code></li>
+<li><a href="https://github.com/RustScan/RustScan">rustscan</a> - Really fast port scanner, this should easily replace lsof / netstat</li>
+<li><a href="https://github.com/chmln/sd">sd</a> - Easier to use sed.  You can search and replace in like all files under subdir with <code>sd old_str new_str **</code>.</li>
+<li><a href="http://www.jonathanturner.org/2019/08/introducing-nushell.html">Nushell</a> - Rust shell that turns all output into tabular data.  Pretty cool!</li>
+<li><a href="https://github.com/dandavison/delta">delta</a> - git-delta: colorful git diff viewer</li>
+<li><a href="https://github.com/dmerejkowsky/ruplacer">ruplacer</a> - Source code search and replace tool</li>
+<li><a href="https://github.com/theotherphil/imagecli/blob/master/README.md">imagecli</a> - CLI for image batch processing</li>
+<li><a href="https://github.com/sharkdp/hyperfine/blob/master/README.md">Hyperfine</a> - Rust performance benchmarking CLI</li>
+<li><a href="https://github.com/alacritty/alacritty/blob/master/README.md">Alacritty</a> - GPU accelerated terminal emulator</li>
+<li><a href="https://crates.io/crates/jql/2.5.0">jql</a> - Rust version of popular <code>jq</code> JSON CLI processor, though not as powerful</li>
+<li><a href="https://github.com/dflemstr/rq">rq</a> - a Record Query/Transform tool, translate CSV, Avro, CBOR, Json etc etc to and from each other</li>
+<li><a href="https://github.com/mgdm/htmlq">htmlq</a> - like jq but for HTML</li>
+<li><a href="https://starship.rs">Starship</a> - "The minimal, blazing-fast, and infinitely customizable prompt for any shell!"</li>
+<li><a href="https://github.com/Dentrax/kubesql">Kubesql</a> - SQL queries for Kube metadata!</li>
+<li><a href="https://github.com/pemistahl/grex">grex</a> - CLI tool to create regexes given a set of strings to match!</li>
+<li><a href="https://github.com/hubblo-org/scaphandre">Scaphandre</a> - Metrics agent for collecting power consumption metrics!</li>
+<li><a href="https://github.com/kdash-rs/kdash">kdash</a> - Text UI Kubernetes dashboard</li>
+<li><a href="https://github.com/josh-project/josh">Josh</a> - Cool git proxy allows you to treat part of a large monorepo like its own smaller git repo!</li>
+</ul>
+<p>Wasm:</p>
+<ul>
+<li><a href="https://medium.com/wasmer/wasmer-1-0-3f86ca18c043">Wasmer</a> - general purpose WASM runtime</li>
+<li><a href="https://deislabs.io/posts/introducing-krustlet/">Krustlet</a> - WebAssembly (instead of containers) runtime on Kubernetes!!  Use Rust + wasm + WASI for a truly portable k8s-based deploy!</li>
+<li><a href="https://extism.org/blog/announcing-extism/">Extism</a> - a universal WASM-based plugin system, multi language, but written in Rust</li>
+<li><a href="https://github.com/lunatic-solutions/lunatic">lunatic</a> - Erlang-like server side WASM runtime with supervision and channel-based message passing, plus hot reloading!</li>
+<li><a href="https://docs.cosmwasm.com/docs/1.0/">CosmWasm</a> - Rust/WASM for programming smart contract on Cosmos ecosystem</li>
+</ul>
+<p>Others:</p>
+<ul>
+<li><a href="https://tabnine.com">TabNine</a> - an ML-based autocompleter, written in Rust</li>
+<li><a href="https://github.com/rhysd/kiro-editor">kiro</a> - a CLI text editor with syntax highlighting, like a friendlier vim</li>
+<li><a href="https://github.com/curlpipe/ox">ox</a> - another CLI/Text UI lightweight text editor</li>
+<li><a href="https://async.rs/blog/announcing-async-std/">async-std</a> - the standard library with async APIs</li>
+<li><a href="https://github.com/bparli/convey">Convey</a> - Layer 4 load balancer</li>
+<li><a href="https://github.com/ockam-network/ockam">Ockam</a> - End to end secure messaging lib/platform between cloud and IoT devices</li>
+<li><a href="https://github.com/parallaxsecond/parsec">Parsec</a> - abstraction layer for hardware security and cryptography</li>
+<li><a href="https://crates.io/crates/gazebo">Gazebo</a> - useful utilties for all apps, by the Facebook Rust team.  They also have blog posts such as on <a href="https://developers.facebook.com/blog/post/2021/07/06/rust-nibbles-gazebo-dupe/">Dupe</a></li>
+</ul>
+<p>Do Rust in <a href="https://github.com/ekimb/pas">Turkish</a>, <a href="https://github.com/UltiRequiem/rustico">Spanish</a> and other languages!  :)</p>
+<p>Languages etc.</p>
+<ul>
+<li><a href="https://ytakano.github.io/blisp/">BLisp</a> - a statically-typed Lisp built on top of Rust</li>
+<li><a href="https://github.com/RustPython/RustPython">RustPython</a></li>
+</ul>
+<h2 id="rust-error-handling"><a class="header" href="#rust-error-handling">Rust Error Handling</a></h2>
+<p><a href="https://blog.yoshuawuyts.com/error-handling-survey/">Error handling survey</a> - really good summary of the Rust error library landscape as of late 2019.</p>
+<ul>
+<li><a href="https://docs.rs/anyhow/1.0.26/anyhow/">Anyhow</a> - streamlined error handling with context....</li>
+<li><a href="https://docs.rs/snafu/0.4.1/snafu/index.html">Snafu</a> - adding context to errors</li>
+<li><a href="https://crates.io/crates/error-stack">Error-stack</a> - I <em>really</em> like the philosophy behind this crate.  It makes it easy to "stack" errors - you get not a backtrace, but stacked detailed errors, with the inner error showing through.</li>
+</ul>
+<h2 id="rust-concurrency"><a class="header" href="#rust-concurrency">Rust Concurrency</a></h2>
+<ul>
+<li>
+<p><a href="https://medium.com/@polyglot_factotum/rust-concurrency-five-easy-pieces-871f1c62906a">Rust Concurrency: Five Easy Pieces</a> - a great intro to threads, using message queues, determinism, and more</p>
+</li>
+<li>
+<p><a href="https://blog.logrocket.com/a-practical-guide-to-async-in-rust/">A practical guide to Async in Rust</a></p>
+</li>
+<li>
+<p><a href="https://docs.rs/dtolnay/0.0.3/dtolnay/macro._01__await_a_minute.html">Benefits of Async/Await</a></p>
+</li>
+<li>
+<p><a href="https://tokio.rs/blog/2019-08-tracing/">Tracing with Tokio and Rust</a></p>
+</li>
+<li>
+<p><a href="http://fitzgeraldnick.com/2019/08/27/async-stacks-in-rust.html">Async stacktraces</a> - this is SUPER COOL!!!</p>
+</li>
+<li>
+<p><a href="https://github.com/tokio-rs/console">tokio-console</a> - remote async debugging facility!</p>
+</li>
+<li>
+<p><a href="https://medium.com/nearprotocol/rust-parallelism-for-non-c-c-developers-ec23f48b7e56">Rust Parallelism for non C/C++ Devs</a> - great resource on the low-level primitives like <code>Mutex</code> and <code>RwLock</code></p>
+</li>
+<li>
+<p><a href="https://medium.com/@KevinHoffman/coping-with-mutable-state-in-multiple-threads-with-rust-9059c83b6c01">Coping with Mutable State in Multiple Threads</a></p>
+</li>
+<li>
+<p><a href="http://ticki.github.io/blog/fearless-concurrency-with-hazard-pointers/">Fearless Concurrency with Hazard Pointers</a> - using the <code>conc</code> crate and <code>Atomic</code> which implements hazard pointers for fine-grained and safe protection of readers and garbage</p>
+</li>
+<li>
+<p><a href="https://bastion.rs">Bastion</a> - Erlang/Akka-style, remote supervised actor framework</p>
+</li>
+<li>
+<p><a href="https://github.com/kompics/kompact">Kompact</a> - Kompics style message-passing "component system" with actor model and networking built in</p>
+</li>
+<li>
+<p><a href="https://github.com/Actyx/Actyx">Actyx</a> - really cool "decentralized event database, streaming and processing engine" based on event sourcing concepts, built by one of Akka's founders</p>
+</li>
+<li>
+<p><a href="https://ryhl.io/blog/actors-with-tokio/">Actors with Tokio</a> - not using any Actor framework, just channels</p>
+</li>
+<li>
+<p>Use <a href="https://crates.io/crates/mio">mio</a> if you want a lower-level event loop, or <a href="https://crates.io/crates/thin_main_loop">thin_main_loop</a></p>
+</li>
+</ul>
+<h3 id="shared-data-across-multiple-threads"><a class="header" href="#shared-data-across-multiple-threads">Shared Data Across Multiple Threads</a></h3>
+<p>Sometimes one needs to share a large data structure across threads and several of them must access it.</p>
+<p>The most general way to share a data structure is to use <code>Arc&lt;RwLock&lt;...&gt;&gt;</code> or <code>Arc&lt;Mutex&lt;...&gt;&gt;</code>.  The <code>Arc</code> keeps track of lifetimes and lets different threads exist for different lengths of time, and is inexpensive since it is usually only accessed once at thread spawn.  The <code>Mutex</code> or <code>RwLock</code> lets different threads mutate it safely, assuming the data structure is not thread-safe.</p>
+<p>A thread-safe data structure could be used in place of the <code>RwLock</code> or <code>Mutex</code>.</p>
+<p><a href="https://docs.rs/crossbeam/0.7.2/crossbeam/thread/index.html">Scoped threads</a> could be used if only one owner will mutate the data structure, and one wants to share immutable refs with other threads for reading.  However, the special threads in Crossbeam crate are still needed as Rustc by itself has no way of proving the lifetime of a thread or when it will be joined, thus any immutable refs created from the owner thread still cannot compile or be shared due to rustc lifetime checks.  Scoped threads are a way around that as it gives rustc a guarantee that the threads will be joined before the owner goes away.</p>
+<p><a href="https://github.com/vorner/arc-swap">Arc-swap</a> is an alternative to Arc that is designed for occasional updates - enables atomic swapping of the object underneath the Arc, and allows one to read without contention (unlike Mutex/RwLock).</p>
+<p>Also see <a href="https://github.com/maciejhirsz/beef/">beef</a> - a leaner version of Cow.</p>
+<h2 id="data-processing-and-data-structures"><a class="header" href="#data-processing-and-data-structures">Data Processing and Data Structures</a></h2>
+<ul>
+<li>
+<p><a href="http://www.arewelearningyet.com">Are we learning yet?</a> - list of ML Rust crates</p>
+<ul>
+<li><a href="https://github.com/rust-ml/linfa">Linfa</a> - Rust ML framework</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/TimelyDataflow/timely-dataflow">Timely Dataflow</a> - distributed data-parallel compute engine in Rust!!!</p>
+</li>
+<li>
+<p><a href="https://github.com/hydro-project/hydroflow">Hydroflow</a> - a brand new Rust based optimized streaming dataflow engine, relational data, based on very advanced UCBerkeley research on optimization.</p>
+</li>
+<li>
+<p><a href="https://arrow.apache.org/blog/2019/02/04/datafusion-donation/">DataFusion</a> - a Rust query engine which is part of Apache Arrow!</p>
+<ul>
+<li>NOTE: there is now a Ballista project that is basically like Spark - distributed Data Fusion.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/constellation-rs/amadeus">Amadeus</a> - distributed streams / Parquet / big data processing</p>
+</li>
+<li>
+<p><a href="https://www.fluvio.io/docs/">Fluvio</a> - distributed, persistent queuing / stream processing framework using WASM for programmability, written in Rust!</p>
+</li>
+<li>
+<p><a href="https://github.com/ArroyoSystems/arroyo">Arroyo</a> - another stream processing framework, streaming SQL and Rust pipelines!</p>
+</li>
+<li>
+<p><a href="https://github.com/weld-project/weld">Weld</a> - Stanford's high-performance runtime for data analytics</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/pulse/how-we-handle-billion-scale-graph-data-you-can-too-jacek-d%C4%85browski">Cleora</a> - Super fast Rust tool for billion-scale hypergraph vector embedding ML</p>
+</li>
+<li>
+<p><a href="https://github.com/willi-kappler/node_crunch">Node crunch</a> - simple lightweight distributed compute framework</p>
+</li>
+<li>
+<p><a href="https://github.com/ray33ee/Project-Midas">Project Midas</a> - distributed compute framework and terminal UI using Lua as scripting language</p>
+</li>
+<li>
+<p><a href="https://cube.dev/blog/introducing-cubestore/">Cube Store</a> - Rust and Arrow/DataFusion-based rollup/aggregation/cache layer for SQL datastores, too bad it's mostly for JS</p>
+</li>
+<li>
+<p><a href="https://github.com/mit-pdos/noria">Noria</a> - "data-flow for high-performance web apps" - basically a materialized view cache that updates in real time as database data updates</p>
+</li>
+<li>
+<p><a href="https://github.com/pola-rs/polars">polars</a> - super fast and high level DataFrame implementation for both Rust and Python, much faster and higher level than using Arrow itself</p>
+</li>
+<li>
+<p><a href="https://github.com/BaguaSys/bagua">Bagua</a> - distributed learning/training framework, the very fast communication core is written in Rust</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/similari">Similari</a> - similarity search/computation engine for ML in Rust</p>
+</li>
+<li>
+<p><a href="https://github.com/toshi-search/Toshi">Toshi</a> - ElasticSearch written in Rust using <a href="https://github.com/tantivy-search/tantivy">Tantivy</a> as the engine</p>
+</li>
+<li>
+<p><a href="https://github.com/meilisearch/MeiliDB/blob/master/README.md">MeiliDB</a> - fast full-text search engine</p>
+</li>
+<li>
+<p><a href="https://github.com/quickwit-oss/quickwit">Quickwit</a> - Log search DB, like Elastic but built on top of Tantivy</p>
+</li>
+<li>
+<p><a href="https://github.com/datafuselabs/datafuse">Datafuse</a> - distributed "Real-Time Data Processing &amp; Analytics DBMS", similar to Clickhouse "but faster"</p>
+</li>
+<li>
+<p><a href="https://github.com/valeriansaliou/sonic">sonic</a> - Fast, very lightweight and schemaless search/text index.  NOT a document store, but an index store.</p>
+</li>
+<li>
+<p><a href="https://pijul.org/posts/2021-02-06-rethinking-sanakirja/">Sanakirja</a> - a transactional KV DB engine/local store, claims to be fastest around</p>
+</li>
+<li>
+<p><a href="https://github.com/spacejam/sled">Sled</a> - an embedded database engine using latch-free Bw-tree on latch-free page cache techniques for speed</p>
+</li>
+<li>
+<p><a href="https://github.com/skytable/skytable">Skytable</a> - Rust "realtime NoSQL" key-value database</p>
+</li>
+<li>
+<p><a href="https://github.com/influxdata/influxdb_iox">IOx</a> - New in-memory columnar InfluxDB engine using Arrow, DataFusion, rust!  Persists using parquet.  Super awesome stuff.</p>
+</li>
+<li>
+<p><a href="https://github.com/indradb/indradb">IndraDB</a> - Graph database/library written in Rust! and inspired by Facebook's TAO.</p>
+</li>
+<li>
+<p><a href="https://github.com/terminusdb/terminusdb-store">TerminusDB-store</a> - a Rust RDF triple data store</p>
+</li>
+<li>
+<p><a href="https://bonsaidb.io">BonsaiDB</a> - NoSQL document store written in Rust with Rust schemas</p>
+</li>
+<li>
+<p><a href="https://github.com/vectordotdev/vector">Vector</a> - high performance observability data pipeline, for transforming, aggregating, routing logs, metrics, traces, etc.</p>
+<ul>
+<li>includes a <a href="https://vector.dev/docs/reference/vrl/">Vector Remap Language</a> for general transformation</li>
+</ul>
+</li>
+<li>
+<p><a href="https://docs.tremor.rs">Tremor</a> - a simple event processing / log and metric processing and forwarding system, with scripting and streaming query support.  Much more capable than Telegraf.</p>
+</li>
+<li>
+<p><a href="https://github.com/minio/minsql/blob/master/README.md">MinSQL</a> - interesting POC on lightweight SQL based log search, w automatic field parsing etc.</p>
+</li>
+<li>
+<p><a href="https://github.com/iximiuz/pq">pq</a> - Parse and Query log files as time series, extracting structured records out of common log files</p>
+</li>
+<li>
+<p><a href="https://github.com/plotters-rs/plotters">plotters</a> - Rust data visualization / graphing library</p>
+</li>
+<li>
+<p><a href="https://github.com/stateright/stateright">Stateright</a> - distributed protocol/model checker with UI, linearizability checker!</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/clepsydra">Clepsydra</a> - Graydon Hoare working on distributed database protocol - in Rust!</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/crepe">crepe</a> - Datalog, declarative logic programs as macros in Rust</p>
+</li>
+</ul>
+<h3 id="json-processing"><a class="header" href="#json-processing">JSON Processing</a></h3>
+<p>For JSON DOM (IR) processing, using the mimalloc allocator provided me a 2x speedup with serde-json.  Then, switching to <a href="https://github.com/maciejhirsz/json-rust">json-rust</a> provided another 1.8x speedup.  The speedup is completely unreal, much faster than JVM.  The main reason I guess is that json-rust has a <code>Short</code> DOM class for short strings, which requires no heap allocation.</p>
+<ul>
+<li><a href="https://github.com/simd-lite/simdjson">simdjson-rs</a> - SIMD-enabled JSON parser.  NOTE: no writing of JSON.</li>
+<li><a href="https://github.com/tidwall/pjson.rs">pjson</a> - JSON streaming parser</li>
+<li><a href="https://github.com/shenek/streamson">streamson</a> - efficient JSON processing for large documents</li>
+</ul>
+<h3 id="cool-data-structures"><a class="header" href="#cool-data-structures">Cool Data Structures</a></h3>
+<ul>
+<li>
+<p><a href="https://github.com/robclu/leapfrog">leapfrog</a> - fast, concurrent <code>HashMap</code>, lock-free if types support atomic ops.</p>
+<ul>
+<li>What's neat about its API is that instead of locking at bucket level, and blocking inserts if a reader is taking too long, it never returns references to data and relies on an atomic API</li>
+</ul>
+</li>
+<li>
+<p><a href="https://docs.rs/concread/0.2.14/concread/index.html">concread</a> - Concurrently Readable (Copy on Write, MVCC) datastructures - "allow multiple readers with transactions to proceed while single writers can operate" - guaranteeing readers same version.  There is a hashmap and ARCache.</p>
+</li>
+<li>
+<p><a href="https://docs.rs/flurry/0.4.0/flurry/">flurry</a> - Rust impl of Java's ConcurrentHashMap.  Uses seize for ref-count-based GC.</p>
+</li>
+<li>
+<p><a href="https://docs.rs/im/latest/im/">im</a> - Immutable data structures for Rust</p>
+</li>
+<li>
+<p><a href="https://github.com/rust-phf/rust-phf">rust-phf</a> - generate efficient lookup tables at compile time using perfect hash functions!</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/odht">odht</a> - "hash table that can be mapped from disk into memory without need for up-front decoding" - deterministic binary representation, and platform and endianness independent.  Sounds sweet!</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/radix_trie">radix-trie</a></p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/patricia_tree">Patricia Tree</a> - Radix-tree based map for more compact storage</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/probabilistic-collections">probabilistic-collections</a> - Bloom/Cuckoo/Quotient filters, CountMinSketch, HyperLogLog, streaming approx set membership, etc.</p>
+</li>
+<li>
+<p><a href="https://github.com/bexxmodd/priq">priq</a> - "blazing fast" priority queue built using arrays</p>
+</li>
+<li>
+<p>Using <a href="https://blog.burntsushi.net/transducers/">Finite State Automata and Rust</a> to quickly index and find data amongst HUGE amount of strings</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/ahash">ahash</a> - this seems to be the fastest hash algo for hash keys</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/metrohash">Metrohash</a> - a really fast hash algorithm</p>
+</li>
+<li>
+<p><a href="https://docs.rs/indexmap/1.3.2/indexmap/index.html">IndexMap</a> - O(1) obtain by index, iteration by index order</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/FM-index">FM-Index</a>, a neat structure that allows for fast exact string indexing and counting while compressing original string data at the same time.  There is a Rust <a href="https://crates.io/crates/fm-index">crate</a></p>
+</li>
+<li>
+<p><a href="https://docs.rs/heapless/0.5.5/heapless/">Heapless</a> - static data structures with fixed size; Vec, heap, map, set, queues</p>
+</li>
+<li>
+<p><a href="https://github.com/xacrimon/dashmap">dashmap</a> - "Blazing fast concurrent HashMap for Rust". NOTE: I don't recommend this project, I used it in my Ying profiler but it can deadlock in unpredictable ways</p>
+</li>
+<li>
+<p><a href="https://medium.com/swlh/easy-persistent-data-structures-in-rust-b58334aeaf0a">Easy Persistent Data Structures in Rust</a> - replacing <code>Box</code> with <code>Rc</code></p>
+</li>
+<li>
+<p><a href="https://contain-rs.github.io/vec-map/vec_map/">VecMap</a> - map for small integer keys, may use less space</p>
+</li>
+</ul>
+<h3 id="geospatial-and-graph"><a class="header" href="#geospatial-and-graph">Geospatial and Graph</a></h3>
+<ul>
+<li>
+<p>The base Geometry processing crate is <a href="https://docs.rs/geo/0.18.0/geo/">geo</a>.</p>
+<ul>
+<li>Geo does not (as of 0.18) handle intersections, difference, XOR etc.  Try <a href="https://crates.io/crates/geo-booleanop">geo-booleanop</a> for a Rust-only implementation using Martinez-Rueda algorithm</li>
+<li>Or use <a href="https://github.com/georust/geos">geos</a> based on the C library</li>
+</ul>
+</li>
+<li>
+<p><a href="https://crates.io/crates/spatial-join">spatial-join</a> - Spatial joins and proximity maps!</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/rstar">Rstar</a> - n-dimensional R*-Tree for geospatial indexing and nearest-neighbor</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/spade">spade</a> - R-trees and Delaunay triangulations</p>
+</li>
+<li>
+<p><a href="https://horasearch.com">Hora Search</a> - Nearest-Neighbor (NN) / geo search library that includes multiple algorithms including HNSW, SSG, PQIVF, etc.</p>
+</li>
+<li>
+<p><a href="https://docs.rs/petgraph/0.5.0/petgraph/">Petgraph</a> - Graph data structure for Rust, considered perhaps most mature right now</p>
+</li>
+</ul>
+<h3 id="string-performance"><a class="header" href="#string-performance">String Performance</a></h3>
+<p>Rust has native UTF8 string processing, which is AWESOME for performance.  However, there are two concerns usually:</p>
+<ol>
+<li>Small string memory efficiency.  The native <code>String</code> type uses at least two words just for pointer and length/cap, which might be longer than the string itself;</li>
+<li>Minimizing number of heap allocations</li>
+</ol>
+<p>Here are some solutions:</p>
+<ul>
+<li><a href="https://docs.rs/string/0.2.1/string/">String</a> - string type with configurable byte storage, including stack byte arrays!</li>
+<li><a href="http://fitzgen.github.io/inlinable_string/inlinable_string/index.html">Inlinable String</a> - stores strings up to 30 chars inline, automatic promotion to heap string if needed.</li>
+<li>Also see <a href="https://docs.rs/smallstr/0.2.0/smallstr/">smallstr</a></li>
+<li><a href="https://github.com/nu11ptr/flexstr">flexstr</a> - Enum String type to unify literals, inlined, and heap strings</li>
+<li><a href="https://docs.rs/kstring/0.1.0/kstring/">kstring</a> - intended for map keys: immutable, inlined for small keys, and have Ref/Cow types to allow efficient sharing.  :)</li>
+<li><a href="https://crates.io/crates/nested">nested</a> - reduce Vec<String> type structures to just two allocations, probably more memory efficient too.</li>
+<li><a href="https://docs.rs/tinyset/0.4.2/tinyset/">tinyset</a> - space efficient sets and maps, can be combined with nested perhaps</li>
+<li><a href="https://docs.rs/bumpalo/3.2.1/bumpalo/collections/index.html">bumpalo</a> can do really cheap group allocations in a <code>Bump</code> and has custom <code>String</code> and <code>Vec</code> versions.  At least lowers allocation overhead.</li>
+</ul>
+<h2 id="rust-and-scalajava"><a class="header" href="#rust-and-scalajava">Rust and Scala/Java</a></h2>
+<ul>
+<li>
+<p><a href="https://github.com/andyrbell/rust-for-java-developers">Rust for Java Developers</a></p>
+</li>
+<li>
+<p><a href="https://aliceevebob.com/2020/05/05/5-rust-reflections-from-java/">5 Rust Reflections from Java</a></p>
+</li>
+<li>
+<p>The presence of true unsigned types is really nice for low-level work.  I hit a bug in Scala where I used &gt;&gt; instead of &gt;&gt;&gt;.  In Rust you declare a type as unsigned and don't have to worry about this.</p>
+</li>
+<li>
+<p>Immutable byte slices and reference types again are awesome for low-level work.</p>
+</li>
+<li>
+<p>Trait monomorphisation is awesome for ensuring trait methods can be inlined.  JVM cannot do this when there is more than one implementation of a trait.</p>
+</li>
+<li>
+<p>Being able to examine assembly directly from compiler output is super nice for low level perf work (compared to examining bytecode and not knowing the final output until runtime)</p>
+</li>
+<li>
+<p>OTOH, rustc is definitely much much stricter (IMO) compared to scalac.  Much of this is for good reason though, for example lack of integer/primitive coercion, ownership, etc. gives safety guarantees.</p>
+</li>
+</ul>
+<h3 id="rust-and-python"><a class="header" href="#rust-and-python">Rust and Python</a></h3>
+<ul>
+<li><a href="https://github.com/PyO3/pyo3">PyO3</a> seems to be a gold standard of Rust-based Python module development.
+<ul>
+<li><a href="https://github.com/PyO3/maturin">Maturin</a> - for building and publishing PyO3-based/Rust Python modules, or mixed Rust/Python projects</li>
+<li>There are older posts too: <a href="https://depth-first.com/articles/2020/08/03/wrapping-rust-types-as-python-classes/">Wrapping Rust Types as Python classes</a> and <a href="https://github.com/iduartgomez/rustypy/wiki/Rust-in-Python">RustyPy</a> but they are much more work than PyO3</li>
+</ul>
+</li>
+<li><a href="https://pyoxidizer.readthedocs.io/en/stable/">PyOxidizer</a> - a Rust tool to package Python apps, interpreter, and all dependencies as a single binary, by wrapping app in a Rust program with a custom Rust Py module importer.  Also helps embed Python code in Rust apps.</li>
+<li><a href="https://www.crowdstrike.com/blog/data-science-test-drive-of-rust-programming-language/">Oh no, my data science is getting Rusty!</a> - neat post from CrowdStrike on integrating Rust with Python for improved performance AND safety</li>
+</ul>
+<h3 id="rust-otherlanguage-integration--rust-ffi"><a class="header" href="#rust-otherlanguage-integration--rust-ffi">Rust-OtherLanguage Integration / Rust FFI</a></h3>
+<ul>
+<li><a href="http://stackoverflow.com/questions/30258427/calling-rust-from-java">Calling Rust from Java</a> - especially see the hint for using jnr-ffi</li>
+<li>There is also <a href="https://astonbitecode.github.io/blog/post/j4rs_0.6.0/">j4rs</a> for calling Java from Rust</li>
+<li><a href="https://www.ditto.live/blog/posts/introducing-safer-ffi">SaferFFI</a> - a neat library to make exposing C-like APIs much safer esp dealing with pointers, nulls, borrowing etc.</li>
+<li><a href="https://www.greyblake.com/blog/2017-08-10-exposing-rust-library-to-c/">Exposing a Rust library to C</a> - has some great tips on creating .so's and working with strings</li>
+<li><a href="https://github.com/alexcrichton/cc-rs">cc-rs</a> - C/C++ build integration with Cargo</li>
+<li>It seems to me Circle CI's support for multiple docker images and explicit manifest style makes it very easy to set up multiple language and dependency support</li>
+<li><a href="https://stackoverflow.com/questions/27644586/how-to-set-up-travis-ci-with-multiple-languages">Supporting multiple languages in Travis CI</a></li>
+<li><a href="https://www.graalvm.org/docs/reference-manual/languages/llvm/">Running LLVM on GraalVM</a> - using GraalVM to embed and run LLVM bitcode!  Too bad GraalVM is commercial/Oracle only</li>
+</ul>
+<h2 id="cli-and-misc"><a class="header" href="#cli-and-misc">CLI and Misc</a></h2>
+<ul>
+<li>
+<p><a href="https://crates.io/crates/structopt">Structopt</a> - define CLI options using a struct!</p>
+</li>
+<li>
+<p><a href="https://github.com/fdehau/tui-rs">tui-rs</a> - Rust terminal UI for CLI apps.  Check out list of projects it refers to also.  Lots of options!</p>
+</li>
+<li>
+<p><a href="https://robert.kra.hn/posts/hot-reloading-rust/">Hot Reloading in Rust</a> - great article on how to hot-reload dynamic linked libraries in Rust, and on the potential pitfalls, with plenty of links.</p>
+</li>
+</ul>
+<h2 id="ideeditortooling"><a class="header" href="#ideeditortooling">IDE/Editor/Tooling</a></h2>
+<ul>
+<li><a href="https://github.com/google/evcxr/tree/master/evcxr_repl">EVCXR</a> - a Rust REPL!!!  With deps, and tab-completion for methods!!</li>
+<li><a href="https://github.com/huitseeker/comby-rust">comby-rust</a> - rewrite Rust code using comby</li>
+<li><a href="https://github.com/rustviz/rustviz">rustviz</a> - Visualize borrowing and ownership!</li>
+<li><a href="https://crates.io/crates/no-panics-whatsoever">no-panics-whatsoever</a> - crate to detect and ensure at compile time there aren't panics in your code</li>
+<li><a href="https://github.com/RazrFalcon/cargo-bloat">cargo-bloat</a> - what's taking up space in my Rust binary</li>
+<li><a href="https://github.com/alopatindev/cargo-limit">cargo-limit</a> - clean up, sort and limit error/warning output.  Great for those of us running cargo in shells!</li>
+<li><a href="https://github.com/llogiq/mutagen">mutagen</a> - mutation testing tool for Rust programs.  Generates "mutations" in your code to try to break test coverage!</li>
+<li><a href="https://github.com/danielzfranklin/cargo-rr">cargo-rr</a> - time travel/recording/reverse debugger framework for Rust using rr
+<ul>
+<li>For more explanation see <a href="https://robert.ocallahan.org/2021/04/print-debugging-should-go-away.html">Print debugging should go away</a></li>
+</ul>
+</li>
+<li><a href="https://docs.rs/cargo-hakari/0.9.4/cargo_hakari/about/index.html">cargo_hakari</a> - A crate to speed up builds of workspace-hack packages ... for when you have multiple crates or complex builds, and you have duplicate dependencies</li>
+<li><a href="https://github.com/TheDan64/inkwell">inkwell</a> - LLVM API, including LLVM IR generation and running LLVM JIT to run snippets in your code</li>
+</ul>
+<p>Dependency conflicts?  Use <code>cargo tree -i</code> to lookup reverse dependencies for specific packages (which crates are using which deps). For example, <code>cargo tree -i arrow:5.0.0-SNAPSHOT</code>.</p>
+<ul>
+<li><a href="https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/README.md">RustAnalyzer</a> - LSP-based plugin/server for IDE functionality in Sublime/VSCode/EMacs/etc</li>
+<li><a href="https://rust-lang.github.io/rustfmt/?version=v1.5.1&amp;search=">Configuring Rustfmt</a></li>
+<li><a href="https://godbolt.org">Godbolt</a> - A "compiler explorer", not Rust specific but neat to play with compiler settings and diff targets.</li>
+<li><a href="https://crates.io/crates/cargo-play">Cargo-play</a> - run Rust scripts without needing to set up a project
+<ul>
+<li>Also see <a href="https://github.com/reitermarkus/cargo-eval">cargo-eval</a> and <a href="https://github.com/stevedonovan/runner">runner</a> for diff ways of easily running scripts without projects</li>
+</ul>
+</li>
+</ul>
+<p>BTW for Rust 1.51+ you can speed up MacOS builds with this in your Cargo.toml (see the <a href="https://blog.rust-lang.org/2021/03/25/Rust-1.51.0.html">release notes</a>):</p>
+<pre><code class="language-toml">[profile.dev]
+split-debuginfo = "unpacked"
+</code></pre>
+<h2 id="testing-and-cicd"><a class="header" href="#testing-and-cicd">Testing and CI/CD</a></h2>
+<p>The two standard property testing crates are <a href="https://crates.io/crates/quickcheck">Quickcheck</a> and <a href="https://github.com/AltSysrq/proptest">proptest</a>.  Personally I prefer proptest due to much better control over input generation (without having to define your own type class).</p>
+<ul>
+<li><a href="https://kflansburg.com/posts/rust-continuous-delivery/">Rust Continuous Delivery</a> - hints on using Docker, caching deps, and automated cloud-based CI/CD workflows for Rust</li>
+<li><a href="https://nexte.st/index.html">Cargo-nextest</a> looks like a really good project to help with test organization, test CI, running tests faster, etc.</li>
+<li><a href="https://dsincl12.medium.com/speed-up-your-rust-compiler-macos-d9fbe0f32dbc">Faster Build Times on MacOS</a></li>
+<li><a href="https://www.lpalmieri.com/posts/fast-rust-docker-builds/">5x Faster Rust Docker Builds with cargo-chef</a> - you need this for faster Rust app deploys!</li>
+<li><a href="https://www.lpalmieri.com/posts/2020-09-27-zero-to-production-4-are-we-observable-yet/#5-12-cleaning-up-instrumentation-code-tracing-instrument">Are We Observable Yet?</a> - an introduction to Rust telemetry</li>
+<li><a href="https://github.com/rust-lang/miri">Miri</a> - can run binaries and test suites of cargo projects and detect certain classes of undefined behavior, including memory leaks!!</li>
+</ul>
+<h3 id="cross-compilation"><a class="header" href="#cross-compilation">Cross-compilation</a></h3>
+<p>A common concern - how do I build different versions of my Rust lib/app for say OSX and also Linux?</p>
+<ul>
+<li>Easiest way now seems to be to use <a href="https://github.com/rust-embedded/cross">cross</a> - I tried it and literally as easy as <code>cargo install cross</code> and <code>cross build --target ...</code> as long as you have Docker.
+<ul>
+<li>NOTE: crates with non-Rust code (eg jemalloc, mimalloc) often have trouble</li>
+</ul>
+</li>
+<li>Also see <a href="https://github.com/emk/rust-musl-builder">rust-musl-builder</a>, another Docker-based solution</li>
+<li>musl is the best target for Linux as it removes need for G/LIBC dependencies and versioning.  Musl creates a single static binary for super easy deploys.</li>
+<li>For automation, maybe better to create a single Docker image which combines <a href="https://hub.docker.com/r/multiarch/crossbuild/dockerfile">crossbuild</a> (which has a recipe for OSXCross + other targets) with a rustup container like <a href="https://hub.docker.com/r/abronan/rust-circleci">abronan/rust-circleci</a> which allows building both nightly and stable.  Use Docker <a href="https://stackoverflow.com/questions/39626579/is-there-a-way-to-combine-docker-images-into-1-container">multi-stage builds</a> to make combining multiple images easier</li>
+</ul>
+<p>Finally, the <a href="https://blog.rust-lang.org/2016/05/13/rustup.html">Taking Rust everywhere with Rustup</a> blog has good guide on how to use rustup to install cross toolchains, but the above steps to install OS specific linkers are still important.</p>
+<h2 id="performance-and-low-level-stuff"><a class="header" href="#performance-and-low-level-stuff">Performance and Low-Level Stuff</a></h2>
+<p>A big part of the appeal of Rust for me is super fast, SAFE, built in UTF8 string processing, access to detailed memory layout, things like SIMD.  Basically, to be able to idiomatically, safely, and beautifully (functionally?) do super fast and efficient data processing.</p>
+<ul>
+<li>
+<p><a href="https://deterministic.space/high-performance-rust.html">Cheap Tricks - Rust Performance</a> - set of quick Cargo settings to try</p>
+</li>
+<li>
+<p><a href="https://likebike.com/posts/How_To_Write_Fast_Rust_Code.html">How to Write Fast Rust Code</a> - really good guide</p>
+</li>
+<li>
+<p><a href="https://www.packtpub.com/application-development/rust-high-performance">High Performance Rust</a> - a book</p>
+</li>
+<li>
+<p><a href="http://lise-henry.github.io/articles/optimising_strings.html">Optimizing String Processing in Rust</a> - really useful stuff</p>
+</li>
+<li>
+<p><a href="http://troubles.md/posts/rust-optimization/#keep-as-much-as-possible-in-registers">Achieving warp speed with Rust</a> - great tips on performance optimization</p>
+</li>
+<li>
+<p><a href="https://medium.com/digitalfrontiers/rust-dynamic-dispatching-deep-dive-236a5896e49b">Deep Dive into Dynamic Dispatch</a> - great details and perf comparison</p>
+</li>
+<li>
+<p><a href="https://www.eventhelix.com/rust/">Rust to Assembly</a> - great series of blog posts detailing how various parts of Rust compile down to assembly</p>
+</li>
+<li>
+<p><a href="https://itnext.io/modern-storage-is-plenty-fast-it-is-the-apis-that-are-bad-6a68319fbc1a">Modern storage is plenty fast</a> - using a new Rust crate called <a href="https://crates.io/crates/glommio">glommio</a> one can achieve multi-GB per sec read throughputs from modern SSDs.  So maybe we don't need memory after all.</p>
+<ul>
+<li>Along the same lines, not Rust-specific but <a href="https://www.scylladb.com/2017/10/05/io-access-methods-scylla/">ScyllaDB and I/O Access Methods</a> - discussions of mmap vs AIO/DIO vs standard Linux I/O</li>
+<li><a href="https://itnext.io/direct-i-o-writes-the-best-way-to-improve-your-credit-score-bd6c19cdfe46">Direct I/O Writes</a> - why doing direct I/O writes may end up better than buffered</li>
+</ul>
+</li>
+<li>
+<p><a href="https://doc.rust-lang.org/reference/type-layout.html#representations">Representations</a> - super important to understand low-level memory layouts for structs.  C vs packed vs ....  including alignment issues.</p>
+</li>
+<li>
+<p>Precise memory layouts and <a href="https://stackoverflow.com/questions/26271151/precise-memory-layout-control-in-rust">how to dump out Rust struct memory layouts</a></p>
+<ul>
+<li>Or just use the <a href="https://crates.io/crates/memoffset">memoffset</a> crate</li>
+</ul>
+</li>
+<li>
+<p><a href="https://memflow.github.io/#/home">MemFlow</a> - framework to inspect machine memory.  Think about DMA/IO, debugger, or Plasma-type memory/DB applications.</p>
+</li>
+<li>
+<p>Rust uses system malloc by default. How to <a href="https://github.com/rust-lang/jemalloc">switch the default allocator</a>.</p>
+<ul>
+<li>Use <a href="https://crates.io/crates/jemallocator">jemallocator</a> and <a href="https://crates.io/crates/jemalloc-ctl">jemalloc-ctl</a> crates for stats, deep dives, etc.  Jemalloc from Facebook supposed to be fast.</li>
+<li>Also see <a href="https://crates.io/crates/mimalloc">MiMalloc</a> - a high perf allocator from Microsoft.  I got 2x improvement for JSON workloads!</li>
+<li>There are even <a href="https://crates.io/crates/crossbeam-epoch">epoch GCs</a> available</li>
+<li>Also look into the arena and <a href="https://crates.io/crates/typed-arena">typed_arena</a> crates... very cheap allocations within a region, then free entire region at once.</li>
+<li>Also see <a href="https://github.com/fitzgen/bumpalo">bumpalo</a> - bump allocator which includes custom versions of standard collections</li>
+</ul>
+</li>
+<li>
+<p>Watch out for dynamic dispatch (when you need to use <code>Box&lt;dyn MyTrait&gt;</code> etc).  One solution is to use <a href="https://docs.rs/enum_dispatch/0.2.1/enum_dispatch/index.html">enum_dispatch</a>.</p>
+<ul>
+<li>Related: <a href="https://docs.rs/auto_enums/0.7.1/auto_enums/index.html">auto_enum</a> - a way to return enums when you might need to return <code>impl A</code> for some trait A when you might be returning diff implementations</li>
+<li>Can also use <a href="https://crates.io/crates/ambassador">ambassador</a> - to delegate trait implementations</li>
+</ul>
+</li>
+</ul>
+<p>If small binary size is what you're after, check out <a href="https://github.com/johnthagen/min-sized-rust">Min-sized-Rust</a>.</p>
+<p>Rust nightly now has a super slick <a href="https://blog.rust-lang.org/inside-rust/2020/06/08/new-inline-asm.html">asm!</a> inline assembly feature.  The way that it integrates Rust variables/expressions with auto register assignment is super awesome.</p>
+<p>NOTE: simplest way to increase perf may be to enable certain CPU instructions: <code>set -x RUSTFLAGS "-C target-feature=+sse3,+sse4.2,+lzcnt,+avx,+avx2"</code></p>
+<p>NOTE2: <code>lazy_static</code> accesses are not cheap.  Don't use it in hot code paths.</p>
+<h3 id="perf-profiling"><a class="header" href="#perf-profiling">Perf profiling:</a></h3>
+<p>Note: this section is mostly about profiling tools -- detailed breakdowns of bottlenecks, as opposed to benchmarking (which is repeatable, systematic measurement).  The two benchmarking tools I recommend are <a href="https://github.com/bheisler/criterion.rs">criterion</a> and <a href="https://github.com/bheisler/iai">Iai</a> for benchmarking.</p>
+<p>NEW: I've created a Docker image for <a href="https://github.com/velvia/rust-perf-docker">Linux perf profiling</a>, super easy to use.  The best combo is cargo flamegraph followed by perf and asm analysis.</p>
+<ul>
+<li>
+<p><a href="https://github.com/ferrous-systems/cargo-flamegraph">cargo-flamegraph</a> -- this is now the easiest way to get a FlameGraph on OSX and profile your Rust binaries.  To make it work with bench and Criterion:</p>
+<ul>
+<li>First run <code>cargo bench</code> to build your bench executable</li>
+<li>If you haven't already, <code>cargo install flamegraph</code> (recommend at least v0.1.13)</li>
+<li><code>sudo flamegraph target/release/bench-aba573ea464f3f67 --profile-time 180 &lt;filter&gt; --bench</code> (replace bench-aba* with the name of your bench executable)
+<ul>
+<li>The <code>--profile-time</code> is needed for flamegraph to collect enough stats</li>
+</ul>
+</li>
+<li><code>open -a Safari flamegraph.svg</code></li>
+<li>NOTE: you need to turn on <code>debug = true</code> in release profile for symbols</li>
+<li>This method works better for apps than small benchmarks btw, as inlined methods won't show up in the graph.</li>
+</ul>
+</li>
+<li>
+<p><a href="http://carol-nichols.com/2015/12/09/rust-profiling-on-osx-cpu-time/">Rust Profiling with Instruments on OSX</a> - but apparently cannot export CSV to FlameGraph :(</p>
+<ul>
+<li>Note that you can now just install <a href="https://github.com/cmyr/cargo-instruments">cargo instruments</a></li>
+<li>Also useful for heap/memory analysis, including tracking retained vs transient allocations</li>
+</ul>
+</li>
+<li>
+<p><a href="https://blog.anp.lol/rust/2016/07/24/profiling-rust-perf-flamegraph/">Rust Performance: Perf and Flamegraph</a> - including finding hot assembly instructions</p>
+</li>
+<li>
+<p><a href="https://github.com/mstange/samply">samply</a> - used to be called perfrecord, Rust CPU CLI command profiler using Firefox as UI.  WIP.</p>
+</li>
+<li>
+<p><a href="https://github.com/bheisler/iai">Iai</a> - a one-shot Rust profiler that uses Valgrind underneath</p>
+</li>
+<li>
+<p><a href="https://easyperf.net/blog/2019/02/09/Top-Down-performance-analysis-methodology">Top-down Microarchitecture Analysis Method</a> - TMAM is a formal microprocessor perf analysis method from Intel, works with perf to find out what CPU-level bottlenecks are (mem IO? branch predictions? etc.)</p>
+</li>
+<li>
+<p><a href="http://carol-nichols.com/2017/04/20/rust-profiling-with-dtrace-on-osx/">Rust Profiling with DTrace and FlameGraphs on OSX</a> - probably the best bet (besides Instruments), can handle any native executable too</p>
+<ul>
+<li>From <code>@blaagh</code>: though the predicate should be <code>"/pid == $target/"</code> rather than using execname.</li>
+<li><a href="http://dtrace.org/guide/chp-profile.html">DTrace Guide</a> is probably pretty useful here</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/sharkdp/hyperfine/blob/master/README.md">Hyperfine</a> - Rust performnace benchmarking CLI</p>
+</li>
+<li>
+<p><a href="http://athemathmo.github.io/2016/09/14/tools-for-profiling-rust.html">Tools for Profiling Rust</a> - cpuprofiler might possibly work on OSX.  It does compile.  The cpuprofiler crate requires surrounding blocks of your code though.</p>
+</li>
+<li>
+<p><a href="https://beachape.com/blog/2016/11/02/rust-performance-testing-on-travis-ci/">Rust Performance Profiling on Travis CI</a></p>
+</li>
+<li>
+<p><a href="https://speakerdeck.com/stevej/improving-rust-performance-through-profiling-and-benchmarking?slide=81">Rust Profiling talk</a> - discusses both OSX and Linux, as well as Instruments and <a href="https://software.intel.com/en-us/vtune/choose-download">Intel VTune</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=hTHp0gjWMLQ">2017 RustConf - Improving Rust Performance through Profiling</a></p>
+</li>
+<li>
+<p><a href="https://github.com/llogiq/flamer">Flamer</a> - an alternative to generating FlameGraphs if one is willing to instrument code.  Warning: might require nightly Rust features.</p>
+</li>
+<li>
+<p><a href="https://github.com/kernelmachine/cargo-profiler">cargo-profiler</a> - only works in Linux :(</p>
+</li>
+<li>
+<p><a href="https://github.com/plasma-umass/coz">coz</a> and its Cargo plugin, <a href="https://github.com/alexcrichton/coz-rs">coz-rs</a>  -- "a new kind of profiler that unlocks optimization opportunities missed by traditional profilers. Coz employs a novel technique we call causal profiling that measures optimization potential"</p>
+</li>
+<li>
+<p><a href="https://nnethercote.github.io/perf-book/profiling.html">Rust Perf Book Profiling Page</a> - lots of good links</p>
+</li>
+</ul>
+<p><a href="https://github.com/gnzlbg/cargo-asm">cargo-asm</a> can dump out assembly or LLVM/IR output from a particular method.  I have found this useful for really low level perf analysis.  NOTE: if the method is generic, you need to give a "monomorphised" or filled out method.  Also, methods declared inline won't show up.</p>
+<ul>
+<li>What I like to do with asm output: check if rustc has inlined certain methods.  Also you can clearly see where dynamic dispatch happens and how complicated generated code seems.  More complicated code usually == slower.</li>
+<li><a href="https://www.llvm.org/docs/CommandGuide/llvm-mca.html">llvm-mca</a> - really detailed static analysis and runtime prediction at the machine instruction level</li>
+</ul>
+<p>What works on a Mac (but see cargo flamegraph above for easier way):</p>
+<pre><code class="language-sh">sudo dtrace -c './target/release/bench-2022f41cf9c87baf --profile-time 120' -o out.stacks -n 'profile-997 /pid == $target/ { @[ustack(100)] = count(); }'
+~/src/github/FlameGraph/stackcollapse.pl out.stacks | ~/src/github/FlameGraph/flamegraph.pl &gt;rust-bench.svg
+open -a Safari rust-bench.svg
+</code></pre>
+<p>where -c bench.... is the executable output of cargo bench.</p>
+<p>I was hoping <a href="https://github.com/cbourjau/cargo-with">cargo-with</a> would allow us to run above dtrace command with the name of the bench output, but alas it doesn't seem to work with bench.  (NOTE: they are working on a PR to fix this! :)</p>
+<p>NOTE: The built in <code>cargo bench</code> requires nightly Rust, it doesn't work on stable!  I highly recommend for benchmarking to use <a href="https://github.com/bheisler/criterion.rs">criterion</a>, which works on stable and has extra features such as gnuplot, parameterized benchmarking and run-to-run comparisons, as well as being able to run for longer time to work with profiling such as dtrace.</p>
+<h4 id="memoryheap-profiling"><a class="header" href="#memoryheap-profiling">Memory/Heap Profiling</a></h4>
+<p>The options I've tried out:</p>
+<ul>
+<li><a href="https://github.com/koute/bytehound">Bytehound</a> - really slick, but only works on Linux (using perf).
+<ul>
+<li>No need to modify apps, uses <code>LD_PRELOAD</code></li>
+<li>extracts full stack traces plus every alloc/dealloc, but claims it uses custom unwinding code that's much much faster</li>
+<li>tracks memory usage over time, as well as leaks explicitly, and memory fragmentation</li>
+<li>can give you <strong>flamegraphs</strong> of memory allocations or just leaks!</li>
+<li>Has a really nice UI/webapp that's bundled together</li>
+<li>Has many options to write out profiling data to different locations or over network</li>
+<li>Problems:
+<ul>
+<li>Creates giant profiling data files.  There are options to slim it down though, such as keeping only allocations that live longer than a particular threshold</li>
+<li>Bundled viewer does not seem to be able to load debug symbols when profiling data does not include them :(</li>
+<li>It seems the only way to really include full symbols in the profiling info is to run profiling with a debug build.  However this blows up the size of the data file even more...  hundreds of MBs from just a few minutes of run time!</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>jeprof: If you use <a href="https://github.com/tikv/jemallocator">jemallocator</a> and install jemalloc as your global allocator, you can get some profiling for free.
+<ul>
+<li><a href="https://github.com/jemalloc/jemalloc/wiki/Use-Case%3A-Heap-Profiling">Jemalloc Heap Profiling</a></li>
+<li><a href="https://www.igorkromin.net/index.php/2018/06/07/post-processing-jemalloc-jeprof-heap-dump-files-for-statistical-analysis/">How to parse jeprof text output</a></li>
+<li>Pros: Jemalloc profiling is sampling based and very lightweight.  It can be used in production with minimal perf impact.</li>
+<li>The profile files are also very small</li>
+<li>Cons: it's, like, really hard to use.  For example, enabling it via environment variable - the instructions are not very clear, and there is no way to write the files to anything other than the current directory
+<ul>
+<li>Runtime config: set both environment variables <code>MALLOC_CONF</code> and <code>_RJEM_MALLOC_CONF</code> (which one works depends on environment)</li>
+<li>Compile time config, for jemallocator users: <code>JEMALLOC_SYS_WITH_MALLOC_CONF</code></li>
+</ul>
+</li>
+<li>Con: The stats collected are about total memory allocated, with no differentiation for short/temporal vs long-lived allocations</li>
+<li>Con: It's not built for Rust and difficult to infer stacktraces. Many symbols are mangled.</li>
+<li>It is possible to do differential analysis: use one profile as a "base" and then diff vs other profiles.  However, the profile files use sequence numbers, so it's hard to tell which profile to use for what time.</li>
+<li>Also there is no way to sort the output and the options for simplifying the output don't work very well</li>
+</ul>
+</li>
+<li><a href="https://docs.rs/dhat/0.2.2/dhat/">dhat</a> - Swap out the global allocator, will profile your allocations &amp; max heap usage
+<ul>
+<li>One advantage DHAT has over jeprof/jemalloc is lifetime / allocation length information.  This can be used to figure out long-held things</li>
+<li>DHAT also tracks the entire call graph so it can produce a useful tree</li>
+<li>It's online viewer is also much easier to use than <code>jeprof</code></li>
+<li>Unfortunately DHAT tracks every allocation so it's not good for production use</li>
+<li>DHAT also crashes on some workloads.  This is really annoying.</li>
+</ul>
+</li>
+<li><a href="https://github.com/KDE/heaptrack">Heaptrack</a> and <a href="https://gist.github.com/HenningTimm/ab1e5c05867e9c528b38599693d70b35">working with Rust</a> works for Rust, but only on Linux.</li>
+</ul>
+<p>After the above frustrations and investigations, I decided to write my own custom memory profiler - <a href="https://github.com/velvia/ying-profiler">Ying</a> - a sampling profiler, built for rich Rust stack traces including inlined methods, which tracks retained memory and lifetimes.  Definitely experimental right now.</p>
+<ul>
+<li><a href="https://github.com/koute/memory-profiler">memory-profiler</a> - written in Rust by the Nokia team!</li>
+<li><a href="https://crates.io/crates/stats_alloc">stats_alloc</a> can dump out incremental stats about allocation.  Or just use <code>jemalloc-ctl</code>.</li>
+<li><a href="https://crates.io/crates/deepsize">deepsize</a> - macro to recursively find size of an object</li>
+<li><a href="https://github.com/paritytech/parity-common/tree/master/parity-util-mem">Parity-util-mem</a> - can find the size of collections as well?</li>
+<li><a href="https://rust-analyzer.github.io//blog/2020/12/04/measuring-memory-usage-in-rust.html">Measuring Memory Usage in Rust</a> - thoughts on working around the fact we don't have a GC to track deep memory usage</li>
+</ul>
+<h3 id="fast-string-parsing"><a class="header" href="#fast-string-parsing">Fast String Parsing</a></h3>
+<ul>
+<li>
+<p><a href="https://docs.rs/nom/4.1.1/nom/">nom</a> - a direct parser using macros, commonly accepted as fastest generic parser</p>
+</li>
+<li>
+<p><a href="https://pest.rs/#editor">pest</a> is a PEG parser using an external, easy to understand syntax file. Not quite as fast but might be easier to understand and debug.  There is also a <a href="https://pest.rs/book/intro.html">book</a>.</p>
+</li>
+<li>
+<p><a href="https://github.com/Marwes/combine">combine</a> is a parser combinator library, supposedly just as fast as nom, syntax seems slightly</p>
+</li>
+<li>
+<p><a href="https://github.com/rusticstuff/simdutf8">simdutf8</a> - SIMD lightning fast UTF-8 validation</p>
+</li>
+</ul>
+<h3 id="bitpacking-binary-structures-serialization"><a class="header" href="#bitpacking-binary-structures-serialization">Bitpacking, Binary Structures, Serialization</a></h3>
+<ul>
+<li><a href="https://crates.io/crates/bitpacking">bitpacking</a> - insanely fast integer bitpacking library</li>
+<li><a href="https://crates.io/crates/packed_struct">packed_struct</a> - bitfield packing/unpacking; can also pack arrays of bitfields; mixed endianness, etc.</li>
+<li><a href="https://crates.io/crates/rkyv">rkyv</a> - Zero-copy deserialization, for generic Rust structs, even trait objects. Uses relative pointers.</li>
+<li><a href="https://crates.io/crates/binary-layout">binary-layout</a> - "type-safe, inplace, zero-copy access to structured binary data" including open-ended byte arrays at the end</li>
+<li><a href="https://docs.rs/zerovec/latest/zerovec/#Performance">zerovec</a> - Clients upgrading to zerovec benefit from zero heap allocations when deserializing read-only data.</li>
+<li><a href="https://medium.com/tezedge/speeding-up-incoming-message-parsing-by-3-to-10-times-by-switching-from-serde-to-the-nom-library-a74b04391bb4">Speeding up incoming message parsing using nom</a> - a detailed guide to using nom for deserialization, much faster than Serde</li>
+</ul>
+<p>The ideal performance-wise is to not need serialization at all; ie be able to read directly from portions of a binary byte slice.  There are some libraries for doing this, such as flatbuffers, or <a href="https://heremaps.github.io/flatdata/">flatdata</a> for which there is a Rust crate; or Cap'n Proto.  However, there may be times when you want more control or things like Cap'n Proto are not good enough.</p>
+<p>How do we perform low-level byte/bit twiddling and precise memory access?  Unfortunately, all structs in Rust basically need to have known sizes. There's something called <a href="https://doc.rust-lang.org/nomicon/exotic-sizes.html">dynamically sized types</a> basically like slices where you can have the last element of a struct be an array of unknown size; however, they are virtually impossible to create and work with, and this only covers some cases anyhow.  So we will unfortunately need a combination of techniques.  In order of preference:</p>
+<ul>
+<li>Overall <a href="https://crates.io/crates/scroll">scroll</a> is the best general-purpose struct serialization crate; it helps with reading integers and other fields too, and takes care of endianness.  It generates pretty efficient code.  It is a bit of a pain working with numeric enums however.
+<ul>
+<li><a href="https://docs.rs/num_enum/0.5.0/num_enum/">num_enum</a> - a way to derive TryFrom for numeric enums helps a little bit.</li>
+</ul>
+</li>
+<li>I have found <a href="https://github.com/randomites/plain">plain</a> works really well.  Mark your structs with <code>#[repr(C)]</code>.  It only helps with size and alignment, not endianness - so maybe more for in-memory structures or when you are sure you don't need code to work across endianness platforms.  If your structures are not aligned then use <code>#[repr(C, packed)]</code> or <code>#[align(1)]</code>.</li>
+<li>Use a crate such as <a href="https://crates.io/crates/bytes">bytes</a> or <a href="https://crates.io/crates/scroll">scroll</a> to help extract and write structs and primitives to/from buffers. Might need extra copying though. Also see <a href="https://crates.io/crates/iobuf">iobuf</a></li>
+<li><a href="https://crates.io/crates/rel-ptr">rel-ptr</a> - small library for relative pointers/offsets, should be super useful for custom file formats and binary/persistent data structures</li>
+<li><a href="https://docs.rs/arrayref/0.3.5/arrayref/">arrayref</a> might help extract fixed size arrays from longer ones.</li>
+<li><a href="https://docs.rs/bytemuck/1.1.0/bytemuck/">bytemuck</a> for casts</li>
+<li>Also <a href="https://docs.rs/zerocopy/latest/zerocopy/">zerocopy</a> with <code>FromBytes</code> and <code>AsBytes</code> traits for easy transmuting</li>
+<li><a href="https://crates.io/crates/bitmatch">bitmatch</a> could be great for bitfield parsing
+<ul>
+<li>Also see <a href="https://docs.rs/zero/0.1.2/zero/">zero</a></li>
+</ul>
+</li>
+<li>Allocate a <code>Vec::&lt;u8&gt;</code> and <a href="https://stackoverflow.com/questions/25917260/getting-raw-bytes-from-packed-struct">transmute</a> specific portions to/from structs of known size, or convert pointers within regions back to references:</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let foobar: *mut Foobar = mybytes[..].as_ptr() as *mut Foobar;
+    let &amp;mut Foobar = (unsafe { foobar.as_ref() }).expect("Cannot convert foobar to ref");
+<span class="boring">}</span></code></pre></pre>
+<ul>
+<li>Or <a href="https://crates.io/crates/structview">structview</a> which offers types for unaligned integers etc.</li>
+<li>There are some DST crates worth checking out: <a href="https://crates.io/crates/slice-dst">slice-dst</a>, <a href="https://crates.io/crates/thin-dst">thin-dst</a></li>
+<li>As a last resort, work with <a href="https://doc.rust-lang.org/std/primitive.pointer.html">raw pointer</a> math using the add/sub/offset methods, but this is REALLY UNSAFE.</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    let foobar: *mut Foobar = mybytes[..].as_ptr() as *mut Foobar;
+    unsafe {
+      (*foobar).foo = 17;
+      (*foobar).bar = -1;
+    }
+<span class="boring">}</span></code></pre></pre>
+<p>Want to zero memory quickly?  Use <a href="https://docs.rs/slice-fill/1.0.1/slice_fill/">slice_fill</a> for memset optimization, since there is no memory filling for slices in Rust yet.</p>
+<p>Also check out the crazy number of crates available under <a href="https://crates.io/search?q=compression&amp;sort=recent-downloads">compression</a> - including various interesting radix and trie data structures, and more compression algorithms that one has never heard of.</p>
+<h3 id="enums-thin-pointers-type-wrapping"><a class="header" href="#enums-thin-pointers-type-wrapping">Enums, Thin Pointers, Type Wrapping</a></h3>
+<p>A frequent problem, esp when working with data, is to have a "union" of different types.  Perhaps <code>Option</code> will suffice, but sometimes we need to wrap <code>Vec&lt;A&gt;</code> and <code>Vec&lt;B&gt;</code> together in the same type.  We don't want to just use <code>Box&lt;dyn MyTrait&gt;</code> as that allocates and results in dynamic dispatch.   Here are some crates and patterns that may help in working with enums, or alternatives:</p>
+<ul>
+<li><a href="https://docs.rs/enum_dispatch/0.2.1/enum_dispatch/index.html">enum_dispatch</a> - macro to implement the <code>dyn MyTrait</code> trait object pattern for enums, so we get fast static dispatch.  Basically implements traits for underlying types in enums</li>
+<li><a href="https://lib.rs/crates/enum_delegate">enum_delegate</a> is an alternative that works with associated types in traits - but not generics</li>
+<li><a href="https://docs.rs/strum/latest/strum/">strum</a> - derive strings and discriminant enums using macros</li>
+<li>You can use <a href="https://doc.rust-lang.org/std/mem/fn.discriminant.html"><code>std::mem::discriminant</code></a>, a built-in function, to find the numeric discriminant for an enum</li>
+<li>Also enum discriminants can be explicitly specified using <code>#[repr(..)]</code>, see <a href="https://users.rust-lang.org/t/inconsistencies-in-enum-discriminants/85968">here</a> - you can then transmute the enum into something explicit</li>
+</ul>
+<p>Some non-enum crates that can also help:</p>
+<ul>
+<li><a href="https://docs.rs/ptr-union/latest/ptr_union/index.html">ptr_union</a> - "Pointer union types the since of a pointer by storing the tag in the alignment bits" :)</li>
+<li><a href="https://crates.io/crates/erasable">erasable</a> - "Type-erased thin pointers" - need to see how this is different from <code>std::any::Any</code></li>
+</ul>
+<h3 id="simd"><a class="header" href="#simd">SIMD</a></h3>
+<p>There is this great article on <a href="https://raphlinus.github.io/rust/simd/2018/10/19/fearless-simd.html">Towards fearless SIMD</a>, about why SIMD is hard, and how to make it easier.   Along with pointers to many interesting crates doing SIMD.  (There is a built in crate, <code>std::simd</code> but it is really lacking) (However, <a href="https://crates.io/crates/packed_simd">packed_simd</a> will soon be merged into it)</p>
+<p>Another great article: <a href="https://medium.com/@razican/learning-simd-with-rust-by-finding-planets-b85ccfb724c3">learning simd with rust by finding planets</a> is great too. simd is really about parallelism.  it is better to do multiple operations in a parallel (vertical) fashion, vector on vector, than to do horizontal operations where the different components of a wide register depend on one another.</p>
+<ul>
+<li>
+<p><a href="https://crates.io/crates/ssimd">ssimd</a> - an effort to bring std::simd/packed_simd to Rust stable, with auto vectorization (meaning auto detect and implement code paths and fallbacks for when SIMD not available!)</p>
+</li>
+<li>
+<p><a href="https://github.com/AdamNiederer/faster">faster</a> - "SIMD for Humans" -- probably my favorite one, very high level translation of numeric map loops into SIMD</p>
+</li>
+<li>
+<p><a href="https://github.com/raphlinus/fearless_simd">fearless_simd</a>, the blog post author's crate.  Runtime CPU detection and use of the most optimal code, no need for unsafe, but only focused on f32.</p>
+</li>
+<li>
+<p><a href="https://github.com/jackmott/simdeez">SIMDeez</a> - abstracts intrinsic SIMD instructions over different instruction sets &amp; vector widths, runtime detection</p>
+</li>
+<li>
+<p><a href="https://crates.io/crates/simd_aligned">simd_aligned</a> and <a href="https://github.com/ralfbiedert/simd_aligned_rust">simd_aligned_rust</a> - work with SIMD and packed_simd using vectors which have guaranteed alignment</p>
+</li>
+<li>
+<p><a href="https://docs.rs/aligned/0.3.2/aligned/">aligned</a> - newtype with byte alignment, for stack or heap!</p>
+</li>
+<li>
+<p>https://www.rustsim.org/blog/2020/03/23/simd-aosoa-in-nalgebra/</p>
+</li>
+</ul>
+<p>NOTE: <code>shuffle</code> in <code>packed_simd</code> is not very fast.  Replace with native instructions if possible.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../scala/various.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../rust/learning_stuff.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../scala/various.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../rust/learning_stuff.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
