@@ -11,8 +11,7 @@ jobs:
     name: Deploy mdbook
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # To push a branch 
-      pull-requests: write  # To create a PR from that branch
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
