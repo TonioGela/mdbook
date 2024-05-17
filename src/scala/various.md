@@ -6,6 +6,7 @@
 - [Scala 3 Macros](https://august.nagro.us/scala-3-whitebox-macros.html)
 
 ### Generic
+- [Direct-syle](https://www.inner-product.com/posts/direct-style-effects/)
 - [JMH](https://jenkov.com/tutorials/java-performance/jmh.html)
 - [Which jdk](https://whichjdk.com/)
 - [Tagless Final No Typeclasses](https://www.foxhound.systems/blog/final-tagless/)

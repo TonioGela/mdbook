@@ -1,5 +1,7 @@
 # Software Development
 
+- [Making a Postgres Query 1000 times faster](https://mattermost.com/blog/making-a-postgres-query-1000-times-faster/)
+- [Buffer analysis when using EXPLAIN ANALYSE in Postgres](https://willj.net/posts/buffer-analysis-when-using-explain-analyse-in-postgres/)
 - [Ocaml](https://cs3110.github.io/textbook/cover.html)
 - [Learn X in Y minutes](https://learnxinyminutes.com/)
 - [Flutter](https://flutter.dev/)
