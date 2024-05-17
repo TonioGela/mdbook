@@ -36,3 +36,7 @@ Mostly Scala 2 material, as it's difficult to find
 - [Deriving incomplete type class instances](https://meta.plasm.us/posts/2015/06/21/deriving-incomplete-type-class-instances/)
 - [Type classes and generic derivation](https://meta.plasm.us/posts/2015/11/08/type-classes-and-generic-derivation/)
 - [Configuring generic derivation](https://meta.plasm.us/posts/2016/01/14/configuring-generic-derivation/)
+
+# Papers
+
+- [Scala Macros: Let Our Powers Combine!](./macros/147995969.pdf)

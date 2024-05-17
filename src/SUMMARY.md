@@ -6,6 +6,7 @@
 
 - [Scala]()
   - [Learning](scala/learning_stuff.md)
+  - [Macros](scala/macros.md)
   - [Various](scala/various.md)
 
 - [Rust]()
