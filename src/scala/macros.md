@@ -40,3 +40,10 @@ Mostly Scala 2 material, as it's difficult to find
 # Papers
 
 - [Scala Macros: Let Our Powers Combine!](./macros/147995969.pdf)
+
+# Scala 3
+- [Generic Programming with Scala 3 ](https://blog.philipp-martini.de/blog/magic-mirror-scala3/)
+- [Scala 3 Macros - Nicolas Stucki](https://youtu.be/BbTZi8siN28)
+- [Implementing a Macro - Nicolas Stucki](https://youtu.be/dKblZynnhgo)
+- [Metaprogramming Implementation in Scala 3 - Nicolas Stucki](https://youtu.be/shm7UTIgoPw)
+- [Mirrors for Operations, not Data - Jaime Thompson](https://youtu.be/zYl117VzSGA)
