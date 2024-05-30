@@ -20,7 +20,7 @@ input-404 = "404.md"
 
 [output.html.search]
 enable = true
-limit-results = 30
+limit-results = 35
 teaser-word-count = 30
 use-boolean-and = true
 boost-title = 2
