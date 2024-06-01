@@ -22,6 +22,7 @@ The first part of this list is a refined and personalized version of [this one](
 
 ### Interactive
 
+- [ ] [Luca Palmieri's Course at MainMatter](https://rust-exercises.com/01_intro/00_welcome)
 - [ ] [Exercism](https://exercism.io/)
 - [ ] [Small Projects to learn Rust](https://github.com/TonioGela/to-do-rust)
 - [x] [Rustlings!](https://github.com/rust-lang/rustlings)
