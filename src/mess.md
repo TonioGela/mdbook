@@ -1,5 +1,6 @@
 # This is a mess, you should really organize it
 
+- [Things that make you happier](https://bakadesuyo.com/2012/08/here-are-the-things-that-are-proven-to-make-y/)
 - [Stack Scripts](https://docs.haskellstack.org/en/stable/scripts/)
 - [Pi4j](https://pi4j.com/examples/)
 - [Asus Zenbook Duo 14 UX482](https://www.google.com/search?tbm=vid&q=Asus+Zenbook+Duo+14+UX482&spell=1)
