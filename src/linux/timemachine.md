@@ -1,66 +1,56 @@
-# How to setup a server as a time-machine backup
+## TimeMachine on CasaOs
 
-### Get a static IP in your network
+Taken from:
+- https://github.com/IceWhaleTech/CasaOS/issues/1030
+- https://mxnr.net/time-machine-on-zimaboard/amp/
+- https://wiki.samba.org/index.php/Configure_Samba_to_Work_Better_with_Mac_OS_X
 
-`192.168.0.99` will be your static ip, while `192.168.0.1` is your home router ip.
+1) `ssh casaos@casaos.local`
+2) `sudo useradd toniogela`
+3) `sudo smbpasswd -a toniogela`
+4) `cd /mnt/diskname && sudo mkdir timemachine`
+5) `sudo chown toniogela:toniogela timemachine`
+6) `sudo apt install samba-vfs-modules`
+7) `sudo vi /etc/samba/smb.conf`
 
+Add under `[global]`
 ```
-$ sudo nmcli connection show
-NAME                UUID                                  TYPE      DEVICE 
-Wired connection 1  91d78f79-c7cf-32fc-8a91-bc3d587a2461  ethernet  enp0s3 
-virbr0              b5402c70-eb3d-4a45-a7ad-43e1652798b1  bridge    virbr0
-```
-
-```
-$ sudo nmcli connection modify 91d78f79-c7cf-32fc-8a91-bc3d587a2461 IPv4.method  manual
-$ sudo nmcli connection modify 91d78f79-c7cf-32fc-8a91-bc3d587a2461 IPv4.address 192.168.0.99/24
-$ sudo nmcli connection modify 91d78f79-c7cf-32fc-8a91-bc3d587a2461 IPv4.gateway 192.168.0.1
-$ sudo nmcli connection modify 91d78f79-c7cf-32fc-8a91-bc3d587a2461 IPv4.dns     192.168.0.1
-```
-
-```
-$ sudo nmcli connection down 91d78f79-c7cf-32fc-8a91-bc3d587a2461
-$ sudo nmcli connection up 91d78f79-c7cf-32fc-8a91-bc3d587a2461
-```
-
-```
-$ ping www.google.com
-```
-
-### Install Netatalk and Avahi
-
-```
-$ dnf install -y netatalk avahi
+   min protocol = SMB2
+   ea support = yes
+   vfs objects = fruit streams_xattr
+   fruit:metadata = stream
+   fruit:model = TimeCapsule
+   fruit:posix_rename = yes
+   fruit:veto_appledouble = no
+   fruit:nfs_aces = no
+   fruit:wipe_intentionally_left_blank_rfork = yes
+   fruit:delete_empty_adfiles = yes
 ```
 
-Assign timemachine to the right user
+Create this (but maybe it's useless):
 ```
-$ chown timemachine:timemachine /timemachine
-```
-
-```
-$ vi /etc/netatalk/afp.conf
-[Name of the Time Machine Volume in Time Machine]
-path = /timemachine
-time machine = yes
-valid users = timemachine // assuming this is you user
+[share]
+   spotlight backend = elasticsearch
 ```
 
-You can repeat the configuration up here for multiple volumes
+Then foreach user (here's `toniogela`) create at bottom:
 
 ```
-$ systemctl enable --now netatalk avahi-daemon
+[Time Machine name you will see under MacOs]
+   comment = TTime Machine name you will see under MacOs
+   path = /mnt/diskname/timemachine
+   browseable = yes
+   writeable = yes
+   guest ok = no
+   read only = no
+   fruit:time machine = yes
+   valid users = toniogela
+   durable handles = yes
+   kernel oplocks = no
+   kernel share modes = no
+   posix locking = no
+   ea support = yes
+   inherit acls = yes
 ```
 
-### Add firewall rules 
-
-```
-$ firewall-cmd --permanent --add-port={548,5353,49152,52883}/{tcp,udp}
-$ firewall-cmd --reload
-```
-
-### Prevent lid turning off the server
-```
-$ sudo vi /etc/systemd/logind.conf
-HandleLidSwitch=ignore
-```
+reboot and you should be done
