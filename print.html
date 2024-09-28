@@ -1777,47 +1777,56 @@ networked, parallel and asynchronous key/value store. Along the way various real
 <li><a href="http://blog.wesleyac.com/posts/elliptic-curves">Elliptic Curve Cryptography for Beginners</a></li>
 <li><a href="https://eff-certbot.readthedocs.io/en/stable/using.html#manual">Certbot</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-setup-a-server-as-a-time-machine-backup"><a class="header" href="#how-to-setup-a-server-as-a-time-machine-backup">How to setup a server as a time-machine backup</a></h1>
-<h3 id="get-a-static-ip-in-your-network"><a class="header" href="#get-a-static-ip-in-your-network">Get a static IP in your network</a></h3>
-<p><code>192.168.0.99</code> will be your static ip, while <code>192.168.0.1</code> is your home router ip.</p>
-<pre><code>$ sudo nmcli connection show
-NAME                UUID                                  TYPE      DEVICE 
-Wired connection 1  91d78f79-c7cf-32fc-8a91-bc3d587a2461  ethernet  enp0s3 
-virbr0              b5402c70-eb3d-4a45-a7ad-43e1652798b1  bridge    virbr0
+<div style="break-before: page; page-break-before: always;"></div><h2 id="timemachine-on-casaos"><a class="header" href="#timemachine-on-casaos">TimeMachine on CasaOs</a></h2>
+<p>Taken from:</p>
+<ul>
+<li>https://github.com/IceWhaleTech/CasaOS/issues/1030</li>
+<li>https://mxnr.net/time-machine-on-zimaboard/amp/</li>
+<li>https://wiki.samba.org/index.php/Configure_Samba_to_Work_Better_with_Mac_OS_X</li>
+</ul>
+<ol>
+<li><code>ssh casaos@casaos.local</code></li>
+<li><code>sudo useradd toniogela</code></li>
+<li><code>sudo smbpasswd -a toniogela</code></li>
+<li><code>cd /mnt/diskname &amp;&amp; sudo mkdir timemachine</code></li>
+<li><code>sudo chown toniogela:toniogela timemachine</code></li>
+<li><code>sudo apt install samba-vfs-modules</code></li>
+<li><code>sudo vi /etc/samba/smb.conf</code></li>
+</ol>
+<p>Add under <code>[global]</code></p>
+<pre><code>   min protocol = SMB2
+   ea support = yes
+   vfs objects = fruit streams_xattr
+   fruit:metadata = stream
+   fruit:model = TimeCapsule
+   fruit:posix_rename = yes
+   fruit:veto_appledouble = no
+   fruit:nfs_aces = no
+   fruit:wipe_intentionally_left_blank_rfork = yes
+   fruit:delete_empty_adfiles = yes
 </code></pre>
-<pre><code>$ sudo nmcli connection modify 91d78f79-c7cf-32fc-8a91-bc3d587a2461 IPv4.method  manual
-$ sudo nmcli connection modify 91d78f79-c7cf-32fc-8a91-bc3d587a2461 IPv4.address 192.168.0.99/24
-$ sudo nmcli connection modify 91d78f79-c7cf-32fc-8a91-bc3d587a2461 IPv4.gateway 192.168.0.1
-$ sudo nmcli connection modify 91d78f79-c7cf-32fc-8a91-bc3d587a2461 IPv4.dns     192.168.0.1
+<p>Create this (but maybe it's useless):</p>
+<pre><code>[share]
+   spotlight backend = elasticsearch
 </code></pre>
-<pre><code>$ sudo nmcli connection down 91d78f79-c7cf-32fc-8a91-bc3d587a2461
-$ sudo nmcli connection up 91d78f79-c7cf-32fc-8a91-bc3d587a2461
+<p>Then foreach user (here's <code>toniogela</code>) create at bottom:</p>
+<pre><code>[Time Machine name you will see under MacOs]
+   comment = TTime Machine name you will see under MacOs
+   path = /mnt/diskname/timemachine
+   browseable = yes
+   writeable = yes
+   guest ok = no
+   read only = no
+   fruit:time machine = yes
+   valid users = toniogela
+   durable handles = yes
+   kernel oplocks = no
+   kernel share modes = no
+   posix locking = no
+   ea support = yes
+   inherit acls = yes
 </code></pre>
-<pre><code>$ ping www.google.com
-</code></pre>
-<h3 id="install-netatalk-and-avahi"><a class="header" href="#install-netatalk-and-avahi">Install Netatalk and Avahi</a></h3>
-<pre><code>$ dnf install -y netatalk avahi
-</code></pre>
-<p>Assign timemachine to the right user</p>
-<pre><code>$ chown timemachine:timemachine /timemachine
-</code></pre>
-<pre><code>$ vi /etc/netatalk/afp.conf
-[Name of the Time Machine Volume in Time Machine]
-path = /timemachine
-time machine = yes
-valid users = timemachine // assuming this is you user
-</code></pre>
-<p>You can repeat the configuration up here for multiple volumes</p>
-<pre><code>$ systemctl enable --now netatalk avahi-daemon
-</code></pre>
-<h3 id="add-firewall-rules"><a class="header" href="#add-firewall-rules">Add firewall rules</a></h3>
-<pre><code>$ firewall-cmd --permanent --add-port={548,5353,49152,52883}/{tcp,udp}
-$ firewall-cmd --reload
-</code></pre>
-<h3 id="prevent-lid-turning-off-the-server"><a class="header" href="#prevent-lid-turning-off-the-server">Prevent lid turning off the server</a></h3>
-<pre><code>$ sudo vi /etc/systemd/logind.conf
-HandleLidSwitch=ignore
-</code></pre>
+<p>reboot and you should be done</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="low-level-stuff--assembly"><a class="header" href="#low-level-stuff--assembly">Low level stuff + Assembly</a></h1>
 <p>https://dev.to/frosnerd/writing-my-own-boot-loader-3mld</p>
 <p>https://dev.to/visheshpatel/how-c-program-stored-in-ram-memory-3773</p>
