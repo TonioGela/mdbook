@@ -13,6 +13,7 @@
 - [Torta Mele e Rabarbaro](https://www.gustoblog.it/post/192123/torta-rabarbaro-mele-ricetta-golosa)
 - [Crescioni](https://chiaramaci.com/crescioni/)
 - [Far Breton](https://www.bonappetit.com/recipe/far-breton)
+- [Muffin Salati](https://redketchup.it/muffin-con-zucchine-e-feta/)
 - [Chocolate Chip Muffins](https://www.littlesweetbaker.com/bakery-style-chocolate-chip-muffins-2/)
 
 <details>
